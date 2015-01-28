@@ -26,7 +26,7 @@
 <layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
-<layer number="19" name="Unrouted" color="6" fill="1" visible="no" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
@@ -2182,11 +2182,11 @@ design rules under a new name.</description>
 <element name="U$4" library="linear" package="SOT89" value="NJM78L03UA" x="36.195" y="94.615" rot="MR0"/>
 <element name="U$3" library="linear" package="SOT89" value="NJM79L03UA" x="37.1475" y="83.5025" rot="MR180"/>
 <element name="R6" library="rcl" package="0207/10" value="10k" x="-0.3175" y="-10.16"/>
-<element name="IC4" library="atmel" package="TQFP44" value="XMEGA16C4AUR" x="-86.995" y="0">
-<attribute name="OC_NEWARK" value="unknown" x="-86.995" y="0" size="1.778" layer="27" display="off"/>
-<attribute name="MPN" value="" x="-86.995" y="0" size="1.778" layer="27" display="off"/>
-<attribute name="MF" value="" x="-86.995" y="0" size="1.778" layer="27" display="off"/>
-<attribute name="OC_FARNELL" value="unknown" x="-86.995" y="0" size="1.778" layer="27" display="off"/>
+<element name="IC4" library="atmel" package="TQFP44" value="XMEGA16C4AUR" x="17.4625" y="62.865" rot="MR270">
+<attribute name="OC_NEWARK" value="unknown" x="17.4625" y="62.865" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="MPN" value="" x="17.4625" y="62.865" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="MF" value="" x="17.4625" y="62.865" size="1.778" layer="28" rot="MR270" display="off"/>
+<attribute name="OC_FARNELL" value="unknown" x="17.4625" y="62.865" size="1.778" layer="28" rot="MR270" display="off"/>
 </element>
 </elements>
 <signals>
@@ -2245,10 +2245,6 @@ design rules under a new name.</description>
 <contactref element="IC4" pad="38"/>
 <contactref element="IC4" pad="30"/>
 <contactref element="IC4" pad="18"/>
-<wire x1="-86.195" y1="-5.8" x2="-92.795" y2="-1.6" width="0" layer="19" extent="1-1"/>
-<wire x1="-81.195" y1="1.6" x2="-86.195" y2="-5.8" width="0" layer="19" extent="1-1"/>
-<wire x1="-86.195" y1="5.8" x2="-81.195" y2="1.6" width="0" layer="19" extent="1-1"/>
-<wire x1="3.81" y1="10.49" x2="-81.195" y2="1.6" width="0" layer="19" extent="1-1"/>
 </signal>
 <signal name="AGND">
 <contactref element="U$1" pad="9"/>
@@ -2462,10 +2458,10 @@ design rules under a new name.</description>
 <wire x1="81.2575" y1="54.6703" x2="83.2075" y2="54.6703" width="0" layer="19" extent="16-16"/>
 <wire x1="79.9575" y1="48.8347" x2="81.2575" y2="54.6703" width="0" layer="19" extent="16-16"/>
 <wire x1="37.694" y1="92.634" x2="81.2575" y2="54.6703" width="0" layer="19" extent="16-16"/>
-<wire x1="-81.195" y1="2.4" x2="37.694" y2="92.634" width="0" layer="19" extent="1-16"/>
-<wire x1="-86.995" y1="5.8" x2="-81.195" y2="2.4" width="0" layer="19" extent="1-1"/>
-<wire x1="-85.395" y1="-5.8" x2="-81.195" y2="2.4" width="0" layer="19" extent="1-1"/>
-<wire x1="-92.795" y1="-2.4" x2="-85.395" y2="-5.8" width="0" layer="19" extent="1-1"/>
+<wire x1="19.8625" y1="68.665" x2="37.694" y2="92.634" width="0" layer="19" extent="16-16"/>
+<wire x1="23.2625" y1="61.265" x2="19.8625" y2="68.665" width="0" layer="19" extent="16-16"/>
+<wire x1="15.0625" y1="57.065" x2="23.2625" y2="61.265" width="0" layer="19" extent="16-16"/>
+<wire x1="11.6625" y1="62.865" x2="15.0625" y2="57.065" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="-3V3">
 <contactref element="U$3" pad="3"/>
@@ -2494,12 +2490,12 @@ design rules under a new name.</description>
 <signal name="N$2">
 <contactref element="IC4" pad="26"/>
 <contactref element="X2" pad="2"/>
-<wire x1="8.52" y1="17.76" x2="-81.195" y2="-1.6" width="0" layer="19" extent="1-1"/>
+<wire x1="8.52" y1="17.76" x2="19.0625" y2="57.065" width="0" layer="19" extent="16-16"/>
 </signal>
 <signal name="N$5">
 <contactref element="X2" pad="3"/>
 <contactref element="IC4" pad="27"/>
-<wire x1="6.52" y1="17.76" x2="-81.195" y2="-0.8" width="0" layer="19" extent="1-1"/>
+<wire x1="6.52" y1="17.76" x2="18.2625" y2="57.065" width="0" layer="19" extent="16-16"/>
 </signal>
 </signals>
 </board>
