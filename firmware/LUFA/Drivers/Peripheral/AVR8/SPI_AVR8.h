@@ -79,6 +79,7 @@
 
 	/* Includes: */
 		#include "../../../Common/Common.h"
+ 		#include <util/delay.h>
 
 	/* Enable C linkage for C++ Compilers: */
 		#if defined(__cplusplus)
@@ -232,6 +233,19 @@
 			{
 				SPDR = Byte;
 				while (!(SPSR & (1 << SPIF)));
+			}
+
+			static inline void SPI_Send2Byte(const uint8_t MSB, const uint8_t LSB) ATTR_ALWAYS_INLINE;
+			static inline void SPI_Send2Byte(const uint8_t MSB, const uint8_t LSB)
+			{
+				PORTB &= ~(1 << 0);
+				_delay_us(1);
+				SPDR = MSB;
+				while (!(SPSR & (1 << SPIF)));
+				SPDR = LSB;
+				while (!(SPSR & (1 << SPIF)));
+				_delay_us(1);
+				PORTB |= (1 << 0);
 			}
 
 			/** Sends a dummy byte through the SPI interface, blocking until the transfer is complete. The response

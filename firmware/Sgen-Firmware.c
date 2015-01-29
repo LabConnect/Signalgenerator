@@ -64,12 +64,23 @@ int main(void)
 	SetupHardware();
 
 	GlobalInterruptEnable();
+	_delay_ms(1000);
+	for (;;)
+	{
+		/* code */
+
+		SPI_SendByte(0x55);
+
+
+	}
+	/*
 	SPI_ausgabe();
 	for (;;)
 	{
 		HID_Device_USBTask(&Generic_HID_Interface);
 		USB_USBTask();
 	}
+	*/
 }
 
 /** Configures the board hardware and chip peripherals for the demo's functionality. */
