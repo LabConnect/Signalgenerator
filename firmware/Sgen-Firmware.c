@@ -33,7 +33,7 @@
 /** Buffer to hold the previously generated HID report, for comparison purposes inside the HID class driver. */
 static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
 
-uint8_t DeviceConfig[20] = {0x00, 0x00, 0xf3, 0x52, 0xc8};
+uint8_t DeviceConfig[20] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1};
 
 /** LUFA HID Class driver interface configuration and state information. This structure is
  *  passed to all HID Class driver functions, so that multiple instances of the same class
@@ -64,7 +64,7 @@ int main(void)
 	SetupHardware();
 
 	GlobalInterruptEnable();
-
+	SPI_ausgabe();
 	for (;;)
 	{
 		HID_Device_USBTask(&Generic_HID_Interface);
@@ -162,25 +162,38 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                                           const uint16_t ReportSize)
 {
 	uint8_t* Data       = (uint8_t*)ReportData;
-
+	/*
 	for (int i=0; i<ReportSize; i++)
 	{
 		DeviceConfig[i] = Data[i];
 	}
-
+	*/
 	
 	S_S(0);
-	SPI_SendByte(DeviceConfig[0]);
-	SPI_SendByte(DeviceConfig[1]);
+	SPI_SendByte(DeviceConfig[0x20]);
+	SPI_SendByte(DeviceConfig[0x00]);
 	S_S(1);
-	
 
+	_delay_ms(5);
+
+	S_S(0);
+	SPI_SendByte(DeviceConfig[0x40]);
+	SPI_SendByte(DeviceConfig[0x00]);
+	S_S(1);
+
+	_delay_ms(5);
+
+	S_S(0);
+	SPI_SendByte(DeviceConfig[0x69]);
+	SPI_SendByte(DeviceConfig[0xf1]);
+	S_S(1);
+	return;
 }
 
 //routine to initialise the different serial ports of the of the mega32u2
 void Init_Serial()
 {
-	SPI_Init(SPI_SPEED_FCPU_DIV_8 | SPI_SCK_LEAD_RISING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
+	SPI_Init(SPI_SPEED_FCPU_DIV_32 | SPI_SCK_LEAD_RISING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 }
 
 //this funkction is to shorten the high or low of the Slave select (!SS) Pin.
@@ -188,12 +201,36 @@ void S_S(int SlaveBit)
 {
 	if(SlaveBit == 1)
 	{
-		_delay_us(5);
+		_delay_ms(1);
 		PORTB |= (1 << 0);
 	}
 	else if (SlaveBit == 0)
 	{
 		PORTB &= ~(1 << 0);
-		_delay_us(5);
+		_delay_ms(1);
 	}
+	return;
+}
+
+SPI_ausgabe()
+{
+	S_S(0);
+	SPI_SendByte(DeviceConfig[0x20]);
+	SPI_SendByte(DeviceConfig[0x00]);
+	S_S(1);
+
+	_delay_ms(5);
+
+	S_S(0);
+	SPI_SendByte(DeviceConfig[0x40]);
+	SPI_SendByte(DeviceConfig[0x00]);
+	S_S(1);
+
+	_delay_ms(5);
+
+	S_S(0);
+	SPI_SendByte(DeviceConfig[0x69]);
+	SPI_SendByte(DeviceConfig[0xf1]);
+	S_S(1);
+	return;
 }
