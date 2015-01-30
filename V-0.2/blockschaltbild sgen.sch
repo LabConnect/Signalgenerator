@@ -213,7 +213,7 @@
 <plain>
 <text x="25.4" y="50.8" size="5.08" layer="94">Computer</text>
 <text x="66.04" y="60.96" size="5.08" layer="94">USB</text>
-<text x="88.9" y="50.8" size="5.08" layer="94">ATxMega</text>
+<text x="88.9" y="50.8" size="5.08" layer="94">AT90USB</text>
 <text x="91.44" y="-7.62" size="5.08" layer="94">DDS-IC</text>
 <text x="88.9" y="25.4" size="5.08" layer="94">SPI</text>
 <wire x1="132.08" y1="-5.08" x2="121.92" y2="-5.08" width="0.254" layer="94"/>
@@ -244,7 +244,7 @@ Addierer</text>
 <wire x1="248.92" y1="50.8" x2="248.92" y2="55.88" width="0.3048" layer="94"/>
 <wire x1="248.92" y1="55.88" x2="289.56" y2="55.88" width="0.3048" layer="94"/>
 <wire x1="289.56" y1="55.88" x2="289.56" y2="20.32" width="0.3048" layer="94"/>
-<text x="345.44" y="-5.08" size="5.08" layer="94" align="center">SMB
+<text x="345.44" y="-5.08" size="5.08" layer="94" align="center">SMA-R
 Buchse</text>
 <wire x1="101.6" y1="73.66" x2="106.68" y2="73.66" width="0.254" layer="94"/>
 <wire x1="106.68" y1="73.66" x2="106.68" y2="86.36" width="0.254" layer="94"/>

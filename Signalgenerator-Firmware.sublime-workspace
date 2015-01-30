@@ -186,6 +186,10 @@
 	],
 	"file_history":
 	[
+		"/run/media/hendrik/c1398422-7a7c-4863-8a8f-45a1db26b4f2/etc/wpa_supplicant/wpa_supplicant.conf",
+		"/run/media/hendrik/c1398422-7a7c-4863-8a8f-45a1db26b4f2/etc/network/interfaces",
+		"/home/hendrik/.cache/.fr-DW7zC2/RECOVERY_FILES_DO_NOT_EDIT",
+		"/run/media/hendrik/root/etc/network/interfaces",
 		"/home/hendrik/LabConnect/Repos/signalgenerator/firmware/Sgen-Firmware.h",
 		"/home/hendrik/LabConnect/entwicklung/mega32u2/lufa/LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h",
 		"/home/hendrik/LabConnect/entwicklung/mega32u2/lufa/Demos/Device/ClassDriver/GenericHID/GenericHID.c",
@@ -309,11 +313,7 @@
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/Demos/Device/ClassDriver/GenericHID/Config/AppConfig.h",
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/Demos/Device/ClassDriver/VirtualSerial/VirtualSerial.c",
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/USB/Class/Device/HIDClassDevice.h",
-		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/USB/Class/HIDClass.h",
-		"/home/hendrik/config-gw02/gateway.pp",
-		"/home/hendrik/config-gw02/pubkeys",
-		"/home/hendrik/.ssh/known_hosts",
-		"/home/hendrik/LabConnect/Repos/xmega-communication-libs/original/usartx.c"
+		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/USB/Class/HIDClass.h"
 	],
 	"find":
 	{
