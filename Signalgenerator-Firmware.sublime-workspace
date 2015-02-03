@@ -131,7 +131,7 @@
 			"file": "firmware/Sgen-Firmware.c",
 			"settings":
 			{
-				"buffer_size": 7062,
+				"buffer_size": 6930,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,7 +139,7 @@
 			"file": "firmware/LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h",
 			"settings":
 			{
-				"buffer_size": 9808,
+				"buffer_size": 9810,
 				"line_ending": "Unix"
 			}
 		}
@@ -186,6 +186,7 @@
 	],
 	"file_history":
 	[
+		"/home/hendrik/LabConnect/Repos/signalgenerator/firmware/makefile",
 		"/run/media/hendrik/c1398422-7a7c-4863-8a8f-45a1db26b4f2/etc/wpa_supplicant/wpa_supplicant.conf",
 		"/run/media/hendrik/c1398422-7a7c-4863-8a8f-45a1db26b4f2/etc/network/interfaces",
 		"/home/hendrik/.cache/.fr-DW7zC2/RECOVERY_FILES_DO_NOT_EDIT",
@@ -312,8 +313,7 @@
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/doxyfile",
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/Demos/Device/ClassDriver/GenericHID/Config/AppConfig.h",
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/Demos/Device/ClassDriver/VirtualSerial/VirtualSerial.c",
-		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/USB/Class/Device/HIDClassDevice.h",
-		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/USB/Class/HIDClass.h"
+		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/USB/Class/Device/HIDClassDevice.h"
 	],
 	"find":
 	{
@@ -402,15 +402,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 7062,
+						"buffer_size": 6930,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2414,
-								2414
+								6757,
+								6757
 							]
 						],
 						"settings":
@@ -418,33 +418,27 @@
 							"syntax": "Packages/C++/C.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 772.0,
+						"translation.y": 3077.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 0,
-			"sheets":
-			[
+				},
 				{
 					"buffer": 1,
 					"file": "firmware/LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9808,
+						"buffer_size": 9810,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9023,
-								9023
+								9116,
+								9116
 							]
 						],
 						"settings":
@@ -452,8 +446,8 @@
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": 71.0,
-						"translation.y": 3180.0,
+						"translation.x": 0.0,
+						"translation.y": 3045.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -479,18 +473,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.490006221933,
 			1.0
 		],
 		"rows":
