@@ -64,23 +64,24 @@ int main(void)
 	SetupHardware();
 
 	GlobalInterruptEnable();
-	_delay_ms(1000);
+	
+	
 	for (;;)
 	{
-		/* code */
+		SPI_ausgabe();
+		_delay_ms(1);
+		PORTD = 0x38;
+		
 
-		SPI_SendByte(0x55);
-
-
-	}
-	/*
-	SPI_ausgabe();
-	for (;;)
-	{
+		_delay_ms(5000);
+			/* code */
+		
+		/*
 		HID_Device_USBTask(&Generic_HID_Interface);
 		USB_USBTask();
+		*/
 	}
-	*/
+	
 }
 
 /** Configures the board hardware and chip peripherals for the demo's functionality. */
@@ -97,6 +98,7 @@ void SetupHardware(void)
 	/* Hardware Initialization */
 	USB_Init();
 	Init_Serial();
+	DDRD = 0x38;
 }
 
 /** Event handler for the library USB Connection event. */
@@ -204,7 +206,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 //routine to initialise the different serial ports of the of the mega32u2
 void Init_Serial()
 {
-	SPI_Init(SPI_SPEED_FCPU_DIV_32 | SPI_SCK_LEAD_RISING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
+	SPI_Init(SPI_SPEED_FCPU_DIV_16 | SPI_SCK_LEAD_RISING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 }
 
 //this funkction is to shorten the high or low of the Slave select (!SS) Pin.
@@ -212,36 +214,25 @@ void S_S(int SlaveBit)
 {
 	if(SlaveBit == 1)
 	{
-		_delay_ms(1);
+		_delay_us(1);
 		PORTB |= (1 << 0);
 	}
 	else if (SlaveBit == 0)
 	{
 		PORTB &= ~(1 << 0);
-		_delay_ms(1);
+		_delay_us(1);
 	}
 	return;
 }
 
 SPI_ausgabe()
 {
-	S_S(0);
-	SPI_SendByte(DeviceConfig[0x20]);
-	SPI_SendByte(DeviceConfig[0x00]);
-	S_S(1);
+	
+	SPI_Send2Byte(0x00, 0x21);
+	SPI_Send2Byte(0xC7, 0x50);
+	SPI_Send2Byte(0x00, 0x40);
+	SPI_Send2Byte(0x00, 0xC0);
+	SPI_Send2Byte(0x00, 0x20);
 
-	_delay_ms(5);
-
-	S_S(0);
-	SPI_SendByte(DeviceConfig[0x40]);
-	SPI_SendByte(DeviceConfig[0x00]);
-	S_S(1);
-
-	_delay_ms(5);
-
-	S_S(0);
-	SPI_SendByte(DeviceConfig[0x69]);
-	SPI_SendByte(DeviceConfig[0xf1]);
-	S_S(1);
 	return;
 }

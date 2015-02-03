@@ -183,7 +183,7 @@
 				  SPSR &= ~(1 << SPI2X);
 
 				/* Switch /SS to input mode after configuration to allow for forced mode changes */
-				DDRB &= ~(1 << 0);
+				//DDRB &= ~(1 << 0);
 
 				SPCR  = ((1 << SPE) | SPIOptions);
 			}
