@@ -66,10 +66,11 @@ int main(void)
 	GlobalInterruptEnable();
 	
 	PORTD = 0x38;
+
 	for (;;)
 	{
-		SPI_ausgabe();
 		
+		SPI_ausgabe();
 		_delay_ms(5000);
 			/* code */
 		
@@ -184,17 +185,15 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 //routine to initialise the different serial ports of the of the mega32u2
 void Init_Serial()
 {
-	SPI_Init(SPI_SPEED_FCPU_DIV_16 | SPI_SCK_LEAD_RISING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
+	SPI_Init(SPI_SPEED_FCPU_DIV_16 | SPI_SCK_LEAD_RISING | SPI_SAMPLE_TRAILING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 }
 
 SPI_ausgabe()
 {
 	
-	SPI_Send2Byte(0x00, 0x00);
-	SPI_Send2Byte(0x50, 0xC7);
-	SPI_Send2Byte(0x40, 0x00);
-	SPI_Send2Byte(0xC0, 0x00);
-	SPI_Send2Byte(0x20, 0x00);
+	SPI_Send2Byte(0b00100000, 0b00000010);
+	SPI_Send2Byte(0b01000000, 0b00000001);
+	SPI_Send2Byte(0b01001001, 0b01100110);
 
 	return;
 }

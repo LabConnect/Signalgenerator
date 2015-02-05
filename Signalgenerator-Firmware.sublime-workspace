@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"SPI",
+				"SPI_Send2Byte"
+			],
+			[
 				"_",
 				"_delay_ms"
 			],
@@ -18,10 +22,6 @@
 			[
 				"DE",
 				"DeviceConfig"
-			],
-			[
-				"SPI",
-				"SPI_SendByte"
 			],
 			[
 				"O",
@@ -131,7 +131,7 @@
 			"file": "firmware/Sgen-Firmware.c",
 			"settings":
 			{
-				"buffer_size": 6930,
+				"buffer_size": 6346,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,7 +139,7 @@
 			"file": "firmware/LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h",
 			"settings":
 			{
-				"buffer_size": 9810,
+				"buffer_size": 10071,
 				"line_ending": "Unix"
 			}
 		}
@@ -402,15 +402,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6930,
+						"buffer_size": 6346,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6757,
-								6757
+								6346,
+								6346
 							]
 						],
 						"settings":
@@ -418,7 +418,7 @@
 							"syntax": "Packages/C++/C.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 3077.0,
+						"translation.y": 2430.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -430,15 +430,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 9810,
+						"buffer_size": 10071,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9116,
-								9116
+								9258,
+								9258
 							]
 						],
 						"settings":
@@ -447,7 +447,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3045.0,
+						"translation.y": 3225.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
