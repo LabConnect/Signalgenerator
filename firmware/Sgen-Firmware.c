@@ -65,14 +65,11 @@ int main(void)
 
 	GlobalInterruptEnable();
 	
-	
+	PORTD = 0x38;
 	for (;;)
 	{
 		SPI_ausgabe();
-		_delay_ms(1);
-		PORTD = 0x38;
 		
-
 		_delay_ms(5000);
 			/* code */
 		
@@ -181,25 +178,6 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 		DeviceConfig[i] = Data[i];
 	}
 	*/
-	
-	S_S(0);
-	SPI_SendByte(DeviceConfig[0x20]);
-	SPI_SendByte(DeviceConfig[0x00]);
-	S_S(1);
-
-	_delay_ms(5);
-
-	S_S(0);
-	SPI_SendByte(DeviceConfig[0x40]);
-	SPI_SendByte(DeviceConfig[0x00]);
-	S_S(1);
-
-	_delay_ms(5);
-
-	S_S(0);
-	SPI_SendByte(DeviceConfig[0x69]);
-	SPI_SendByte(DeviceConfig[0xf1]);
-	S_S(1);
 	return;
 }
 
@@ -209,26 +187,10 @@ void Init_Serial()
 	SPI_Init(SPI_SPEED_FCPU_DIV_16 | SPI_SCK_LEAD_RISING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 }
 
-//this funkction is to shorten the high or low of the Slave select (!SS) Pin.
-void S_S(int SlaveBit)
-{
-	if(SlaveBit == 1)
-	{
-		_delay_us(1);
-		PORTB |= (1 << 0);
-	}
-	else if (SlaveBit == 0)
-	{
-		PORTB &= ~(1 << 0);
-		_delay_us(1);
-	}
-	return;
-}
-
 SPI_ausgabe()
 {
 	
-	SPI_Send2Byte(0x21, 0x00);
+	SPI_Send2Byte(0x00, 0x00);
 	SPI_Send2Byte(0x50, 0xC7);
 	SPI_Send2Byte(0x40, 0x00);
 	SPI_Send2Byte(0xC0, 0x00);

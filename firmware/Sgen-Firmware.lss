@@ -13,19 +13,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .debug_aranges 00000178  00000000  00000000  00000527  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   000030f2  00000000  00000000  0000069f  2**0
+  5 .debug_info   0000337a  00000000  00000000  0000069f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 000013f7  00000000  00000000  00003791  2**0
+  6 .debug_abbrev 000013f7  00000000  00000000  00003a19  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00001059  00000000  00000000  00004b88  2**0
+  7 .debug_line   000010c5  00000000  00000000  00004e10  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  000002c0  00000000  00000000  00005be4  2**2
+  8 .debug_frame  000002c0  00000000  00000000  00005ed8  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000015e0  00000000  00000000  00005ea4  2**0
+  9 .debug_str    000015e0  00000000  00000000  00006198  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    00000bf4  00000000  00000000  00007484  2**0
+ 10 .debug_loc    00000bf4  00000000  00000000  00007778  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 00000168  00000000  00000000  00008078  2**0
+ 11 .debug_ranges 00000168  00000000  00000000  0000836c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -224,105 +224,99 @@ static void USB_Device_GetStatus(void)
   aa:	aa cf       	rjmp	.-172    	; 0x0 <__vectors>
 
 000000ac <EVENT_USB_Device_Connect>:
-	DDRD = 0x38;
-}
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
 
-/** Event handler for the library USB Connection event. */
-void EVENT_USB_Device_Connect(void)
-{
+	__builtin_avr_delay_cycles(__ticks_dc);
   ac:	08 95       	ret
 
 000000ae <EVENT_USB_Device_Disconnect>:
-	
-}
-
-/** Event handler for the library USB Disconnection event. */
-void EVENT_USB_Device_Disconnect(void)
-{
   ae:	08 95       	ret
 
 000000b0 <EVENT_USB_Device_StartOfFrame>:
-			 *  \param[in,out] HIDInterfaceInfo  Pointer to a structure containing a HID Class configuration and state.
-			 */
-			static inline void HID_Device_MillisecondElapsed(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo) ATTR_ALWAYS_INLINE ATTR_NON_NULL_PTR_ARG(1);
-			static inline void HID_Device_MillisecondElapsed(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo)
-			{
-				if (HIDInterfaceInfo->State.IdleMSRemaining)
   b0:	80 91 0e 01 	lds	r24, 0x010E
   b4:	90 91 0f 01 	lds	r25, 0x010F
+	SPI_SendByte(DeviceConfig[0x00]);
+	S_S(1);
+
+	_delay_ms(5);
+
+	S_S(0);
   b8:	00 97       	sbiw	r24, 0x00	; 0
   ba:	29 f0       	breq	.+10     	; 0xc6 <EVENT_USB_Device_StartOfFrame+0x16>
-				  HIDInterfaceInfo->State.IdleMSRemaining--;
   bc:	01 97       	sbiw	r24, 0x01	; 1
   be:	90 93 0f 01 	sts	0x010F, r25
+	SPI_SendByte(DeviceConfig[0x69]);
   c2:	80 93 0e 01 	sts	0x010E, r24
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
   c6:	08 95       	ret
 
 000000c8 <Init_Serial>:
-			 */
-			static inline void SPI_Init(const uint8_t SPIOptions);
-			static inline void SPI_Init(const uint8_t SPIOptions)
-			{
-				/* Prevent high rise times on PB.0 (/SS) from forcing a change to SPI slave mode */
-				DDRB  |= (1 << 0);
   c8:	20 9a       	sbi	0x04, 0	; 4
-				PORTB |= (1 << 0);
   ca:	28 9a       	sbi	0x05, 0	; 5
-
-				DDRB  |=  ((1 << 1) | (1 << 2));
   cc:	84 b1       	in	r24, 0x04	; 4
+			static inline void SPI_SendByte(const uint8_t Byte) ATTR_ALWAYS_INLINE;
+			static inline void SPI_SendByte(const uint8_t Byte)
+			{
+				PORTB &= ~(1 << 0);
+				_delay_us(1);
+				SPDR = Byte;
   ce:	86 60       	ori	r24, 0x06	; 6
+				while (!(SPSR & (1 << SPIF)));
   d0:	84 b9       	out	0x04, r24	; 4
-				DDRB  &= ~(1 << 3);
   d2:	23 98       	cbi	0x04, 3	; 4
-				PORTB |=  (1 << 3);
   d4:	2b 9a       	sbi	0x05, 3	; 5
-
-				if (SPIOptions & SPI_USE_DOUBLESPEED)
-				  SPSR |= (1 << SPI2X);
-				else
-				  SPSR &= ~(1 << SPI2X);
   d6:	8d b5       	in	r24, 0x2d	; 45
   d8:	8e 7f       	andi	r24, 0xFE	; 254
   da:	8d bd       	out	0x2d, r24	; 45
-
-				/* Switch /SS to input mode after configuration to allow for forced mode changes */
-				//DDRB &= ~(1 << 0);
-
-				SPCR  = ((1 << SPE) | SPIOptions);
   dc:	81 e5       	ldi	r24, 0x51	; 81
+				_delay_us(1);
+				PORTB |= (1 << 0);
   de:	8c bd       	out	0x2c, r24	; 44
+	SPI_SendByte(DeviceConfig[0xf1]);
   e0:	08 95       	ret
 
 000000e2 <SetupHardware>:
-/** Configures the board hardware and chip peripherals for the demo's functionality. */
-void SetupHardware(void)
-{
-
-	/* Disable watchdog if enabled by bootloader/fuses */
-	MCUSR &= ~(1 << WDRF);
   e2:	84 b7       	in	r24, 0x34	; 52
+			 *  \param[in] Byte  Byte to send through the SPI interface.
+			 */
+			static inline void SPI_SendByte(const uint8_t Byte) ATTR_ALWAYS_INLINE;
+			static inline void SPI_SendByte(const uint8_t Byte)
+			{
+				PORTB &= ~(1 << 0);
   e4:	87 7f       	andi	r24, 0xF7	; 247
   e6:	84 bf       	out	0x34, r24	; 52
-	wdt_disable();
   e8:	88 e1       	ldi	r24, 0x18	; 24
   ea:	0f b6       	in	r0, 0x3f	; 63
   ec:	f8 94       	cli
+				_delay_us(1);
+				SPDR = Byte;
   ee:	80 93 60 00 	sts	0x0060, r24
+				while (!(SPSR & (1 << SPIF)));
   f2:	10 92 60 00 	sts	0x0060, r1
   f6:	0f be       	out	0x3f, r0	; 63
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+  fa:	80 e8       	ldi	r24, 0x80	; 128
+  fc:	0f b6       	in	r0, 0x3f	; 63
+				_delay_us(1);
+				PORTB |= (1 << 0);
+  fe:	f8 94       	cli
+	S_S(1);
+ 100:	80 93 61 00 	sts	0x0061, r24
+ 104:	90 93 61 00 	sts	0x0061, r25
 from 1 to 129. Thus, one does not need to use \c clock_div_t type as argument.
 */
 void clock_prescale_set(clock_div_t __x)
 {
     uint8_t __tmp = _BV(CLKPCE);
     __asm__ __volatile__ (
-  f8:	90 e0       	ldi	r25, 0x00	; 0
-  fa:	80 e8       	ldi	r24, 0x80	; 128
-  fc:	0f b6       	in	r0, 0x3f	; 63
-  fe:	f8 94       	cli
- 100:	80 93 61 00 	sts	0x0061, r24
- 104:	90 93 61 00 	sts	0x0061, r25
  108:	0f be       	out	0x3f, r0	; 63
 
 	/* Disable clock division */
@@ -341,12 +335,6 @@ void clock_prescale_set(clock_div_t __x)
 00000114 <SPI_ausgabe>:
  114:	28 98       	cbi	0x05, 0	; 5
  116:	85 e0       	ldi	r24, 0x05	; 5
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
-
-	__builtin_avr_delay_cycles(__ticks_dc);
  118:	8a 95       	dec	r24
  11a:	f1 f7       	brne	.-4      	; 0x118 <SPI_ausgabe+0x4>
  11c:	00 00       	nop
@@ -356,14 +344,14 @@ void clock_prescale_set(clock_div_t __x)
 				PORTB &= ~(1 << 0);
 				_delay_us(1);
 				SPDR = MSB;
- 11e:	1e bc       	out	0x2e, r1	; 46
+ 11e:	81 e0       	ldi	r24, 0x01	; 1
+ 120:	8e bd       	out	0x2e, r24	; 46
 				while (!(SPSR & (1 << SPIF)));
- 120:	0d b4       	in	r0, 0x2d	; 45
- 122:	07 fe       	sbrs	r0, 7
- 124:	fd cf       	rjmp	.-6      	; 0x120 <SPI_ausgabe+0xc>
+ 122:	0d b4       	in	r0, 0x2d	; 45
+ 124:	07 fe       	sbrs	r0, 7
+ 126:	fd cf       	rjmp	.-6      	; 0x122 <SPI_ausgabe+0xe>
 				SPDR = LSB;
- 126:	81 e2       	ldi	r24, 0x21	; 33
- 128:	8e bd       	out	0x2e, r24	; 46
+ 128:	1e bc       	out	0x2e, r1	; 46
 				while (!(SPSR & (1 << SPIF)));
  12a:	0d b4       	in	r0, 0x2d	; 45
  12c:	07 fe       	sbrs	r0, 7
@@ -388,14 +376,14 @@ void clock_prescale_set(clock_div_t __x)
  142:	00 00       	nop
 				_delay_us(1);
 				SPDR = MSB;
- 144:	87 ec       	ldi	r24, 0xC7	; 199
+ 144:	80 e5       	ldi	r24, 0x50	; 80
  146:	8e bd       	out	0x2e, r24	; 46
 				while (!(SPSR & (1 << SPIF)));
  148:	0d b4       	in	r0, 0x2d	; 45
  14a:	07 fe       	sbrs	r0, 7
  14c:	fd cf       	rjmp	.-6      	; 0x148 <SPI_ausgabe+0x34>
 				SPDR = LSB;
- 14e:	80 e5       	ldi	r24, 0x50	; 80
+ 14e:	87 ec       	ldi	r24, 0xC7	; 199
  150:	8e bd       	out	0x2e, r24	; 46
 				while (!(SPSR & (1 << SPIF)));
  152:	0d b4       	in	r0, 0x2d	; 45
@@ -421,14 +409,14 @@ void clock_prescale_set(clock_div_t __x)
  16a:	00 00       	nop
 				_delay_us(1);
 				SPDR = MSB;
- 16c:	1e bc       	out	0x2e, r1	; 46
+ 16c:	80 e4       	ldi	r24, 0x40	; 64
+ 16e:	8e bd       	out	0x2e, r24	; 46
 				while (!(SPSR & (1 << SPIF)));
- 16e:	0d b4       	in	r0, 0x2d	; 45
- 170:	07 fe       	sbrs	r0, 7
- 172:	fd cf       	rjmp	.-6      	; 0x16e <SPI_ausgabe+0x5a>
+ 170:	0d b4       	in	r0, 0x2d	; 45
+ 172:	07 fe       	sbrs	r0, 7
+ 174:	fd cf       	rjmp	.-6      	; 0x170 <SPI_ausgabe+0x5c>
 				SPDR = LSB;
- 174:	80 e4       	ldi	r24, 0x40	; 64
- 176:	8e bd       	out	0x2e, r24	; 46
+ 176:	1e bc       	out	0x2e, r1	; 46
 				while (!(SPSR & (1 << SPIF)));
  178:	0d b4       	in	r0, 0x2d	; 45
  17a:	07 fe       	sbrs	r0, 7
@@ -453,14 +441,14 @@ void clock_prescale_set(clock_div_t __x)
  190:	00 00       	nop
 				_delay_us(1);
 				SPDR = MSB;
- 192:	1e bc       	out	0x2e, r1	; 46
+ 192:	80 ec       	ldi	r24, 0xC0	; 192
+ 194:	8e bd       	out	0x2e, r24	; 46
 				while (!(SPSR & (1 << SPIF)));
- 194:	0d b4       	in	r0, 0x2d	; 45
- 196:	07 fe       	sbrs	r0, 7
- 198:	fd cf       	rjmp	.-6      	; 0x194 <SPI_ausgabe+0x80>
+ 196:	0d b4       	in	r0, 0x2d	; 45
+ 198:	07 fe       	sbrs	r0, 7
+ 19a:	fd cf       	rjmp	.-6      	; 0x196 <SPI_ausgabe+0x82>
 				SPDR = LSB;
- 19a:	80 ec       	ldi	r24, 0xC0	; 192
- 19c:	8e bd       	out	0x2e, r24	; 46
+ 19c:	1e bc       	out	0x2e, r1	; 46
 				while (!(SPSR & (1 << SPIF)));
  19e:	0d b4       	in	r0, 0x2d	; 45
  1a0:	07 fe       	sbrs	r0, 7
@@ -485,14 +473,14 @@ void clock_prescale_set(clock_div_t __x)
  1b6:	00 00       	nop
 				_delay_us(1);
 				SPDR = MSB;
- 1b8:	1e bc       	out	0x2e, r1	; 46
+ 1b8:	80 e2       	ldi	r24, 0x20	; 32
+ 1ba:	8e bd       	out	0x2e, r24	; 46
 				while (!(SPSR & (1 << SPIF)));
- 1ba:	0d b4       	in	r0, 0x2d	; 45
- 1bc:	07 fe       	sbrs	r0, 7
- 1be:	fd cf       	rjmp	.-6      	; 0x1ba <SPI_ausgabe+0xa6>
+ 1bc:	0d b4       	in	r0, 0x2d	; 45
+ 1be:	07 fe       	sbrs	r0, 7
+ 1c0:	fd cf       	rjmp	.-6      	; 0x1bc <SPI_ausgabe+0xa8>
 				SPDR = LSB;
- 1c0:	80 e2       	ldi	r24, 0x20	; 32
- 1c2:	8e bd       	out	0x2e, r24	; 46
+ 1c2:	1e bc       	out	0x2e, r1	; 46
 				while (!(SPSR & (1 << SPIF)));
  1c4:	0d b4       	in	r0, 0x2d	; 45
  1c6:	07 fe       	sbrs	r0, 7
@@ -504,9 +492,9 @@ void clock_prescale_set(clock_div_t __x)
 				_delay_us(1);
 				PORTB |= (1 << 0);
  1d2:	28 9a       	sbi	0x05, 0	; 5
-	SPI_Send2Byte(0x00, 0x40);
-	SPI_Send2Byte(0x00, 0xC0);
-	SPI_Send2Byte(0x00, 0x20);
+	SPI_Send2Byte(0x40, 0x00);
+	SPI_Send2Byte(0xC0, 0x00);
+	SPI_Send2Byte(0x20, 0x00);
 
 	return;
  1d4:	08 95       	ret
