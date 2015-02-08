@@ -185,7 +185,8 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 //routine to initialise the different serial ports of the of the mega32u2
 void Init_Serial()
 {
-	SPI_Init(SPI_SPEED_FCPU_DIV_16 | SPI_SCK_LEAD_RISING | SPI_SAMPLE_TRAILING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
+	// http://avrbeginners.net/architecture/spi/spi.html
+	SPI_Init(SPI_SPEED_FCPU_DIV_16 | SPI_SCK_LEAD_FALLING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 }
 
 SPI_ausgabe()
