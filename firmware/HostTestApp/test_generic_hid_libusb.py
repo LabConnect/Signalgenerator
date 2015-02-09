@@ -48,7 +48,7 @@ def get_and_init_hid_device():
 
 def send_led_pattern(device, led1, led2, led3, led4):
     # Report data for the demo is LED on/off data
-    report_data = [led1, led2, led3, led4]
+    report_data = [0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x38]
 
     # Send the generated report to the device
     number_of_bytes_written = device.ctrl_transfer(  # Set Report control request

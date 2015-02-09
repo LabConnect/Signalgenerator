@@ -33,7 +33,7 @@
 /** Buffer to hold the previously generated HID report, for comparison purposes inside the HID class driver. */
 static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
 
-uint8_t DeviceConfig[20] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1};
+uint8_t DeviceConfig[11] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18};
 
 /** LUFA HID Class driver interface configuration and state information. This structure is
  *  passed to all HID Class driver functions, so that multiple instances of the same class
@@ -64,20 +64,16 @@ int main(void)
 	SetupHardware();
 
 	GlobalInterruptEnable();
-	
-	PORTD = 0x38;
-
+	//Daten_Verteilen();
 	for (;;)
 	{
-		
 		SPI_ausgabe();
-		//_delay_ms(5000);
-			/* code */
-		
+		_delay_ms(500);
+
 		/*
 		HID_Device_USBTask(&Generic_HID_Interface);
 		USB_USBTask();
-		*/
+		//*/
 	}
 	
 }
@@ -90,13 +86,14 @@ void SetupHardware(void)
 	MCUSR &= ~(1 << WDRF);
 	wdt_disable();
 
-	/* Disable clock division */
+	/* Disable clock division */https://www.google.de/?gws_rd=ssl
 	clock_prescale_set(clock_div_1);
 
 	/* Hardware Initialization */
 	USB_Init();
 	Init_Serial();
 	DDRD = 0x38;
+	PORTD = 0x38;
 }
 
 /** Event handler for the library USB Connection event. */
@@ -173,12 +170,15 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
                                           const uint16_t ReportSize)
 {
 	uint8_t* Data       = (uint8_t*)ReportData;
-	/*
+	
 	for (int i=0; i<ReportSize; i++)
 	{
 		DeviceConfig[i] = Data[i];
 	}
-	*/
+	PORTD = DeviceConfig[10];
+	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]);
+	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
+	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
 	return;
 }
 
@@ -186,15 +186,26 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 void Init_Serial()
 {
 	// http://avrbeginners.net/architecture/spi/spi.html
-	SPI_Init(SPI_SPEED_FCPU_DIV_16 | SPI_SCK_LEAD_FALLING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
+	SPI_Init(SPI_SPEED_FCPU_DIV_32 | SPI_SCK_LEAD_FALLING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 }
 
 SPI_ausgabe()
 {
 	
 	SPI_Send2Byte(0b00100000, 0b00000010);
-	SPI_Send2Byte(0b01000000, 0b00000001);
-	SPI_Send2Byte(0b01001001, 0b01100110);
+	_delay_us(5);
+	SPI_Send2Byte(0b01010010, 0b11000000);
+	_delay_us(5);
+	SPI_Send2Byte(0b01100000, 0b11000101);
+	_delay_us(5);
 
 	return;
+}
+
+Daten_Verteilen()
+{
+	PORTD = DeviceConfig[10];
+	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]);
+	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
+	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
 }
