@@ -71,7 +71,7 @@ int main(void)
 	{
 		
 		SPI_ausgabe();
-		_delay_ms(5000);
+		//_delay_ms(5000);
 			/* code */
 		
 		/*
