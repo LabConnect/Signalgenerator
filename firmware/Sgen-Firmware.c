@@ -91,7 +91,13 @@ void SetupHardware(void)
 
 	/* Hardware Initialization */
 	USB_Init();
-	Init_Serial();
+	
+	// http://avrbeginners.net/architecture/spi/spi.html
+	SPI_Init(SPI_SPEED_FCPU_DIV_32 | SPI_SCK_LEAD_FALLING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
+
+	//initialize I²C-Bus
+	TWI_Init(TWI_BIT_PRESCALE_1, TWI_BITLENGTH_FROM_FREQ(1, 200000));
+
 	DDRD = 0x38;
 	PORTD = 0x38;
 }
@@ -180,13 +186,6 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
 	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
 	return;
-}
-
-//routine to initialise the different serial ports of the of the mega32u2
-void Init_Serial()
-{
-	// http://avrbeginners.net/architecture/spi/spi.html
-	SPI_Init(SPI_SPEED_FCPU_DIV_32 | SPI_SCK_LEAD_FALLING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 }
 
 SPI_ausgabe()

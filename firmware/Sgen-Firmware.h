@@ -47,6 +47,7 @@
 
 		#include <LUFA/Drivers/USB/USB.h>
  		#include <LUFA/Drivers/Peripheral/SPI.h>
+  		#include <LUFA/Drivers/Peripheral/TWI.h>
 		
 	/* Function Prototypes: */
 		void SetupHardware(void);
