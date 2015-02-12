@@ -92,7 +92,7 @@ void SetupHardware(void)
 	MCUSR &= ~(1 << WDRF);
 	wdt_disable();
 
-	/* Disable clock division */https://www.google.de/?gws_rd=ssl
+	/* Disable clock division */
 	clock_prescale_set(clock_div_1);
 
 	/* Hardware Initialization */
@@ -100,9 +100,10 @@ void SetupHardware(void)
 	
 	// http://avrbeginners.net/architecture/spi/spi.html
 	SPI_Init(SPI_SPEED_FCPU_DIV_32 | SPI_SCK_LEAD_FALLING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
-
+	/*
 	//initialize I²C-Bus
 	TWI_Init(TWI_BIT_PRESCALE_1, TWI_BITLENGTH_FROM_FREQ(1, 200000));
+	//*/
 
 	DDRD = 0x38;
 	PORTD = 0x38;
@@ -194,7 +195,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]);
 	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
 	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
-	
+	/*
 	//Send the TWI-Data, but only if device is responding.
 	if (TWI_StartTransmission(DigiPoti, 1) == true)
 	{
@@ -216,7 +217,7 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 	{
 		StatusDigiPoti = false;
 	}
-	
+	//*/
 	return;
 }
 

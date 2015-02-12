@@ -777,7 +777,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x0000000000000000      0x40e
+.text           0x0000000000000000      0x40a
  *(.vectors)
  .vectors       0x0000000000000000       0x74 /usr/lib/gcc/avr/4.9.2/../../../../avr/lib/avr35/crtm32u2.o
                 0x0000000000000000                __vectors
@@ -864,56 +864,53 @@ END GROUP
                 0x00000000000000aa                __vector_20
                 0x00000000000000ac                . = ALIGN (0x2)
  *(.text.*)
- .text.EVENT_USB_Device_Connect
-                0x00000000000000ac        0x2 Sgen-Firmware.o
-                0x00000000000000ac                EVENT_USB_Device_Connect
- .text.EVENT_USB_Device_Disconnect
-                0x00000000000000ae        0x2 Sgen-Firmware.o
-                0x00000000000000ae                EVENT_USB_Device_Disconnect
- .text.EVENT_USB_Device_StartOfFrame
-                0x00000000000000b0       0x18 Sgen-Firmware.o
-                0x00000000000000b0                EVENT_USB_Device_StartOfFrame
- .text.Init_Serial
-                0x00000000000000c8       0x1e Sgen-Firmware.o
-                0x00000000000000c8                Init_Serial
  .text.SetupHardware
-                0x00000000000000e6       0x34 Sgen-Firmware.o
-                0x00000000000000e6                SetupHardware
+                0x00000000000000ac       0x4e Sgen-Firmware.o
+                0x00000000000000ac                SetupHardware
+ .text.EVENT_USB_Device_Connect
+                0x00000000000000fa        0x2 Sgen-Firmware.o
+                0x00000000000000fa                EVENT_USB_Device_Connect
+ .text.EVENT_USB_Device_Disconnect
+                0x00000000000000fc        0x2 Sgen-Firmware.o
+                0x00000000000000fc                EVENT_USB_Device_Disconnect
+ .text.EVENT_USB_Device_StartOfFrame
+                0x00000000000000fe       0x18 Sgen-Firmware.o
+                0x00000000000000fe                EVENT_USB_Device_StartOfFrame
  .text.SPI_ausgabe
-                0x000000000000011a       0x92 Sgen-Firmware.o
-                0x000000000000011a                SPI_ausgabe
+                0x0000000000000116       0x92 Sgen-Firmware.o
+                0x0000000000000116                SPI_ausgabe
  .text.startup.main
-                0x00000000000001ac       0x1a Sgen-Firmware.o
-                0x00000000000001ac                main
+                0x00000000000001a8       0x1a Sgen-Firmware.o
+                0x00000000000001a8                main
  .text.Endpoint_ConfigureEndpoint_Prv
-                0x00000000000001c6       0x6a LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
-                0x00000000000001c6                Endpoint_ConfigureEndpoint_Prv
+                0x00000000000001c2       0x6a LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x00000000000001c2                Endpoint_ConfigureEndpoint_Prv
  .text.USB_ResetInterface
-                0x0000000000000230       0x72 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x0000000000000230                USB_ResetInterface
+                0x000000000000022c       0x72 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x000000000000022c                USB_ResetInterface
  .text.USB_Init
-                0x00000000000002a2       0x12 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
-                0x00000000000002a2                USB_Init
+                0x000000000000029e       0x12 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x000000000000029e                USB_Init
  .text.USB_INT_DisableAllInterrupts
-                0x00000000000002b4        0x6 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x00000000000002b4                USB_INT_DisableAllInterrupts
+                0x00000000000002b0        0x6 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x00000000000002b0                USB_INT_DisableAllInterrupts
  .text.USB_INT_ClearAllInterrupts
-                0x00000000000002ba        0x6 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x00000000000002ba                USB_INT_ClearAllInterrupts
+                0x00000000000002b6        0x6 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x00000000000002b6                USB_INT_ClearAllInterrupts
  .text.__vector_11
-                0x00000000000002c0      0x148 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
-                0x00000000000002c0                __vector_11
+                0x00000000000002bc      0x148 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x00000000000002bc                __vector_11
  .text.USB_Event_Stub
-                0x0000000000000408        0x2 LUFA/Drivers/USB/Core/Events.o
-                0x0000000000000408                EVENT_USB_Device_WakeUp
-                0x0000000000000408                USB_Event_Stub
-                0x0000000000000408                EVENT_USB_Device_Suspend
-                0x0000000000000408                EVENT_USB_Device_Reset
-                0x000000000000040a                . = ALIGN (0x2)
+                0x0000000000000404        0x2 LUFA/Drivers/USB/Core/Events.o
+                0x0000000000000404                EVENT_USB_Device_WakeUp
+                0x0000000000000404                USB_Event_Stub
+                0x0000000000000404                EVENT_USB_Device_Suspend
+                0x0000000000000404                EVENT_USB_Device_Reset
+                0x0000000000000406                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000000000000040a        0x0 /usr/lib/gcc/avr/4.9.2/avr35/libgcc.a(_exit.o)
-                0x000000000000040a                exit
-                0x000000000000040a                _exit
+ .fini9         0x0000000000000406        0x0 /usr/lib/gcc/avr/4.9.2/avr35/libgcc.a(_exit.o)
+                0x0000000000000406                exit
+                0x0000000000000406                _exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -932,11 +929,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000000000000040a        0x4 /usr/lib/gcc/avr/4.9.2/avr35/libgcc.a(_exit.o)
+ .fini0         0x0000000000000406        0x4 /usr/lib/gcc/avr/4.9.2/avr35/libgcc.a(_exit.o)
  *(.fini0)
-                0x000000000000040e                _etext = .
+                0x000000000000040a                _etext = .
 
-.data           0x0000000000800100       0x1c load address 0x000000000000040e
+.data           0x0000000000800100       0x1c load address 0x000000000000040a
                 0x0000000000800100                PROVIDE (__data_start, .)
  *(.data)
  .data          0x0000000000800100       0x1b Sgen-Firmware.o
@@ -951,30 +948,31 @@ END GROUP
                 0x000000000080011c                _edata = .
                 0x000000000080011c                PROVIDE (__data_end, .)
 
-.bss            0x000000000080011c       0x15
+.bss            0x000000000080011c       0x16
                 0x000000000080011c                PROVIDE (__bss_start, .)
  *(.bss)
- .bss           0x000000000080011c        0x8 Sgen-Firmware.o
+ .bss           0x000000000080011c        0x9 Sgen-Firmware.o
+                0x000000000080011c                StatusDigiPoti
  *(.bss*)
  *(COMMON)
- COMMON         0x0000000000800124        0x3 LUFA/Drivers/USB/Core/DeviceStandardReq.o
-                0x0000000000800124                USB_Device_ConfigurationNumber
-                0x0000000000800125                USB_Device_CurrentlySelfPowered
-                0x0000000000800126                USB_Device_RemoteWakeupEnabled
- COMMON         0x0000000000800127        0xa LUFA/Drivers/USB/Core/USBTask.o
-                0x0000000000800127                USB_IsInitialized
-                0x0000000000800128                USB_DeviceState
-                0x0000000000800129                USB_ControlRequest
-                0x0000000000800131                PROVIDE (__bss_end, .)
-                0x000000000000040e                __data_load_start = LOADADDR (.data)
-                0x000000000000042a                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x0000000000800125        0x3 LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x0000000000800125                USB_Device_ConfigurationNumber
+                0x0000000000800126                USB_Device_CurrentlySelfPowered
+                0x0000000000800127                USB_Device_RemoteWakeupEnabled
+ COMMON         0x0000000000800128        0xa LUFA/Drivers/USB/Core/USBTask.o
+                0x0000000000800128                USB_IsInitialized
+                0x0000000000800129                USB_DeviceState
+                0x000000000080012a                USB_ControlRequest
+                0x0000000000800132                PROVIDE (__bss_end, .)
+                0x000000000000040a                __data_load_start = LOADADDR (.data)
+                0x0000000000000426                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x0000000000800131        0x0
-                0x0000000000800131                PROVIDE (__noinit_start, .)
+.noinit         0x0000000000800132        0x0
+                0x0000000000800132                PROVIDE (__noinit_start, .)
  *(.noinit*)
-                0x0000000000800131                PROVIDE (__noinit_end, .)
-                0x0000000000800131                _end = .
-                0x0000000000800131                PROVIDE (__heap_start, .)
+                0x0000000000800132                PROVIDE (__noinit_end, .)
+                0x0000000000800132                _end = .
+                0x0000000000800132                PROVIDE (__heap_start, .)
 
 .eeprom         0x0000000000810000        0x0
  *(.eeprom*)
@@ -1036,85 +1034,85 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0x178
+.debug_aranges  0x0000000000000000      0x170
  *(.debug_aranges)
  .debug_aranges
-                0x0000000000000000       0x78 Sgen-Firmware.o
+                0x0000000000000000       0x70 Sgen-Firmware.o
  .debug_aranges
-                0x0000000000000078       0x40 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+                0x0000000000000070       0x40 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
  .debug_aranges
-                0x00000000000000b8       0x30 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+                0x00000000000000b0       0x30 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
  .debug_aranges
-                0x00000000000000e8       0x30 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+                0x00000000000000e0       0x30 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
  .debug_aranges
-                0x0000000000000118       0x20 LUFA/Drivers/USB/Core/DeviceStandardReq.o
+                0x0000000000000110       0x20 LUFA/Drivers/USB/Core/DeviceStandardReq.o
  .debug_aranges
-                0x0000000000000138       0x20 LUFA/Drivers/USB/Core/Events.o
+                0x0000000000000130       0x20 LUFA/Drivers/USB/Core/Events.o
  .debug_aranges
-                0x0000000000000158       0x20 LUFA/Drivers/USB/Core/USBTask.o
+                0x0000000000000150       0x20 LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0x3171
+.debug_info     0x0000000000000000     0x3142
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x6ba /usr/lib/gcc/avr/4.9.2/../../../../avr/lib/avr35/crtm32u2.o
- .debug_info    0x00000000000006ba      0xd48 Sgen-Firmware.o
- .debug_info    0x0000000000001402      0x614 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_info    0x0000000000001a16      0x46a LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_info    0x0000000000001e80      0x5b7 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_info    0x0000000000002437      0xa57 LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_info    0x0000000000002e8e       0x78 LUFA/Drivers/USB/Core/Events.o
- .debug_info    0x0000000000002f06      0x26b LUFA/Drivers/USB/Core/USBTask.o
+ .debug_info    0x00000000000006ba      0xd19 Sgen-Firmware.o
+ .debug_info    0x00000000000013d3      0x614 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_info    0x00000000000019e7      0x46a LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_info    0x0000000000001e51      0x5b7 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_info    0x0000000000002408      0xa57 LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_info    0x0000000000002e5f       0x78 LUFA/Drivers/USB/Core/Events.o
+ .debug_info    0x0000000000002ed7      0x26b LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_abbrev   0x0000000000000000     0x13e1
+.debug_abbrev   0x0000000000000000     0x13ba
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000      0x65d /usr/lib/gcc/avr/4.9.2/../../../../avr/lib/avr35/crtm32u2.o
- .debug_abbrev  0x000000000000065d      0x39a Sgen-Firmware.o
- .debug_abbrev  0x00000000000009f7      0x213 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_abbrev  0x0000000000000c0a      0x18d LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_abbrev  0x0000000000000d97      0x1d5 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_abbrev  0x0000000000000f6c      0x2c9 LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_abbrev  0x0000000000001235       0x44 LUFA/Drivers/USB/Core/Events.o
- .debug_abbrev  0x0000000000001279      0x168 LUFA/Drivers/USB/Core/USBTask.o
+ .debug_abbrev  0x000000000000065d      0x373 Sgen-Firmware.o
+ .debug_abbrev  0x00000000000009d0      0x213 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_abbrev  0x0000000000000be3      0x18d LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_abbrev  0x0000000000000d70      0x1d5 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_abbrev  0x0000000000000f45      0x2c9 LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_abbrev  0x000000000000120e       0x44 LUFA/Drivers/USB/Core/Events.o
+ .debug_abbrev  0x0000000000001252      0x168 LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_line     0x0000000000000000     0x106e
+.debug_line     0x0000000000000000     0x1059
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x0000000000000000       0x1d /usr/lib/gcc/avr/4.9.2/../../../../avr/lib/avr35/crtm32u2.o
- .debug_line    0x000000000000001d      0x400 Sgen-Firmware.o
- .debug_line    0x000000000000041d      0x306 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_line    0x0000000000000723      0x20d LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_line    0x0000000000000930      0x2ef LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_line    0x0000000000000c1f      0x2e1 LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_line    0x0000000000000f00       0x4e LUFA/Drivers/USB/Core/Events.o
- .debug_line    0x0000000000000f4e      0x120 LUFA/Drivers/USB/Core/USBTask.o
+ .debug_line    0x000000000000001d      0x3eb Sgen-Firmware.o
+ .debug_line    0x0000000000000408      0x306 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_line    0x000000000000070e      0x20d LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_line    0x000000000000091b      0x2ef LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_line    0x0000000000000c0a      0x2e1 LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_line    0x0000000000000eeb       0x4e LUFA/Drivers/USB/Core/Events.o
+ .debug_line    0x0000000000000f39      0x120 LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_frame    0x0000000000000000      0x2cc
+.debug_frame    0x0000000000000000      0x2bc
  *(.debug_frame)
- .debug_frame   0x0000000000000000       0xec Sgen-Firmware.o
- .debug_frame   0x00000000000000ec       0x84 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_frame   0x0000000000000170       0x44 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_frame   0x00000000000001b4       0x8c LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_frame   0x0000000000000240       0x3c LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_frame   0x000000000000027c       0x24 LUFA/Drivers/USB/Core/Events.o
- .debug_frame   0x00000000000002a0       0x2c LUFA/Drivers/USB/Core/USBTask.o
+ .debug_frame   0x0000000000000000       0xdc Sgen-Firmware.o
+ .debug_frame   0x00000000000000dc       0x84 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_frame   0x0000000000000160       0x44 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_frame   0x00000000000001a4       0x8c LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_frame   0x0000000000000230       0x3c LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_frame   0x000000000000026c       0x24 LUFA/Drivers/USB/Core/Events.o
+ .debug_frame   0x0000000000000290       0x2c LUFA/Drivers/USB/Core/USBTask.o
 
-.debug_str      0x0000000000000000     0x15e0
+.debug_str      0x0000000000000000     0x15dd
  *(.debug_str)
  .debug_str     0x0000000000000000      0x262 /usr/lib/gcc/avr/4.9.2/../../../../avr/lib/avr35/crtm32u2.o
- .debug_str     0x0000000000000262      0x640 Sgen-Firmware.o
-                                        0x69d (size before relaxing)
- .debug_str     0x00000000000008a2      0x43a LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_str     0x0000000000000262      0x63d Sgen-Firmware.o
+                                        0x69a (size before relaxing)
+ .debug_str     0x000000000000089f      0x43a LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
                                         0x638 (size before relaxing)
- .debug_str     0x0000000000000cdc      0x1eb LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_str     0x0000000000000cd9      0x1eb LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
                                         0x54e (size before relaxing)
- .debug_str     0x0000000000000ec7       0xaf LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_str     0x0000000000000ec4       0xaf LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
                                         0x4f9 (size before relaxing)
- .debug_str     0x0000000000000f76      0x5d8 LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_str     0x0000000000000f73      0x5d8 LUFA/Drivers/USB/Core/DeviceStandardReq.o
                                         0x9ea (size before relaxing)
- .debug_str     0x000000000000154e       0x2e LUFA/Drivers/USB/Core/Events.o
+ .debug_str     0x000000000000154b       0x2e LUFA/Drivers/USB/Core/Events.o
                                         0x1bc (size before relaxing)
- .debug_str     0x000000000000157c       0x64 LUFA/Drivers/USB/Core/USBTask.o
+ .debug_str     0x0000000000001579       0x64 LUFA/Drivers/USB/Core/USBTask.o
                                         0x39d (size before relaxing)
 
 .debug_loc      0x0000000000000000      0xc2d
@@ -1143,15 +1141,15 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x0000000000000000      0x168
+.debug_ranges   0x0000000000000000      0x160
  *(.debug_ranges)
- .debug_ranges  0x0000000000000000       0x68 Sgen-Firmware.o
- .debug_ranges  0x0000000000000068       0x78 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
- .debug_ranges  0x00000000000000e0       0x20 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
- .debug_ranges  0x0000000000000100       0x20 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
- .debug_ranges  0x0000000000000120       0x28 LUFA/Drivers/USB/Core/DeviceStandardReq.o
- .debug_ranges  0x0000000000000148       0x10 LUFA/Drivers/USB/Core/Events.o
- .debug_ranges  0x0000000000000158       0x10 LUFA/Drivers/USB/Core/USBTask.o
+ .debug_ranges  0x0000000000000000       0x60 Sgen-Firmware.o
+ .debug_ranges  0x0000000000000060       0x78 LUFA/Drivers/USB/Core/AVR8/Endpoint_AVR8.o
+ .debug_ranges  0x00000000000000d8       0x20 LUFA/Drivers/USB/Core/AVR8/USBController_AVR8.o
+ .debug_ranges  0x00000000000000f8       0x20 LUFA/Drivers/USB/Core/AVR8/USBInterrupt_AVR8.o
+ .debug_ranges  0x0000000000000118       0x28 LUFA/Drivers/USB/Core/DeviceStandardReq.o
+ .debug_ranges  0x0000000000000140       0x10 LUFA/Drivers/USB/Core/Events.o
+ .debug_ranges  0x0000000000000150       0x10 LUFA/Drivers/USB/Core/USBTask.o
 
 .debug_macro
  *(.debug_macro)
@@ -1282,7 +1280,6 @@ HID_Device_ConfigureEndpoints                     LUFA/Drivers/USB/Class/Device/
 HID_Device_ProcessControlRequest                  LUFA/Drivers/USB/Class/Device/HIDClassDevice.o
                                                   Sgen-Firmware.o
 HID_Device_USBTask                                LUFA/Drivers/USB/Class/Device/HIDClassDevice.o
-Init_Serial                                       Sgen-Firmware.o
 LanguageString                                    Descriptors.o
 MIDI_Device_ConfigureEndpoints                    LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o
 MIDI_Device_Flush                                 LUFA/Drivers/USB/Class/Device/MIDIClassDevice.o
@@ -1314,6 +1311,7 @@ RNDIS_Device_SendPacket                           LUFA/Drivers/USB/Class/Device/
 RNDIS_Device_USBTask                              LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o
 SPI_ausgabe                                       Sgen-Firmware.o
 SetupHardware                                     Sgen-Firmware.o
+StatusDigiPoti                                    Sgen-Firmware.o
 USB_ControlRequest                                LUFA/Drivers/USB/Core/USBTask.o
                                                   LUFA/Drivers/USB/Class/Device/RNDISClassDevice.o
                                                   LUFA/Drivers/USB/Class/Device/PrinterClassDevice.o
