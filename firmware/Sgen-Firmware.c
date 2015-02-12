@@ -30,10 +30,16 @@
 
 #include "Sgen-Firmware.h"
 
+#define DigiPoti 0x12
+
 /** Buffer to hold the previously generated HID report, for comparison purposes inside the HID class driver. */
 static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
 
+//contains the Deviceconfiguration Data
 uint8_t DeviceConfig[11] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18};
+
+//Indicates weather the digipoti is respondig for error feedback to the computer
+bool StatusDigiPoti = false;
 
 /** LUFA HID Class driver interface configuration and state information. This structure is
  *  passed to all HID Class driver functions, so that multiple instances of the same class
@@ -181,10 +187,36 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 	{
 		DeviceConfig[i] = Data[i];
 	}
+	//Set the IO-Pins for the analog Multiplexer
 	PORTD = DeviceConfig[10];
+	
+	//Send the frequency and formdata to the AD9833
 	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]);
 	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
 	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
+	
+	//Send the TWI-Data, but only if device is responding.
+	if (TWI_StartTransmission(DigiPoti, 1) == true)
+	{
+		StatusDigiPoti = true;
+
+		for (int i = 0; i < 4; i++)
+		{
+			int PotiWert = i + 6;
+	
+			TWI_SendByte(0x10 | i);
+			TWI_SendByte(DeviceConfig[PotiWert]);
+		}
+
+		TWI_SendByte(0x78);
+		TWI_SendByte(0x01);
+		TWI_StopTransmission();
+	}
+	else
+	{
+		StatusDigiPoti = false;
+	}
+	
 	return;
 }
 
