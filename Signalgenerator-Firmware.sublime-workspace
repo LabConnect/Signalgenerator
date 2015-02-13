@@ -131,7 +131,7 @@
 			"file": "firmware/Sgen-Firmware.c",
 			"settings":
 			{
-				"buffer_size": 6403,
+				"buffer_size": 7495,
 				"line_ending": "Unix"
 			}
 		},
@@ -139,7 +139,7 @@
 			"file": "firmware/LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h",
 			"settings":
 			{
-				"buffer_size": 10071,
+				"buffer_size": 9906,
 				"line_ending": "Unix"
 			}
 		}
@@ -181,11 +181,11 @@
 	},
 	"expanded_folders":
 	[
-		"/home/hendrik/LabConnect/Repos/signalgenerator",
-		"/home/hendrik/LabConnect/Repos/signalgenerator/firmware"
+		"/home/drbob/LabConnect/Repos/signalgenerator"
 	],
 	"file_history":
 	[
+		"/home/drbob/LabConnect/Repos/interface/LabConnect.pro",
 		"/home/hendrik/LabConnect/Repos/digitalnetzteil/Interface/mainwindow.cpp",
 		"/home/hendrik/LabConnect/Repos/signalgenerator/firmware/Sgen-Firmware.c",
 		"/home/hendrik/LabConnect/Repos/digitalnetzteil/Interface/Interface.pro",
@@ -312,8 +312,7 @@
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/USB/Core/XMEGA/Device_XMEGA.h",
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/Demos/Device/LowLevel/GenericHID/GenericHID.c",
 		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/Board/Board.h",
-		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/Board/XMEGA/C3_XPLAINED/Board.h",
-		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/Board/XMEGA/C3_XPLAINED/LEDs.h"
+		"/home/hendrik/LabConnect/entwicklung/testprogramme xmega/lufa-LUFA-140928/LUFA/Drivers/Board/XMEGA/C3_XPLAINED/Board.h"
 	],
 	"find":
 	{
@@ -393,7 +392,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -402,7 +401,35 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6403,
+						"buffer_size": 7495,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6703,
+								6703
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2442.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "firmware/LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9906,
 						"regions":
 						{
 						},
@@ -415,42 +442,14 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": -0.0,
-						"translation.y": 765.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "firmware/LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 10071,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7956,
-								7956
-							]
-						],
-						"settings":
-						{
 							"syntax": "Packages/C++/C++.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
-						"translation.x": -0.0,
-						"translation.y": 2655.0,
+						"translation.x": 0.0,
+						"translation.y": 2538.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
