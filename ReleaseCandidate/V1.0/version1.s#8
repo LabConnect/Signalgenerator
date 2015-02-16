@@ -20245,16 +20245,16 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <part name="GND9" library="supply1" deviceset="GND" device=""/>
 <part name="C14" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="U$2" library="linear" deviceset="LT1615" device=""/>
-<part name="L1" library="rcl" deviceset="L-EU" device="L3015"/>
+<part name="L1" library="rcl" deviceset="L-EU" device="L3015" value="10µH"/>
 <part name="GND10" library="supply1" deviceset="GND" device=""/>
-<part name="C15" library="rcl" deviceset="CPOL-EU" device="SMCA"/>
-<part name="C16" library="rcl" deviceset="CPOL-EU" device="SMCA"/>
+<part name="C15" library="rcl" deviceset="CPOL-EU" device="SMCA" value="1µF"/>
+<part name="C16" library="rcl" deviceset="CPOL-EU" device="SMCA" value="1µF"/>
 <part name="GND11" library="supply1" deviceset="GND" device=""/>
 <part name="R7" library="rcl" deviceset="R-EU_" device="0207/10" value="2M"/>
 <part name="R8" library="rcl" deviceset="R-EU_" device="0207/10" value="220k"/>
 <part name="C17" library="rcl" deviceset="C-EU" device="025-030X050"/>
-<part name="C18" library="rcl" deviceset="CPOL-EU" device="SMCA"/>
-<part name="C19" library="rcl" deviceset="CPOL-EU" device="SMCA"/>
+<part name="C18" library="rcl" deviceset="CPOL-EU" device="SMCA" value="1µF"/>
+<part name="C19" library="rcl" deviceset="CPOL-EU" device="SMCA" value="1µF"/>
 <part name="R11" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R12" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R13" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
@@ -20264,7 +20264,7 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <part name="X2" library="con-coax" deviceset="BU-SMA-H" device=""/>
 <part name="GND14" library="supply1" deviceset="GND" device=""/>
 <part name="U$3" library="SparkFun-DigitalIC" deviceset="ATMEGA32U4" device="TQFP"/>
-<part name="Q1" library="crystal" deviceset="CRYSTAL" device="SM77H"/>
+<part name="Q1" library="crystal" deviceset="CRYSTAL" device="SM77H" value="16MHz"/>
 <part name="IC3" library="analog-devices" deviceset="AD8610" device="MR"/>
 <part name="IC4" library="analog-devices" deviceset="AD8610" device="MR"/>
 <part name="D5" library="diode" deviceset="BAT54S" device=""/>
@@ -20280,25 +20280,25 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <part name="P-2" library="supply1" deviceset="-12V" device=""/>
 <part name="P+10" library="supply1" deviceset="+12V" device=""/>
 <part name="P-3" library="supply1" deviceset="-12V" device=""/>
-<part name="L2" library="rcl" deviceset="L-EU" device="0805"/>
-<part name="L3" library="rcl" deviceset="L-EU" device="0805"/>
-<part name="L4" library="rcl" deviceset="L-EU" device="0805"/>
+<part name="L2" library="rcl" deviceset="L-EU" device="0805" value="1,2µH"/>
+<part name="L3" library="rcl" deviceset="L-EU" device="0805" value="1,2µH"/>
+<part name="L4" library="rcl" deviceset="L-EU" device="0805" value="1,2µH"/>
 <part name="C21" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="C22" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="GND15" library="supply1" deviceset="GND" device=""/>
 <part name="GND16" library="supply1" deviceset="GND" device=""/>
-<part name="C23" library="rcl" deviceset="CPOL-EU" device="SMCB"/>
+<part name="C23" library="rcl" deviceset="CPOL-EU" device="SMCB" value="33µF"/>
 <part name="GND17" library="supply1" deviceset="GND" device=""/>
 <part name="C24" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="GND18" library="supply1" deviceset="GND" device=""/>
-<part name="L5" library="rcl" deviceset="L-EU" device="0805"/>
-<part name="L6" library="rcl" deviceset="L-EU" device="0805"/>
-<part name="L7" library="rcl" deviceset="L-EU" device="0805"/>
+<part name="L5" library="rcl" deviceset="L-EU" device="0805" value="1,2µH"/>
+<part name="L6" library="rcl" deviceset="L-EU" device="0805" value="1,2µH"/>
+<part name="L7" library="rcl" deviceset="L-EU" device="0805" value="1,2µH"/>
 <part name="C25" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="C26" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="GND19" library="supply1" deviceset="GND" device=""/>
 <part name="GND20" library="supply1" deviceset="GND" device=""/>
-<part name="C27" library="rcl" deviceset="CPOL-EU" device="SMCB"/>
+<part name="C27" library="rcl" deviceset="CPOL-EU" device="SMCB" value="33µF"/>
 <part name="GND21" library="supply1" deviceset="GND" device=""/>
 <part name="C28" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="GND22" library="supply1" deviceset="GND" device=""/>
@@ -20356,6 +20356,9 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <part name="+3V11" library="supply1" deviceset="+3V3" device=""/>
 <part name="R24" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
 <part name="R25" library="rcl" deviceset="R-EU_" device="R0603" value="10k"/>
+<part name="C3" library="rcl" deviceset="CPOL-EU" device="SMCA" value="1µF"/>
+<part name="C20" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
+<part name="GND26" library="supply1" deviceset="GND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -20384,8 +20387,8 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <instance part="P+5" gate="VCC" x="142.24" y="66.04"/>
 <instance part="GND6" gate="1" x="116.84" y="22.86"/>
 <instance part="C9" gate="G$1" x="38.1" y="154.94" rot="R180"/>
-<instance part="R2" gate="G$1" x="15.24" y="71.12"/>
-<instance part="R3" gate="G$1" x="7.62" y="68.58"/>
+<instance part="R2" gate="G$1" x="12.7" y="71.12"/>
+<instance part="R3" gate="G$1" x="5.08" y="68.58"/>
 <instance part="IC1" gate="G$1" x="172.72" y="48.26" rot="MR0"/>
 <instance part="IC1" gate="P" x="-22.86" y="154.94" rot="MR0"/>
 <instance part="C10" gate="G$1" x="43.18" y="154.94" rot="R180"/>
@@ -20519,6 +20522,9 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <instance part="+3V11" gate="G$1" x="167.64" y="116.84"/>
 <instance part="R24" gate="G$1" x="160.02" y="106.68" rot="R90"/>
 <instance part="R25" gate="G$1" x="167.64" y="106.68" rot="R90"/>
+<instance part="C3" gate="G$1" x="33.02" y="78.74" rot="R270"/>
+<instance part="C20" gate="G$1" x="25.4" y="81.28" rot="R270"/>
+<instance part="GND26" gate="1" x="15.24" y="76.2"/>
 </instances>
 <busses>
 </busses>
@@ -20767,6 +20773,15 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <pinref part="SJ2" gate="1" pin="1"/>
 <wire x1="2.54" y1="22.86" x2="2.54" y2="20.32" width="0.1524" layer="91"/>
 </segment>
+<segment>
+<pinref part="C3" gate="G$1" pin="-"/>
+<wire x1="27.94" y1="78.74" x2="15.24" y2="78.74" width="0.1524" layer="91"/>
+<wire x1="15.24" y1="78.74" x2="15.24" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="C20" gate="G$1" pin="2"/>
+<wire x1="15.24" y1="81.28" x2="20.32" y2="81.28" width="0.1524" layer="91"/>
+<pinref part="GND26" gate="1" pin="GND"/>
+<junction x="15.24" y="78.74"/>
+</segment>
 </net>
 <net name="VCC" class="0">
 <segment>
@@ -20929,14 +20944,14 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <segment>
 <pinref part="R3" gate="G$1" pin="1"/>
 <pinref part="X1" gate="G$1" pin="3"/>
-<wire x1="2.54" y1="68.58" x2="-10.16" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="0" y1="68.58" x2="-10.16" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$14" class="0">
 <segment>
 <pinref part="X1" gate="G$1" pin="2"/>
 <pinref part="R2" gate="G$1" pin="1"/>
-<wire x1="-10.16" y1="71.12" x2="10.16" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="-10.16" y1="71.12" x2="7.62" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$16" class="0">
@@ -21155,14 +21170,14 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <segment>
 <pinref part="R2" gate="G$1" pin="2"/>
 <pinref part="U$3" gate="G$1" pin="D-"/>
-<wire x1="20.32" y1="71.12" x2="38.1" y2="71.12" width="0.1524" layer="91"/>
+<wire x1="17.78" y1="71.12" x2="38.1" y2="71.12" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$6" class="0">
 <segment>
 <pinref part="U$3" gate="G$1" pin="D+"/>
 <pinref part="R3" gate="G$1" pin="2"/>
-<wire x1="38.1" y1="68.58" x2="12.7" y2="68.58" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="68.58" x2="10.16" y2="68.58" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -21605,6 +21620,20 @@ Source: http://www.onsemi.co.jp .. LM317M-D.PDF</description>
 <pinref part="T2" gate="G$1" pin="C"/>
 <wire x1="139.7" y1="93.98" x2="142.24" y2="93.98" width="0.1524" layer="91"/>
 <junction x="142.24" y="93.98"/>
+</segment>
+</net>
+<net name="N$52" class="0">
+<segment>
+<pinref part="C3" gate="G$1" pin="+"/>
+<pinref part="U$3" gate="G$1" pin="UCAP"/>
+<wire x1="35.56" y1="78.74" x2="38.1" y2="78.74" width="0.1524" layer="91"/>
+</segment>
+</net>
+<net name="N$53" class="0">
+<segment>
+<pinref part="U$3" gate="G$1" pin="UVCC"/>
+<pinref part="C20" gate="G$1" pin="1"/>
+<wire x1="38.1" y1="81.28" x2="27.94" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

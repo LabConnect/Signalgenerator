@@ -10195,8 +10195,8 @@ Source: http://products.nichicon.co.jp/en/pdf/XJA043/e-ud.pdf</description>
 <wire x1="1.5" y1="1.5" x2="1.5" y2="-1.5" width="0.127" layer="21"/>
 <wire x1="1.5" y1="-1.5" x2="-1.5" y2="-1.5" width="0.127" layer="21"/>
 <circle x="0" y="0" radius="1.3" width="0.127" layer="21"/>
-<text x="0" y="1.76" size="1.27" layer="21" align="bottom-center">&gt;VALUE</text>
-<text x="0" y="-1.76" size="1.27" layer="21" align="top-center">&gt;NAME</text>
+<text x="0" y="1.76" size="1.27" layer="27" align="bottom-center">&gt;VALUE</text>
+<text x="0" y="-1.76" size="1.27" layer="25" align="top-center">&gt;NAME</text>
 </package>
 </packages>
 <symbols>
@@ -20074,8 +20074,6 @@ Based on  the following source:
 <smd name="5" x="1.3" y="4.2" dx="0.4" dy="1.4" layer="1"/>
 <smd name="2" x="-0.65" y="4.2" dx="0.4" dy="1.4" layer="1"/>
 <smd name="1" x="-1.3" y="4.2" dx="0.4" dy="1.4" layer="1"/>
-<hole x="2.075" y="3.9" drill="0.7"/>
-<hole x="-2.075" y="3.9" drill="0.7"/>
 <wire x1="4" y1="0" x2="-4" y2="0" width="0.127" layer="51"/>
 <wire x1="-4" y1="-1.4" x2="4" y2="-1.4" width="0.127" layer="21"/>
 <wire x1="4" y1="-1.4" x2="4" y2="4.3" width="0.127" layer="21"/>
@@ -20139,8 +20137,8 @@ Based on  the following source:
 </class>
 </classes>
 <parts>
-<part name="C1" library="rcl" deviceset="C-EU" device="C1206" value="22n"/>
-<part name="C2" library="rcl" deviceset="C-EU" device="C1206" value="22n"/>
+<part name="C1" library="rcl" deviceset="C-EU" device="C0603" value="22n"/>
+<part name="C2" library="rcl" deviceset="C-EU" device="C0603" value="22n"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" deviceset="VCC" device=""/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
@@ -20193,7 +20191,6 @@ Based on  the following source:
 <part name="GND13" library="supply1" deviceset="GND" device=""/>
 <part name="R14" library="rcl" deviceset="R-EU_" device="R0603" value="100k"/>
 <part name="X2" library="con-coax" deviceset="BU-SMA-H" device=""/>
-<part name="GND14" library="supply1" deviceset="GND" device=""/>
 <part name="U$3" library="SparkFun-DigitalIC" deviceset="ATMEGA32U4" device="TQFP"/>
 <part name="Q1" library="crystal" deviceset="CRYSTAL" device="SM77H" value="16MHz"/>
 <part name="IC3" library="analog-devices" deviceset="AD8610" device="MR"/>
@@ -20291,6 +20288,7 @@ Based on  the following source:
 <part name="C20" library="rcl" deviceset="C-EU" device="C0603" value="100n"/>
 <part name="GND26" library="supply1" deviceset="GND" device=""/>
 <part name="U$11" library="con-berg" deviceset="MICRO" device="-SMD"/>
+<part name="AGND11" library="supply1" deviceset="AGND" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -20352,7 +20350,6 @@ Based on  the following source:
 <instance part="GND13" gate="1" x="210.82" y="27.94"/>
 <instance part="R14" gate="G$1" x="241.3" y="68.58" rot="R180"/>
 <instance part="X2" gate="G$1" x="340.36" y="48.26" rot="MR0"/>
-<instance part="GND14" gate="1" x="335.28" y="40.64"/>
 <instance part="U$3" gate="G$1" x="55.88" y="68.58"/>
 <instance part="Q1" gate="G$1" x="33.02" y="55.88" rot="R90"/>
 <instance part="IC3" gate="G$1" x="238.76" y="45.72"/>
@@ -20457,6 +20454,7 @@ Based on  the following source:
 <instance part="C20" gate="G$1" x="25.4" y="81.28" rot="R270"/>
 <instance part="GND26" gate="1" x="15.24" y="76.2"/>
 <instance part="U$11" gate="G$1" x="-12.7" y="68.58" rot="MR0"/>
+<instance part="AGND11" gate="VR1" x="335.28" y="38.1"/>
 </instances>
 <busses>
 </busses>
@@ -20623,12 +20621,6 @@ Based on  the following source:
 <wire x1="215.9" y1="33.02" x2="210.82" y2="33.02" width="0.1524" layer="91"/>
 <wire x1="210.82" y1="30.48" x2="210.82" y2="33.02" width="0.1524" layer="91"/>
 <junction x="210.82" y="33.02"/>
-</segment>
-<segment>
-<pinref part="X2" gate="G$1" pin="2"/>
-<wire x1="337.82" y1="45.72" x2="335.28" y2="45.72" width="0.1524" layer="91"/>
-<wire x1="335.28" y1="45.72" x2="335.28" y2="43.18" width="0.1524" layer="91"/>
-<pinref part="GND14" gate="1" pin="GND"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="DDS$1" pin="DGND"/>
@@ -21180,6 +21172,12 @@ Based on  the following source:
 <wire x1="177.8" y1="91.44" x2="175.26" y2="91.44" width="0.1524" layer="91"/>
 <wire x1="175.26" y1="91.44" x2="175.26" y2="81.28" width="0.1524" layer="91"/>
 <pinref part="AGND10" gate="VR1" pin="AGND"/>
+</segment>
+<segment>
+<pinref part="X2" gate="G$1" pin="2"/>
+<wire x1="337.82" y1="45.72" x2="335.28" y2="45.72" width="0.1524" layer="91"/>
+<wire x1="335.28" y1="45.72" x2="335.28" y2="40.64" width="0.1524" layer="91"/>
+<pinref part="AGND11" gate="VR1" pin="AGND"/>
 </segment>
 </net>
 <net name="+12V" class="0">
