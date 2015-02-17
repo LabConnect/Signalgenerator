@@ -18,9 +18,9 @@
 <layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
-<layer number="25" name="tNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
-<layer number="27" name="tValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
@@ -44,7 +44,7 @@
 <layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
 <layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
@@ -107,9 +107,7 @@
 </layers>
 <board>
 <plain>
-<dimension x1="0" y1="0" x2="4.60375" y2="45.085" x3="-5.3975" y3="22.5425" textsize="1.778" layer="21" dtype="vertical"/>
-<dimension x1="0" y1="46.355" x2="66.04" y2="40.3225" x3="33.02" y3="47.9425" textsize="1.778" layer="21" dtype="horizontal"/>
-<text x="45.56125" y="12.54125" size="1.778" layer="21" font="vector" align="top-center">(c)2015 Hendrik Lüth
+<text x="44.92625" y="13.335" size="1.778" layer="21" font="vector" align="top-center">(c)2015 Hendrik Lüth
 LabConnect Signalgenerator
 github.com/labconnect</text>
 </plain>
