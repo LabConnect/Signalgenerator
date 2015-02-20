@@ -87,7 +87,8 @@ Sgen-Firmware.o: Sgen-Firmware.c Sgen-Firmware.h Descriptors.h \
  LUFA/Drivers/Peripheral/SPI.h \
  LUFA/Drivers/Peripheral/../../Common/Common.h \
  LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h \
- LUFA/Drivers/Peripheral/AVR8/../../../Common/Common.h
+ LUFA/Drivers/Peripheral/AVR8/../../../Common/Common.h \
+ LUFA/Drivers/Peripheral/TWI.h LUFA/Drivers/Peripheral/AVR8/TWI_AVR8.h
 
 Sgen-Firmware.h:
 
@@ -284,3 +285,7 @@ LUFA/Drivers/Peripheral/../../Common/Common.h:
 LUFA/Drivers/Peripheral/AVR8/SPI_AVR8.h:
 
 LUFA/Drivers/Peripheral/AVR8/../../../Common/Common.h:
+
+LUFA/Drivers/Peripheral/TWI.h:
+
+LUFA/Drivers/Peripheral/AVR8/TWI_AVR8.h:
