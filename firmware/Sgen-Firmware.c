@@ -31,12 +31,18 @@
 #include "Sgen-Firmware.h"
 
 #define DigiPoti 0x12
+#define ConfigSize 12
 
 /** Buffer to hold the previously generated HID report, for comparison purposes inside the HID class driver. */
 static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
 
 //contains the Deviceconfiguration Data
-uint8_t DeviceConfig[11] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18};
+uint8_t DeviceConfig[ConfigSize] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18, 0x11};
+uint8_t Boot_Data[ConfigSize] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18, 0x11};
+
+//bootup-data handling
+bool load_at_boot = false;
+
 
 //Indicates weather the digipoti is respondig for error feedback to the computer
 bool StatusDigiPoti = false;
@@ -70,16 +76,11 @@ int main(void)
 	SetupHardware();
 
 	GlobalInterruptEnable();
-	//Daten_Verteilen();
+	
 	for (;;)
 	{
-		SPI_ausgabe();
-		_delay_ms(500);
-
-		/*
 		HID_Device_USBTask(&Generic_HID_Interface);
 		USB_USBTask();
-		//*/
 	}
 	
 }
@@ -105,8 +106,18 @@ void SetupHardware(void)
 	TWI_Init(TWI_BIT_PRESCALE_1, TWI_BITLENGTH_FROM_FREQ(1, 200000));
 	//*/
 
-	DDRD = 0x38;
-	PORTD = 0x38;
+
+	//check wether to load data at boot and do it
+	if (load_at_boot == true)
+	{
+		for (int i = 0; i < ConfigSize; i++)
+		{
+			DeviceConfig[i] = Boot_Data[i];
+		}
+
+		Output_data();
+	}
+
 }
 
 /** Event handler for the library USB Connection event. */
@@ -184,10 +195,38 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 {
 	uint8_t* Data       = (uint8_t*)ReportData;
 	
-	for (int i=0; i<ReportSize; i++)
+	for (int i=0; i<ConfigSize; i++)
 	{
 		DeviceConfig[i] = Data[i];
 	}
+	
+	//send the data
+	Output_data();
+
+	//Decide what to do after boot and save Data
+	if ((DeviceConfig[11] & 0xF0) == 0x10)
+	{
+		load_at_boot = true;
+	}
+	else
+	{
+		load_at_boot = false;
+	}
+
+	//save the data, if neccessary
+	if ((DeviceConfig[11] & 0x0F) == 0x01)
+	{
+		for (int i = 0; i < ConfigSize; i++)
+		{
+			Boot_Data[i] = DeviceConfig[i];
+		}
+	}
+
+	return;
+}
+
+void Output_data()
+{
 	//Set the IO-Pins for the analog Multiplexer
 	PORTD = DeviceConfig[10];
 	
@@ -217,27 +256,4 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 	{
 		StatusDigiPoti = false;
 	}
-	//*/
-	return;
-}
-
-SPI_ausgabe()
-{
-	
-	SPI_Send2Byte(0b00100000, 0b00000010);
-	_delay_us(5);
-	SPI_Send2Byte(0b01010010, 0b11000000);
-	_delay_us(5);
-	SPI_Send2Byte(0b01100000, 0b11000101);
-	_delay_us(5);
-
-	return;
-}
-
-Daten_Verteilen()
-{
-	PORTD = DeviceConfig[10];
-	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]);
-	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
-	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
 }
