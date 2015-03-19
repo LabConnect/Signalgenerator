@@ -1,0 +1,117 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amssymb} % needed for math
+\usepackage{amsmath} % needed for math
+\usepackage[utf8]{inputenc} % this is needed for german umlauts
+\usepackage[ngerman]{babel} % this is needed for german umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage[margin=2.5cm]{geometry} %layout
+\usepackage{booktabs}
+
+% this is needed for forms and links within the text
+\usepackage{hyperref}  
+
+% glossar, see http://en.wikibooks.org/wiki/LaTeX/Glossary
+% has to be loaded AFTER hyperref so that entries are clickable
+\usepackage[nonumberlist]{glossaries} 
+
+% The following is needed in order to make the code compatible
+% with both latex/dvips and pdflatex.
+\ifx\pdftexversion\undefined
+\usepackage[dvips]{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\makeglossary 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Variablen                                 						 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\authorName}{Hendrik Lüth}
+\newcommand{\Arbeitgeber}{Ausbildungswerkstatt der Marine}
+\newcommand{\projekt}{DDS-Signalgenerator}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PDF Meta information                                 				 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hypersetup{
+  pdfauthor   = {\authorName},
+  pdfkeywords = {\tags},
+  pdftitle    = {\projektName~(Lastenheft)}
+} 
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Create a shorter version for tables. DO NOT CHANGE               	 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\addrow[2]{#1 &#2\\ }
+
+\newcommand\addheading[2]{#1 &#2\\ \hline}
+\newcommand\tabularhead{\begin{tabular}{lp{13cm}}
+\hline
+}
+
+\newcommand\addmulrow[2]{ \begin{minipage}[t][][t]{2.5cm}#1\end{minipage}% 
+   &\begin{minipage}[t][][t]{8cm}
+    \begin{enumerate} #2   \end{enumerate}
+    \end{minipage}\\ }
+
+\newenvironment{usecase}{\tabularhead}
+{\hline\end{tabular}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% THE DOCUMENT BEGINS             	                              	 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+ \pagenumbering{roman}
+ \input{Deckblatt}         % Deckblatt.tex laden und einfügen
+ \setcounter{page}{2}
+ \tableofcontents          % Inhaltsverzeichnis ausgeben
+ \clearpage
+ \pagenumbering{arabic}
+ 
+\section{Zielbestimmung}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Warum wird das Projekt gemacht?           						 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Produkteinsatz}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Wer ist die Zielgruppe?                   						 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Funktionale Anforderungen}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Was muss das Programm können?                   					 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{usecase}
+  \addheading{Nummer}{Beschreibung} 
+  \addrow{}{}
+  \addrow{}{}
+  \addrow{}{}
+\end{usecase}
+
+\section{Produktdaten}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Auf welchen Daten arbeitet das Produkt?                            %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{usecase}
+  \addheading{Nummer}{Beschreibung} 
+  \addrow{}{}
+  \addrow{}{}
+  \addrow{}{}
+\end{usecase}
+
+\section{Systemmodelle}
+\subsection{Szenarien}
+\subsection{Anwendungsfälle}
+
+\clearpage
+\input{Glossar} 
+\end{document}
