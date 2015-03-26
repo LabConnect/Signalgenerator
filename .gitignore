@@ -1,0 +1,6 @@
+*.aux
+*.glo
+*.out
+*.synctex.gz
+*toc
+*.o

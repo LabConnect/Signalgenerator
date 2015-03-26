@@ -12,7 +12,7 @@
 
 % glossar, see http://en.wikibooks.org/wiki/LaTeX/Glossary
 % has to be loaded AFTER hyperref so that entries are clickable
-\usepackage[nonumberlist]{glossaries} 
+
 
 % The following is needed in order to make the code compatible
 % with both latex/dvips and pdflatex.
@@ -28,20 +28,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Variablen                                 						 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand{\authorName}{Hendrik Lüth}
 \newcommand{\Arbeitgeber}{Ausbildungswerkstatt der Marine}
 \newcommand{\projekt}{DDS-Signalgenerator}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% PDF Meta information                                 				 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hypersetup{
-  pdfauthor   = {\authorName},
-  pdfkeywords = {\tags},
-  pdftitle    = {\projektName~(Lastenheft)}
-} 
- 
+\title{\projekt}
+\author{\authorName}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Create a shorter version for tables. DO NOT CHANGE               	 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -68,7 +60,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{document}
  \pagenumbering{roman}
- \input{Deckblatt}         % Deckblatt.tex laden und einfügen
+ \maketitle
  \setcounter{page}{2}
  \tableofcontents          % Inhaltsverzeichnis ausgeben
  \clearpage
@@ -113,5 +105,5 @@
 \subsection{Anwendungsfälle}
 
 \clearpage
-\input{Glossar} 
+ 
 \end{document}
