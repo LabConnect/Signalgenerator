@@ -1,0 +1,42 @@
+Anlagen:
+Schaltplan, Gehäusezeichnung von Reichelt, Protokollspezifikation
+
+
+Zielbestimmungen
+================
+Es soll ein Signalgenerator angefertigt werden. Hierbei ist sich an den Schalplan und die dort verzeichneten Werte zu halten.
+Die verwendeten Bauteile sollen, soweit möglich, SMD-Bauteile sein.
+Der Umfang des Auftrages umfasst:
+*das Layouten und Herstellen der Platine
+*Beschaffung der Bauteile
+*das Bestücken der Platine
+*das programmieren einer Software für den Mikrocontroller des Signalgenerators
+
+Funktionale Anforderungen
+=========================
+
+Platine & Layout:
+-----------------
+Da ein bestimmtes Gehäuse verwendet werden soll darf die Platine des Signalgenerators nicht größer als
+die Innenbemaßung des Gehäuses sein. Eine Technische Zeichnung des Gehäuses ist dem Lastenheft beigefügt.
+Des weiteren sollte das Layout so angefertigt werden, dass die Mikro-USB Buchse und die SMA-R Buchse gegenüber
+von einander an den kurzen Seite der Platine platziert werden.
+Die Platine soll Doublelayer sein und eine Dicke von 1mm haben.
+
+Beschaffen der Bauteile:
+------------------------
+Die Bauteile sollen so günsig wie möglich beschafft werden. 
+
+Bestücken der Platine
+---------------------
+Die Platine ist vollständig zu bestücken und optisch auf Kurzschlüsse zu prüfen.
+
+Firmware des Mikrocontrollers
+-----------------------------
+Die Firmware für den Mikrocontroller soll in C geschrieben werden. 
+Zur Ansteuerung des USB-Controllers soll das LUFA Framework verwendet werden.
+Der Mikrocontroller soll in der Lage sein Daten vom Computer über USB zu empfangen und diese
+an die entsprechende Peripherie weiterzugeben. Für die Peripherie sollen ebenfalls die in LUFA enthaltenen Bibliotheken
+benutzt werden.
+Für die USB-Kommunikation soll der Mikrocontroller die VID 0x03EB und die PID 0x204F benutzen und sich als Vendorspezifisches HID Gerät anmelden. Für die Kommunikation sollen nur Controll-Transfers verwendet werden. Der Mikrocontroller soll in der Lage sein bestimmte Daten zurück an den PC zu geben, um Fehleranalyse und Fehlererkennung auf der PC-Seite durchführen zu können.
+Auch hierzu ist der Aufbau der zu übertragenden Daten in der Angelegten Protokollspezifikation zu finden.
