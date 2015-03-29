@@ -2,7 +2,7 @@
 \usepackage{amssymb} % needed for math
 \usepackage{amsmath} % needed for math
 \usepackage[utf8]{inputenc} % this is needed for german umlauts
-\usepackage[ngerman]{babel} % this is needed for german umlauts
+\usepackage[german]{babel} % this is needed for german umlauts
 \usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
 \usepackage[margin=2.5cm]{geometry} %layout
 \usepackage{booktabs}
@@ -64,14 +64,16 @@
  
 \section{Zielbestimmung}
 Es soll ein Signalgenerator angefertigt werden. Hierbei ist sich an den Schalplan und die dort verzeichneten Werte zu halten.
-Die verwendeten Bauteile sollen, soweit möglich, SMD-Bauteile sein.
+Die verwendeten Bauteile sollen, soweit möglich, SMD-Bauteile sein.\\
 Der Umfang des Auftrages umfasst:
-*das Layouten und Herstellen der Platine
-*Beschaffung der Bauteile
-*das Bestücken der Platine
-*das programmieren einer Software für den Mikrocontroller des Signalgenerators
+\begin{itemize}
+\item{das Layouten und Herstellen der Platine}
+\item{Beschaffung der Bauteile}
+\item{das Bestücken der Platine}
+\item{das programmieren einer Software für den Mikrocontroller des Signalgenerators}
+\end{itemize}
 
-\section{Produkteinsatz}
+%\section{Produkteinsatz}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Wer ist die Zielgruppe?                   						 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -79,29 +81,29 @@ Der Umfang des Auftrages umfasst:
 
 \section{Funktionale Anforderungen}
 
-Platine & Layout:
------------------
+\subsection{Platine \& Layout}
+
 Da ein bestimmtes Gehäuse verwendet werden soll darf die Platine des Signalgenerators nicht größer als
-die Innenbemaßung des Gehäuses sein. Eine Technische Zeichnung des Gehäuses ist dem Lastenheft beigefügt.
+die Innenbemaßung des Gehäuses sein. Eine Technische Zeichnung des Gehäuses ist dem Lastenheft beigefügt.\\
 Des weiteren sollte das Layout so angefertigt werden, dass die Mikro-USB Buchse und die SMA-R Buchse gegenüber
 von einander an den kurzen Seite der Platine platziert werden.
 Die Platine soll Doublelayer sein und eine Dicke von 1mm haben.
 
-Beschaffen der Bauteile:
-------------------------
-Die Bauteile sollen so günsig wie möglich beschafft werden. 
+\subsection{Beschaffen der Bauteile}
 
-Bestücken der Platine
----------------------
+Die Bauteile sollen so günstig wie möglich beschafft werden. 
+
+\subsection{Bestücken der Platine}
+
 Die Platine ist vollständig zu bestücken und optisch auf Kurzschlüsse zu prüfen.
 
-Firmware des Mikrocontrollers
------------------------------
-Die Firmware für den Mikrocontroller soll in C geschrieben werden. 
-Zur Ansteuerung des USB-Controllers soll das LUFA Framework verwendet werden.
+\subsection{Firmware des Mikrocontrollers}
+
+Die Firmware für den Mikrocontroller soll in C geschrieben werden.\\
+Zur Ansteuerung des USB-Controllers soll das LUFA Framework verwendet werden.\\
 Der Mikrocontroller soll in der Lage sein Daten vom Computer über USB zu empfangen und diese
 an die entsprechende Peripherie weiterzugeben. Für die Peripherie sollen ebenfalls die in LUFA enthaltenen Bibliotheken
-benutzt werden.
+benutzt werden.\\
 Für die USB-Kommunikation soll der Mikrocontroller die VID 0x03EB und die PID 0x204F benutzen und sich als Vendorspezifisches HID Gerät anmelden. Für die Kommunikation sollen nur Controll-Transfers verwendet werden. Der Mikrocontroller soll in der Lage sein bestimmte Daten zurück an den PC zu geben, um Fehleranalyse und Fehlererkennung auf der PC-Seite durchführen zu können.
 Auch hierzu ist der Aufbau der zu übertragenden Daten in der Angelegten Protokollspezifikation zu finden.
 
@@ -110,12 +112,6 @@ Auch hierzu ist der Aufbau der zu übertragenden Daten in der Angelegten Protoko
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Auf welchen Daten arbeitet das Produkt?                            %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{usecase}
-  \addheading{Nummer}{Beschreibung} 
-  \addrow{}{}
-  \addrow{}{}
-  \addrow{}{}
-\end{usecase}
 
 \section{Systemmodelle}
 \subsection{Szenarien}

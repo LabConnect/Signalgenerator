@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=pdflatex 2015.3.23)  26 MAR 2015 10:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014/Arch Linux) (preloaded format=pdflatex 2015.3.23)  29 MAR 2015 10:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -312,20 +312,21 @@ Now handling font encoding U ...
 (/usr/share/texmf-dist/tex/generic/babel/babel.sty
 Package: babel 2014/03/24 3.9k The Babel package
 
-(/usr/share/texmf-dist/tex/generic/babel-german/ngerman.ldf
-Language: ngerman 2013/12/13 v2.7 German support for babel (new orthography)
+(/usr/share/texmf-dist/tex/generic/babel-german/german.ldf
+Language: german 2013/12/13 v2.7 German support for babel (traditional orthogra
+phy)
 
-(/usr/share/texmf-dist/tex/generic/babel-german/ngermanb.ldf
-Language: ngermanb 2013/12/13 v2.7 German support for babel (new orthography)
+(/usr/share/texmf-dist/tex/generic/babel-german/germanb.ldf
+Language: germanb 2013/12/13 v2.7 German support for babel (traditional orthogr
+aphy)
 
 (/usr/share/texmf-dist/tex/generic/babel/babel.def
 File: babel.def 2014/03/24 3.9k Babel common definitions
 \babel@savecnt=\count99
 \U@D=\dimen112
 )
-\l@naustrian = a dialect from \language\l@ngerman 
-\l@nswissgerman = a dialect from \language\l@ngerman 
-Package babel Info: Making " an active character on input line 88.
+\l@austrian = a dialect from \language\l@german 
+Package babel Info: Making " an active character on input line 107.
 )))
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
@@ -635,83 +636,172 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `Lastenheft.toc'.
 
-Package babel Info: Redefining ngerman shorthand "|
+Package babel Info: Redefining german shorthand "f
 (babel)             in language append on input line 62.
-Package babel Info: Redefining ngerman shorthand "~
+Package babel Info: Redefining german shorthand "|
 (babel)             in language append on input line 62.
-Package babel Info: Redefining ngerman shorthand "|
+Package babel Info: Redefining german shorthand "~
 (babel)             in language append on input line 62.
-Package babel Info: Redefining ngerman shorthand "~
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 62.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 62.
+Package babel Info: Redefining german shorthand "~
 (babel)             in language append on input line 62.
  [2
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Package babel Info: Redefining ngerman shorthand "|
+Package babel Info: Redefining german shorthand "f
 (babel)             in language append on input line 65.
-Package babel Info: Redefining ngerman shorthand "~
+Package babel Info: Redefining german shorthand "|
 (babel)             in language append on input line 65.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 69.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 69.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 75.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 75.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 86.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 86.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 97.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 97.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 98.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 98.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 99.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 99.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 101.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 101.
-Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language append on input line 101.
-Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language append on input line 101.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 65.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 70.
+
+(/usr/share/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 70.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 82.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 82.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 82.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 84.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 84.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 84.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 92.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 92.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 92.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 96.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 96.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 96.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 100.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 100.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 100.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 111.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 111.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 111.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 116.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 116.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 116.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 117.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 117.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 117.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 118.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 118.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 118.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 120.
  [1
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 103.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 103.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "f
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "|
+(babel)             in language append on input line 120.
+Package babel Info: Redefining german shorthand "~
+(babel)             in language append on input line 120.
+ [2]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 122.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 122.
  (./Lastenheft.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 103.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 103.
-Package rerunfilecheck Info: File `Lastenheft.out' has not changed.
-(rerunfilecheck)             Checksum: C671DA4DA05CE5961BE0235235D8B8FB;378.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 103.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 122.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 122.
+
+
+Package rerunfilecheck Warning: File `Lastenheft.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `Lastenheft.out':
+(rerunfilecheck)             Before: 5156F8E0A7BA0A57ECC558ED70777F94;671
+(rerunfilecheck)             After:  2E61DFAFBE17547716334B5AF8D23918;621.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 122.
  ) 
 Here is how much of TeX's memory you used:
- 7290 strings out of 493108
- 100660 string characters out of 6140725
- 195842 words of memory out of 5000000
- 10643 multiletter control sequences out of 15000+600000
+ 7341 strings out of 493108
+ 101338 string characters out of 6140725
+ 198128 words of memory out of 5000000
+ 10680 multiletter control sequences out of 15000+600000
  16284 words of font info for 50 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,8n,32p,273b,341s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/t
-exmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts
-/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/c
-m-super/sfbx1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm120
-0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/sha
-re/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb>
-Output written on Lastenheft.pdf (2 pages, 87886 bytes).
+ 29i,6n,32p,408b,343s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{subsection.5.2} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.5.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{section.5} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.4} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.3} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.2} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{subsection.3.1} has been referenced but does not ex
+ist, replaced by a fixed one
+
+{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/
+type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm
+-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1728
+.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/shar
+e/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/share/texmf-dist/fo
+nts/type1/public/cm-super/sfrm2074.pfb>
+Output written on Lastenheft.pdf (3 pages, 108459 bytes).
 PDF statistics:
- 81 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
- 11 named destinations out of 1000 (max. 500000)
- 57 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 118 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 22 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
