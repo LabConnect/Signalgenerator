@@ -1,0 +1,41 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amssymb} % needed for math
+\usepackage{amsmath} % needed for math
+\usepackage[utf8]{inputenc} % this is needed for german umlauts
+\usepackage[german]{babel} % this is needed for german umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage[margin=2.5cm]{geometry} %layout
+\usepackage{booktabs}
+
+\title{Kommunikationsprotokoll \\Signalgenerator <=> Computer}
+\author{Hendrik Lüth, LabConnect}
+\newcommand{\VID}{0x03EB}
+\newcommand{\PID}{0x204F}
+
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{Allgemeines}
+In diesem Dokument wird die Datenübertragung zwischen dem Mikrocontroller des Signalgenerators und eines Computers definiert. Die Daten werden über den USB-Bus übertragen. Die USB-Spezifikationen\footnote{http://www.usb.org/developers/docs/usb20\_docs/usb\_20\_031815.zip} enthalten alle nötigen Informationen, welche für Kommunikationen über den Bus nötig sind.\\
+Der Signalgenerator wird als HID (Human Interface Device) am Computer angemeldet, wodurch keine Installation von zusätzlichen Treibern nötig ist. Die Übertragung der Daten erfolgt über HID-Reports. Zum aktuellen Zeitpunk benutzt LabConnect für den Signalgenerator die VID \VID\ und die PID \PID, welche unter Linux als GenericHID von Atmel zu finden sind.\\
+
+
+
+
+\section{Aufbau einer Kommunikationseinheit}
+\section{Aufbau einzelner Befehle}
+\subsection{Computer => Signalgenerator}
+\subsection{Signalgenerator => Computer}
+\section{Berechnung der Registerwerte}
+\subsection{Frequenz}
+\subsection{Signalform}
+\subsection{Spitzenspannung}
+\subsection{Offsetspannung}
+\subsection{Sonstige Register}
+\section{Errorcodes}
+
+\end{document}
