@@ -3784,7 +3784,7 @@ design rules under a new name.</description>
 </pass>
 </autorouter>
 <elements>
-<element name="C1" library="rcl" package="C0603" value="22n" x="4.7625" y="4.28625" rot="R90"/>
+<element name="C1" library="rcl" package="C0603" value="22p" x="4.7625" y="4.28625" rot="R90"/>
 <element name="C10" library="rcl" package="C0603" value="100n" x="22.06625" y="21.74875" rot="R180"/>
 <element name="C11" library="rcl" package="SMC_B" value="" x="28.2575" y="24.92375" rot="R90"/>
 <element name="C12" library="rcl" package="SMC_B" value="" x="24.92375" y="24.92375" rot="R90"/>
@@ -3804,7 +3804,7 @@ design rules under a new name.</description>
 <attribute name="VALUE" x="5.7275" y="40.25875" size="1.016" layer="27" rot="R180"/>
 </element>
 <element name="C19" library="rcl" package="SMC_A" value="1µF" x="7.14375" y="30.95625" rot="R90"/>
-<element name="C2" library="rcl" package="C0603" value="22n" x="4.92125" y="12.54125"/>
+<element name="C2" library="rcl" package="C0603" value="22p" x="4.92125" y="12.54125"/>
 <element name="C20" library="rcl" package="C0603" value="100n" x="11.1125" y="24.765" rot="R180"/>
 <element name="C21" library="rcl" package="C0603" value="100n" x="14.44625" y="35.56" rot="R90"/>
 <element name="C22" library="rcl" package="C0603" value="100n" x="10.95375" y="40.9575" rot="R270"/>

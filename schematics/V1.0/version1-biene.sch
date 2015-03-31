@@ -23763,8 +23763,8 @@ Source: www.kingbright.com</description>
 </class>
 </classes>
 <parts>
-<part name="C1" library="rcl" deviceset="C-EU" device="C0603" value="22n"/>
-<part name="C2" library="rcl" deviceset="C-EU" device="C0603" value="22n"/>
+<part name="C1" library="rcl" deviceset="C-EU" device="C0603" value="22p"/>
+<part name="C2" library="rcl" deviceset="C-EU" device="C0603" value="22p"/>
 <part name="GND1" library="supply1" deviceset="GND" device=""/>
 <part name="P+1" library="supply1" deviceset="VCC" device=""/>
 <part name="P+2" library="supply1" deviceset="VCC" device=""/>
