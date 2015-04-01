@@ -25,31 +25,34 @@ Der Signalgenerator wird als HID (Human Interface Device) am Computer angemeldet
 
 \section{Aufbau einer Kommunikationseinheit}
 Eine Kommunikationseinheit, im folgenden als "Paket" bezeichnet, besteht aus 13 Byte. Jedes Paket hat einen 1 Byte großen Header an seinem Anfang und einen 1 Byte großen Tail an seinem Ende. Der Header enthält die Paket-ID, an welcher sich Flussrichtung der Daten und Art der Daten erkennen lassen. Ist das 5. Bit des Headers gleich 0, so ist die Flussrichtung der Daten vom Computer zum Mikrocontroller, ist es gleich 1 vom Mikrocontroller zum Computer. An den unteren 4 Bit lässt sich der Typ des Paketes erkennen.\\
-In der folgenden Tabelle sind alle Befehle nach Paket-ID sortiert aufgelistet:
+In der folgenden Tabelle sind alle Befehle nach Paket-ID sortiert aufgelistet:\\
 
-\begin{tabular}{|c|c|c|c|}
-\hline 
+\begin{tabular}{c|c|l|c}
 Paket-ID & Flussrichtung & Bezeichnung & Größe der Daten \\ 
 \hline 
-0x00 & PC->\mu C & Config-Request & 1 Byte \\ 
+0x00 & PC$\rightarrow \mu$C & Config-Request & 1 Byte \\ 
 \hline 
-0x01 & PC->\mu C & Set-Command & 12 Byte \\ 
+0x01 & PC$\rightarrow \mu$C & Set-Command & 12 Byte \\ 
 \hline 
-0x02 & PC->\mu C & Data-Request & 0 Byte \\ 
+0x02 & PC$\rightarrow \mu$C & Data-Request & 0 Byte \\ 
 \hline 
-0x03 & PC->\mu C & Error/Status-Request & 0 Byte \\ 
+0x03 & PC$\rightarrow \mu$C & Error/Status-Request & 0 Byte \\ 
 \hline 
-0x10 & \mu C->PC & Config-Response & 8 Byte \\  
+0x10 & $\mu$C $\rightarrow$PC & Config-Response & 8 Byte \\  
 \hline 
-0x12 & \mu C->PC & Data-Response & 12 Byte \\ 
+0x12 & $\mu$C $\rightarrow$PC & Data-Response & 12 Byte \\ 
 \hline
-"0x13" & \mu C->PC & Error/Status-Response & 5 Byte \\ 
-\hline
-\end{tabular} 
+0x13 & $\mu$C $\rightarrow$PC & Error/Status-Response & 5 Byte \\ 
+\end{tabular}
+
+\bigskip
+\bigskip
+\bigskip
+\bigskip
 
 \section{Aufbau einzelner Befehle}
-\subsection{Computer => Signalgenerator}
-\subsection{Signalgenerator => Computer}
+\subsection{Computer $\rightarrow$ Signalgenerator}
+\subsection{Signalgenerator $\rightarrow$ Computer}
 \section{Berechnung der Registerwerte}
 \subsection{Frequenz}
 \subsection{Signalform}
