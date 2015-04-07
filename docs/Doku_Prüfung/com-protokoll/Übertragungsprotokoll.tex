@@ -7,7 +7,7 @@
 \usepackage[margin=2.5cm]{geometry} %layout
 \usepackage{booktabs}
 
-\title{Kommunikationsprotokoll \\Signalgenerator <=> Computer}
+\title{Kommunikationsprotokoll \\Signalgenerator $\Leftrightarrow$ Computer}
 \author{Hendrik Lüth, LabConnect}
 \newcommand{\VID}{0x1209}
 \newcommand{\PID}{0x2222}
@@ -21,15 +21,16 @@
 
 \section{Allgemeines}
 In diesem Dokument wird die Datenübertragung zwischen dem Mikrocontroller des Signalgenerators und eines Computers definiert. Die Daten werden über den USB-Bus übertragen. Die USB-Spezifikationen\footnote{http://www.usb.org/developers/docs/usb20\_docs/usb\_20\_031815.zip} enthalten alle nötigen Informationen, welche für Kommunikationen über den Bus nötig sind.\\
-Der Signalgenerator wird als HID (Human Interface Device) am Computer angemeldet, wodurch keine Installation von zusätzlichen Treibern nötig ist. Die Übertragung der Daten erfolgt über HID-Reports. Zum aktuellen Zeitpunk benutzt LabConnect für den Signalgenerator die VID \VID\ und die PID \PID, welche unter Linux als GenericHID von Atmel zu finden sind.
+Der Signalgenerator wird als HID (Human Interface Device) am Computer angemeldet, wodurch keine Installation von zusätzlichen Treibern nötig ist. Die Übertragung der Daten erfolgt über HID-Reports. Zum aktuellen Zeitpunk benutzt LabConnect für den Signalgenerator die VID \VID\ und die PID \PID, welche unter Linux als GenericHID-Gerät von InterBiometrics zu finden ist. Da es sich bei der VID um eine VID handelt, welche für OpenSource Projekte gedacht ist, ist es fraglich ob der Signalgenerator je richig angezeigt wird. Von dem Kauf einer eigenen VID für LabConnect wird derzeit abgesehen.
 
 \section{Aufbau einer Kommunikationseinheit}
 Eine Kommunikationseinheit, im folgenden als "Paket" bezeichnet, besteht aus 13 Byte. Jedes Paket hat einen 1 Byte großen Header an seinem Anfang und einen 1 Byte großen Tail an seinem Ende. Der Header enthält die Paket-ID, an welcher sich Flussrichtung der Daten und Art der Daten erkennen lassen. Ist das 5. Bit des Headers gleich 0, so ist die Flussrichtung der Daten vom Computer zum Mikrocontroller, ist es gleich 1 vom Mikrocontroller zum Computer. An den unteren 4 Bit lässt sich der Typ des Paketes erkennen.\\
 In der folgenden Tabelle sind alle Befehle nach Paket-ID sortiert aufgelistet:\\
 
-\begin{tabular}{c|c|l|c}
+\begin{tabular}{c||c|l|c}
 Paket-ID & Flussrichtung & Bezeichnung & Größe der Daten \\ 
 \hline 
+\hline
 0x00 & PC$\rightarrow \mu$C & Config-Request & 1 Byte \\ 
 \hline 
 0x01 & PC$\rightarrow \mu$C & Set-Command & 12 Byte \\ 
@@ -45,20 +46,117 @@ Paket-ID & Flussrichtung & Bezeichnung & Größe der Daten \\
 0x13 & $\mu$C $\rightarrow$PC & Error/Status-Response & 5 Byte \\ 
 \end{tabular}
 
-\bigskip
-\bigskip
-\bigskip
-\bigskip
-
 \section{Aufbau einzelner Befehle}
+In diesem Abschnitt wird der Aufbau einzelner Befehle erläutert. Ob ein Befehl vom Computer zum Signalgenerator geht ist an der Paket-ID zu erkennen. Dies ist im Abschnitt \glqq Aufbau einer Kommunikationseinheit\grqq beschrieben.
+
+\pagebreak
 \subsection{Computer $\rightarrow$ Signalgenerator}
+
+\subsubsection{Config-Request}
+Der Config-Request steht am Anfang jeglicher Kommunikation zwischen Signalgenerator und Computer nach dem anstecken des Signalgenerators. Der Config-Request fragt beim Signalgenerator diverse Kalibrierungsdaten wie die Frequenz des Refferenztaktes oder die Boot-Daten an.
+
+\begin{flushleft}
+\begin{tabular}{c||c|l}
+Byte & Wert & Beschreibung \\
+\hline
+\hline
+0 & 0x00 & Paket-ID \\
+\hline
+1 & 0x55 & Prüfdaten, damit der Inhalt des Paketes nicht \\
+& & null ist. Der Wert ist auf 0x55 festgesetzt.\\
+\end{tabular}
+\end{flushleft}
+
+\subsubsection{Set-Command}
+Mit dem Set-Command werden alle nötigen Informationen wie Frequenz, Registerwerte für die digitalen Potentiometer und Bootdaten übergeben. Die Folgende Tabelle zeigt den Aufbau:
+\linebreak
+
+\begin{flushleft}
+\begin{tabular}{c||c|l}
+Byte & Wert & Beschreibung \\
+\hline
+\hline
+0 & 0x01 & Paket-ID \\
+\hline
+1 & * & Diese beiden Bytes enthalten die Daten für das \\
+2 & * & Kontrollregister des AD9833.\\
+\hline
+3 & * & Diese vier Byte enthalten die Daten für das \\
+4 & * & Frequenzregister des AD9833. Die Berechnung \\
+5 & * & Dieser Werte ist im Verlauf dieses Dokumentes \\
+6 & * & erklärt.\\
+\hline
+7 & * & U-Amp\\
+8 & * & U-Amp\\
+\hline
+9 & * & U-Offset\\
+10 & * & U-Offset\\
+\hline
+11 & * & Multiplexer\\
+\hline
+12 & * & Bootdaten\\
+
+\end{tabular}
+\end{flushleft}
+
+\subsubsection{Data-Request}
+
+\begin{tabular}{c||c|l}
+Byte & Wert & Beschreibung \\
+\hline
+\hline
+0 & 0x02 & Paket-ID \\
+
+\end{tabular}
+
+\subsubsection{Error/Status-Request}
+
+\begin{tabular}{c||c|l}
+Byte & Wert & Beschreibung \\
+\hline
+\hline
+0 & 0x03 & Paket-ID \\
+
+\end{tabular}
+
 \subsection{Signalgenerator $\rightarrow$ Computer}
+
+\subsubsection{Config-Response}
+
+\begin{tabular}{c||c|l}
+Byte & Wert & Beschreibung \\
+\hline
+\hline
+0 & 0x10 & Paket-ID \\
+
+\end{tabular}
+\subsubsection{Data-Response}
+
+\begin{tabular}{c||c|l}
+Byte & Wert & Beschreibung \\
+\hline
+\hline
+0 & 0x12 & Paket-ID \\
+
+\end{tabular}
+\subsubsection{Error/Status-Response}
+
+\begin{tabular}{c||c|l}
+Byte & Wert & Beschreibung \\
+\hline
+\hline
+0 & 0x13 & Paket-ID \\
+
+\end{tabular}
+
 \section{Berechnung der Registerwerte}
 \subsection{Frequenz}
 \subsection{Signalform}
 \subsection{Spitzenspannung}
 \subsection{Offsetspannung}
 \subsection{Sonstige Register}
+\subsubsection{Bootdaten}
+\subsubsection{Multiplexer}
 \section{Errorcodes}
 
 \end{document}
