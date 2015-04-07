@@ -7,3 +7,9 @@
 *.log
 *.d
 *.lst
+*.bin
+*.eep
+*.elf
+*.lss
+*.map
+*.sxm
