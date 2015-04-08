@@ -103,8 +103,7 @@ void SetupHardware(void)
 	SPI_Init(SPI_SPEED_FCPU_DIV_32 | SPI_SCK_LEAD_FALLING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 	
 	//initialize I²C-Bus
-	//TWI_Init(TWI_BIT_PRESCALE_1, TWI_BITLENGTH_FROM_FREQ(1, 200000));
-	//*/
+	TWI_Init(TWI_BIT_PRESCALE_1, TWI_BITLENGTH_FROM_FREQ(1, 200000));
 
 
 	//check wether to load data at boot and do it
@@ -234,9 +233,9 @@ void Output_data()
 	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]);
 	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
 	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
-	/*
+
 	//Send the TWI-Data, but only if device is responding.
-	if (TWI_StartTransmission(DigiPoti, 1) == true)
+	if (TWI_StartTransmission(DigiPoti, 1) == 0)
 	{
 		StatusDigiPoti = true;
 
@@ -256,5 +255,5 @@ void Output_data()
 	{
 		StatusDigiPoti = false;
 	}
-	//*/
+	return;
 }
