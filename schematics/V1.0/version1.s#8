@@ -20293,6 +20293,7 @@ Based on  the following source:
 <sheets>
 <sheet>
 <plain>
+<text x="-17.78" y="200.66" size="6.4516" layer="91">©2015 Hendrik Lüth | LabConnect | Signalgenerator | https://github.com/labconnect</text>
 </plain>
 <instances>
 <instance part="C1" gate="G$1" x="22.86" y="60.96" rot="R90"/>

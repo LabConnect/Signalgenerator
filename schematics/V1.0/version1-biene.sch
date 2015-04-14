@@ -25298,13 +25298,6 @@ Source: www.kingbright.com</description>
 <wire x1="35.56" y1="78.74" x2="38.1" y2="78.74" width="0.1524" layer="91"/>
 </segment>
 </net>
-<net name="N$53" class="0">
-<segment>
-<pinref part="U$3" gate="G$1" pin="UVCC"/>
-<pinref part="C20" gate="G$1" pin="1"/>
-<wire x1="38.1" y1="81.28" x2="27.94" y2="81.28" width="0.1524" layer="91"/>
-</segment>
-</net>
 <net name="N$3" class="0">
 <segment>
 <pinref part="C15" gate="G$1" pin="+"/>
@@ -25324,6 +25317,13 @@ Source: www.kingbright.com</description>
 <segment>
 <pinref part="R26" gate="G$1" pin="1"/>
 <pinref part="LED1" gate="G$1" pin="A"/>
+</segment>
+</net>
+<net name="N$53" class="0">
+<segment>
+<pinref part="C20" gate="G$1" pin="1"/>
+<pinref part="U$3" gate="G$1" pin="UVCC"/>
+<wire x1="38.1" y1="81.28" x2="27.94" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 </nets>

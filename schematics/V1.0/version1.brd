@@ -9,19 +9,19 @@
 <grid distance="6.25" unitdist="mil" unit="mil" style="lines" multiple="4" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
 <layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="22" name="bPlace" color="7" fill="1" visible="no" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
-<layer number="24" name="bOrigins" color="15" fill="1" visible="no" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
 <layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="26" name="bNames" color="7" fill="1" visible="no" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
-<layer number="28" name="bValues" color="7" fill="1" visible="no" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="7" fill="3" visible="no" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
 <layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
@@ -2407,6 +2407,19 @@ design rules under a new name.</description>
 <contactref element="R26" pad="2"/>
 <wire x1="6.61125" y1="25.0825" x2="6.4525" y2="24.92375" width="0.254" layer="1"/>
 <wire x1="6.4525" y1="24.92375" x2="4.1275" y2="24.92375" width="0.254" layer="1"/>
+<contactref element="C20" pad="1"/>
+<contactref element="U$3" pad="2"/>
+<wire x1="11.9625" y1="24.63048125" x2="11.9625" y2="24.765" width="0.254" layer="1"/>
+<wire x1="14.195271875" y1="22.397709375" x2="13.335" y2="23.25798125" width="0.254" layer="1"/>
+<wire x1="13.335" y1="23.25798125" x2="13.335" y2="23.33625" width="0.254" layer="1"/>
+<via x="13.335" y="23.33625" extent="1-16" drill="0.3048" shape="octagon"/>
+<wire x1="13.335" y1="23.33625" x2="13.49375" y2="23.495" width="0.254" layer="16"/>
+<wire x1="13.49375" y1="23.495" x2="15.875" y2="23.495" width="0.254" layer="16"/>
+<wire x1="15.875" y1="23.495" x2="16.35125" y2="23.97125" width="0.254" layer="16"/>
+<via x="16.35125" y="23.97125" extent="1-16" drill="0.3048" shape="octagon"/>
+<wire x1="16.35125" y1="23.97125" x2="16.38520625" y2="24.00520625" width="0.254" layer="1"/>
+<wire x1="11.9625" y1="24.63048125" x2="13.25673125" y2="23.33625" width="0.254" layer="1"/>
+<wire x1="13.25673125" y1="23.33625" x2="13.335" y2="23.33625" width="0.254" layer="1"/>
 </signal>
 <signal name="N$8">
 <contactref element="R1" pad="1"/>
@@ -3209,12 +3222,6 @@ design rules under a new name.</description>
 <wire x1="11.932528125" y1="20.13496875" x2="10.953746875" y2="21.11375" width="0.254" layer="1"/>
 <wire x1="10.953746875" y1="21.11375" x2="9.68375" y2="21.11375" width="0.254" layer="1"/>
 <wire x1="9.68375" y1="21.11375" x2="8.521909375" y2="19.951909375" width="0.254" layer="1"/>
-</signal>
-<signal name="N$53">
-<contactref element="U$3" pad="2"/>
-<contactref element="C20" pad="1"/>
-<wire x1="14.195271875" y1="22.397709375" x2="11.9625" y2="24.63048125" width="0.254" layer="1"/>
-<wire x1="11.9625" y1="24.63048125" x2="11.9625" y2="24.765" width="0.254" layer="1"/>
 </signal>
 <signal name="N$3">
 <contactref element="C15" pad="+"/>

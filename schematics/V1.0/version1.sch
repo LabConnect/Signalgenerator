@@ -22731,9 +22731,17 @@ Source: www.kingbright.com</description>
 <wire x1="27.94" y1="91.44" x2="27.94" y2="93.98" width="0.1524" layer="91"/>
 <junction x="27.94" y="93.98"/>
 <pinref part="U$3" gate="G$1" pin="VBUS"/>
-<wire x1="38.1" y1="83.82" x2="27.94" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="38.1" y1="83.82" x2="30.48" y2="83.82" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="83.82" x2="27.94" y2="83.82" width="0.1524" layer="91"/>
 <wire x1="27.94" y1="83.82" x2="27.94" y2="91.44" width="0.1524" layer="91"/>
 <junction x="27.94" y="91.44"/>
+<pinref part="U$3" gate="G$1" pin="UVCC"/>
+<pinref part="C20" gate="G$1" pin="1"/>
+<wire x1="38.1" y1="81.28" x2="30.48" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="81.28" x2="27.94" y2="81.28" width="0.1524" layer="91"/>
+<wire x1="30.48" y1="81.28" x2="30.48" y2="83.82" width="0.1524" layer="91"/>
+<junction x="30.48" y="81.28"/>
+<junction x="30.48" y="83.82"/>
 </segment>
 <segment>
 <pinref part="U$1" gate="DDS$1" pin="VDD"/>
@@ -23575,13 +23583,6 @@ Source: www.kingbright.com</description>
 <pinref part="C3" gate="G$1" pin="+"/>
 <pinref part="U$3" gate="G$1" pin="UCAP"/>
 <wire x1="35.56" y1="78.74" x2="38.1" y2="78.74" width="0.1524" layer="91"/>
-</segment>
-</net>
-<net name="N$53" class="0">
-<segment>
-<pinref part="U$3" gate="G$1" pin="UVCC"/>
-<pinref part="C20" gate="G$1" pin="1"/>
-<wire x1="38.1" y1="81.28" x2="27.94" y2="81.28" width="0.1524" layer="91"/>
 </segment>
 </net>
 <net name="N$3" class="0">
