@@ -7,9 +7,29 @@
 \usepackage[margin=2.5cm]{geometry} %layout
 \usepackage{booktabs}
 
+\usepackage{color}
+
 \usepackage{listings}
-\lstloadlanguages{C++}
-\lstset{language=C++,frame=single,numbers=left} 
+\lstloadlanguages{C}
+\lstdefinestyle{C}{
+	language=C,
+	frame=single,
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=4
+}
 
 \title{Kommunikationsprotokoll \\Signalgenerator $\Leftrightarrow$ Computer}
 \author{Hendrik Lüth, LabConnect}
@@ -223,7 +243,7 @@ LSBs: 0110 0000 1100 0101\\
 \end{center}
 \pagebreak
 Dies ist ein Beispielcode in C++, in dem die entsprechenden Register berechnet werden:
-\lstinputlisting[language=C++, firstline=1, lastline=15]{exp-code.c}
+\lstinputlisting[language=C, firstline=1, lastline=15]{exp-code.c}
 
 \subsection{Signalform}
 Für das Register der Signalform gibt es nicht viel zu berechnen, da es nur drei Signalformen gibt. Die 2 Byte, mit denen die Signalform gesteuert wird können folgende Werte annehmen:
@@ -242,8 +262,9 @@ Wert & Signalform \\
 Es ist hierbei darauf zu achten, dass auch der Zustand des Multiplexers angepasst wird, da es ansonsten zu falschen und unerwünschten Signalen kommen kann.
 
 \subsection{Spitzenspannung}
+
 \pagebreak
-\lstinputlisting[language=C++, firstline=17, lastline=36]{exp-code.c}
+\lstinputlisting[language=C, firstline=17, lastline=36]{exp-code.c}
 \subsection{Offsetspannung}
 \subsection{Sonstige Register}
 \subsubsection{Bootdaten}
