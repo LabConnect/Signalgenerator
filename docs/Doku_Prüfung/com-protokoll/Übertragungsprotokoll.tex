@@ -7,6 +7,10 @@
 \usepackage[margin=2.5cm]{geometry} %layout
 \usepackage{booktabs}
 
+\usepackage{listings}
+\lstloadlanguages{C++}
+\lstset{language=C++,frame=single,numbers=left} 
+
 \title{Kommunikationsprotokoll \\Signalgenerator $\Leftrightarrow$ Computer}
 \author{Hendrik Lüth, LabConnect}
 \newcommand{\VID}{0x1209}
@@ -100,7 +104,8 @@ Byte & Wert & Beschreibung \\
 \end{flushleft}
 
 \subsubsection{Data-Request}
-
+Nach einem Config-Request werden die Daten ausgewertet. Sollten die Bootdaten anzeigen, dass bereits beim einschalten des Signalgenerators die gespeicherte Konfiguration geladen wurde, so wird ein Data-Request gesendet, um herauszufinden wie die Konfiguration ist um sie später in der graphischen Oberfläche anzuzeigen. Dieses Paket hat keine Nutzdaten.
+\begin{flushleft}
 \begin{tabular}{c||c|l}
 Byte & Wert & Beschreibung \\
 \hline
@@ -108,9 +113,13 @@ Byte & Wert & Beschreibung \\
 0 & 0x02 & Paket-ID \\
 
 \end{tabular}
+\end{flushleft}
 
+\pagebreak
 \subsubsection{Error/Status-Request}
+Ein Error/Status-Request kann zu jedem Zeitpunk, z.B. nach einer Datenübertragung gestellt werden um den Status des Systems zu prüfen. Dieses Paket enthält keine Nutzdaten.
 
+\begin{flushleft}
 \begin{tabular}{c||c|l}
 Byte & Wert & Beschreibung \\
 \hline
@@ -118,6 +127,8 @@ Byte & Wert & Beschreibung \\
 0 & 0x03 & Paket-ID \\
 
 \end{tabular}
+\end{flushleft}
+
 
 \subsection{Signalgenerator $\rightarrow$ Computer}
 
@@ -128,31 +139,111 @@ Byte & Wert & Beschreibung \\
 \hline
 \hline
 0 & 0x10 & Paket-ID \\
-
+\hline
+1 & * & Seriennummer \\
+\hline
+2 & * & Bootdaten \\
+\hline
+3 & * & Kalibrierungs-Daten des DDS-IC \\
+4 & * & Frequenz des MCLK in Hz \\
+5 & * &  \\
+6 & * &  \\
+\hline
+7 & * & Kalibrierungs-Daten für das Digi-Poti \\
+8 & * & Multiplikatoren für Berechnung \\
 \end{tabular}
 \subsubsection{Data-Response}
-
+Dieses Paket ist die Antwort auf einen Data-Request. Es enthält die selben Daten wie ein Set-Command. Die Daten müssen vom Host dann in Frequenzen und Spannungen umgerechnet werden.
+\begin{flushleft}
 \begin{tabular}{c||c|l}
 Byte & Wert & Beschreibung \\
 \hline
 \hline
-0 & 0x12 & Paket-ID \\
-
+0 & 0x01 & Paket-ID \\
+\hline
+1 & * & Diese beiden Bytes enthalten die Daten für das \\
+2 & * & Kontrollregister des AD9833.\\
+\hline
+3 & * & Diese vier Byte enthalten die Daten für das \\
+4 & * & Frequenzregister des AD9833. Die Berechnung \\
+5 & * & Dieser Werte ist im Verlauf dieses Dokumentes \\
+6 & * & erklärt.\\
+\hline
+7 & * & In diesen beiden Bytes sind die Registerwerte \\
+8 & * & des Digi-Poti für die Ausgangsspannung enthalten.\\
+\hline
+9 & * & In diesen beiden Bytes sind die Registerwerte \\
+10 & * & des Digi-Poti für die Offset-Spg. enthalten.\\
+\hline
+11 & * & Multiplexer\\
+\hline
+12 & * & Bootdaten\\
 \end{tabular}
-\subsubsection{Error/Status-Response}
+\end{flushleft}
 
+\subsubsection{Error/Status-Response}
+Der Error/Status-Response enthält alle Error/Status-Meldungen die angefallen sind.
+
+\begin{flushleft}
 \begin{tabular}{c||c|l}
 Byte & Wert & Beschreibung \\
 \hline
 \hline
 0 & 0x13 & Paket-ID \\
-
+\hline
+1 & * &  \\
+2 & * &  \\
+3 & * & Error-Codes, bis zu 5 Stück. \\
+4 & * &  \\
+5 & * &  \\
 \end{tabular}
+\end{flushleft}
 
 \section{Berechnung der Registerwerte}
+In dieser Sektion ist aufgelistet, wie die Registerwerte für den Signalgenerator berechnet werde. Es ist sich zwingend an die Formeln zu halten, da der Signalgenerator sonst nicht die gewünschten Ausgangssignale liefert.
 \subsection{Frequenz}
+Die Frequenzregister sind die Register, welche die Frequenz des Ausgangssignals kontrollieren. Mit einer Formel muss in Abhängigkeit vom Referenztakt und der gewünschten Frequenz des Ausgangssignals der Wert für dieses Register errechnet werden. Hier die allgemeine Formel:\\
+
+\begin{center}
+$Registerwert=F_{out}\div \dfrac{F_{MCL}}{2^{28}}$\\
+\end{center}
+Und hier ein Beispiel für die Werte $F_{MCLK}=25MHz$ und $F_{out}= 7,325MHz$:\\
+\begin{center}
+$Registerwert=F_{out}\div \dfrac{F_{MCL}}{2^{28}}=7,325MHz\div \dfrac{25MHz}{2^{28}}$\\
+$Registerwert=78651588,61 \approx 78651589$\\
+\end{center}
+In diesem Fall ist es möglich zu runden, da ein Bit nur c.a. 0,093Hz entsprechen. Nun muss der Wert noch in Binär umgerechnet werden:\\
+\begin{center}
+Dec"78651589"$ = $Bin"100 1011 0000 0010 0000 1100 0101"\\
+\end{center}
+Um den Wert in das Frequenzregister zu schreiben wird der binäre Wert in LSBs und MSBs aufgeteilt und hängen die Adressierung des Registers "01" und die fehlenden Nullen, um auf 28Bit zu kommen, davor:
+\begin{center}
+MSBs: 0101 0010 1100 0000\\
+LSBs: 0110 0000 1100 0101\\
+\end{center}
+\pagebreak
+Dies ist ein Beispielcode in C++, in dem die entsprechenden Register berechnet werden:
+\lstinputlisting[language=C++, firstline=1, lastline=15]{exp-code.c}
+
 \subsection{Signalform}
+Für das Register der Signalform gibt es nicht viel zu berechnen, da es nur drei Signalformen gibt. Die 2 Byte, mit denen die Signalform gesteuert wird können folgende Werte annehmen:
+\begin{center}
+\begin{tabular}{c||l}
+Wert & Signalform \\
+\hline
+\hline
+0x2000 & Sinus \\
+\hline
+0x2002 & Dreieck \\
+\hline
+0x0000 & Rechteck \\
+\end{tabular}
+\end{center}
+Es ist hierbei darauf zu achten, dass auch der Zustand des Multiplexers angepasst wird, da es ansonsten zu falschen und unerwünschten Signalen kommen kann.
+
 \subsection{Spitzenspannung}
+\pagebreak
+\lstinputlisting[language=C++, firstline=17, lastline=36]{exp-code.c}
 \subsection{Offsetspannung}
 \subsection{Sonstige Register}
 \subsubsection{Bootdaten}
