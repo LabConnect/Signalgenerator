@@ -8,12 +8,14 @@
 \usepackage{booktabs}
 
 \usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \usepackage{listings}
-\lstloadlanguages{C}
 \lstdefinestyle{C}{
-	language=C,
-	frame=single,
+	%	backgroundcolor=\color{backcolour},   
 	commentstyle=\color{codegreen},
 	keywordstyle=\color{magenta},
 	numberstyle=\tiny\color{codegray},
@@ -27,7 +29,8 @@
 	numbersep=5pt,                  
 	showspaces=false,                
 	showstringspaces=false,
-	showtabs=false,                  
+	showtabs=false,
+	frame=single,                  
 	tabsize=4
 }
 
@@ -63,7 +66,7 @@ Paket-ID & Flussrichtung & Bezeichnung & Größe der Daten \\
 \hline 
 0x03 & PC$\rightarrow \mu$C & Error/Status-Request & 0 Byte \\ 
 \hline 
-0x10 & $\mu$C $\rightarrow$PC & Config-Response & 8 Byte \\  
+0x10 & $\mu$C $\rightarrow$PC & Config-Response & 10 Byte \\  
 \hline 
 0x12 & $\mu$C $\rightarrow$PC & Data-Response & 12 Byte \\ 
 \hline
@@ -171,6 +174,9 @@ Byte & Wert & Beschreibung \\
 \hline
 7 & * & Kalibrierungs-Daten für das Digi-Poti \\
 8 & * & Multiplikatoren für Berechnung \\
+\hline
+9 & * & Wert der Ausgangsspannung in $mV_{ss}$ \\
+10 & * & \\
 \end{tabular}
 \subsubsection{Data-Response}
 Dieses Paket ist die Antwort auf einen Data-Request. Es enthält die selben Daten wie ein Set-Command. Die Daten müssen vom Host dann in Frequenzen und Spannungen umgerechnet werden.
@@ -243,6 +249,7 @@ LSBs: 0110 0000 1100 0101\\
 \end{center}
 \pagebreak
 Dies ist ein Beispielcode in C++, in dem die entsprechenden Register berechnet werden:
+\lstset{style=C}
 \lstinputlisting[language=C, firstline=1, lastline=15]{exp-code.c}
 
 \subsection{Signalform}
@@ -264,6 +271,7 @@ Es ist hierbei darauf zu achten, dass auch der Zustand des Multiplexers angepass
 \subsection{Spitzenspannung}
 
 \pagebreak
+\lstset{style=C}
 \lstinputlisting[language=C, firstline=17, lastline=36]{exp-code.c}
 \subsection{Offsetspannung}
 \subsection{Sonstige Register}

@@ -1,7 +1,7 @@
 float mclk = 25000000, register_size = 268435456;
 float teiler = mclk / register_size;
 int f_regwert = frequenz / teiler;
-
+//block1=lsb Block4=msb
 unsigned char block1, block2, block3, block4;
 
 block1 = f_regwert;
