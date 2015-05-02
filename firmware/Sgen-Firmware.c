@@ -40,6 +40,12 @@ static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
 uint8_t DeviceConfig[ConfigSize] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18, 0x11};
 uint8_t Boot_Data[ConfigSize] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18, 0x11};
 
+uint8_t Response_Data[ConfigSize] = {};
+uint8_t input_data[14] = {};
+uint8_t Config_Data[10] = {0x01, 0x01, 0x01, 0x7d, 0x78, 0x40, 0x00, 0x00, 0x02, 0xee};
+
+
+
 //bootup-data handling
 bool load_at_boot = false;
 
@@ -196,10 +202,96 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 	
 	for (int i=0; i<ConfigSize; i++)
 	{
-		DeviceConfig[i] = Data[i];
+		input_data[i] = Data[i];
 	}
 	
-	//send the data
+	switch(input_data[0])
+	{
+		case 0x00: ConfigRequest(); break;
+		case 0x01: SetCommand(); break;
+		case 0x02: DataRequest(); break;
+		case 0x03: ErrorRequest(); break;
+		default: ReturnError(0x01); break;
+	}
+
+
+	return;
+}
+
+/****************************************************************
+here starts the sections for the functions called by the usb code
+****************************************************************/
+
+void ReturnError(uint8_t ErrorType)
+{
+	Response_Data[0] = 0x13;
+	for (int i = 1; i < 6; i++)
+	{
+		Response_Data[i] = ErrorType;
+	}
+	return;
+}
+
+void ConfigRequest()
+{
+	if (input_data[1] != 0x55)
+	{
+		ReturnError(0x02);
+		return;
+	}
+
+	Response_Data[0] = 0x10;
+
+	for (int i = 0; i < 10; i++)
+	{
+		Response_Data[i+1] = Config_Data[i];
+	}
+
+	return;
+}
+
+void SetCommand()
+{
+	
+	for (int i = 0; i < 13; i++)
+	{
+		DeviceConfig[i] = input_data[i+1];
+	}
+
+	Output_data();
+
+	if (DeviceConfig[12] == 0x01 || 0x10 || 0x11)
+	{
+		/*Save the data to the EEPROM*/
+	}
+
+	return;
+}
+
+void DataRequest()
+{
+	Response_Data[0] = 0x12; //send dataresponse
+
+	for (int i = 0; i < 10; i++)
+	{
+		Response_Data[i+1] = DeviceConfig[i];
+	}
+
+	return;
+}
+
+void ErrorRequest()
+{
+	
+
+	return;
+}
+
+
+
+void setrequest()
+{
+//send the data
 	Output_data();
 
 	//Decide what to do after boot and save Data
@@ -220,8 +312,6 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 			Boot_Data[i] = DeviceConfig[i];
 		}
 	}
-
-	return;
 }
 
 void Output_data()
