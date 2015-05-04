@@ -41,17 +41,12 @@ static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
 
 //contains the Deviceconfiguration Data
 uint8_t DeviceConfig[ConfigSize] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18, 0x11};
-uint8_t Boot_Data[ConfigSize] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18, 0x11};
 
 uint8_t Response_Data[ConfigSize] = {};
+uint8_t Error_Data[6] = {};
+
 uint8_t input_data[14] = {};
 uint8_t Config_Data[10] = {0x01, 0x01, 0x01, 0x7d, 0x78, 0x40, 0x00, 0x00, 0x02, 0xee};
-
-
-
-//bootup-data handling
-bool load_at_boot = false;
-
 
 //Indicates weather the digipoti is respondig for error feedback to the computer
 bool StatusDigiPoti = false;
@@ -116,7 +111,7 @@ void SetupHardware(void)
 
 
 	//check wether to load data at boot and do it
-	if (eeprom_read_byte((uint8_t*)EEPROM_BOOT_VALUES) == 0x01 )
+	if (eeprom_read_byte((uint8_t*)EEPROM_BOOT_VALUES) == 0x10 )
 	{
 		for (int i = 0; i < ConfigSize; i++)
 		{
@@ -226,16 +221,6 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 here starts the sections for the functions called by the usb code
 ****************************************************************/
 
-void ReturnError(uint8_t ErrorType)
-{
-	Response_Data[0] = 0x13;
-	for (int i = 1; i < 6; i++)
-	{
-		Response_Data[i] = ErrorType;
-	}
-	return;
-}
-
 void ConfigRequest()
 {
 	if (input_data[1] != 0x55)
@@ -264,13 +249,18 @@ void SetCommand()
 
 	Output_data();
 
-	if (DeviceConfig[12] == 0x01 || 0x10 || 0x11)
+	if ((DeviceConfig[12] & 0x01) == 0x01)
 	{
 		for (int i = 0; i < 12; i++)
 		{
 			uint8_t eeprom_addr = EEPROM_CONFIG_OFFSET + i;
 			eeprom_update_byte((uint8_t*)eeprom_addr, DeviceConfig[i]);
 		}
+	}
+
+	if ((DeviceConfig[12] & 0x10) == 0x10)
+	{
+		eeprom_update_byte((uint8_t*)EEPROM_BOOT_VALUES, 0x10);
 	}
 
 	return;
@@ -290,10 +280,19 @@ void DataRequest()
 
 void ErrorRequest()
 {
-	
+	for (int i = 0; i < 6; i++)
+	{
+		Response_Data[i] = Error_Data[i];
+		Error_Data[i] = 0x00;
+	}
 
 	return;
 }
+
+
+/*******************************************************
+Here starts the code called by the requests or commands
+*******************************************************/
 
 void Output_data()
 {
@@ -308,8 +307,6 @@ void Output_data()
 	//Send the TWI-Data, but only if device is responding.
 	if (TWI_StartTransmission(DigiPoti, 1) == 0)
 	{
-		StatusDigiPoti = true;
-
 		for (int i = 0; i < 4; i++)
 		{
 			int PotiWert = i + 6;
@@ -324,7 +321,17 @@ void Output_data()
 	}
 	else
 	{
-		StatusDigiPoti = false;
+		ReturnError(0x03);
+	}
+	return;
+}
+
+void ReturnError(uint8_t ErrorType)
+{
+	Error_Data[0] = 0x13;
+	for (int i = 1; i < 6; i++)
+	{
+		Error_Data[i] = ErrorType;
 	}
 	return;
 }

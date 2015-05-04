@@ -293,7 +293,51 @@ Der Folgende Beispielcode ist in C\# geschrieben und berechnet den Gesamtwert be
 \subsection{Offsetspannung}
 \subsection{Sonstige Register}
 \subsubsection{Bootdaten}
+
+\begin{flushleft}
+\begin{tabular}{c||c|c}
+Bootdaten & Beim Boot laden & Werte Speichern\\
+\hline
+\hline
+0x00 & Nein & Nein \\
+\hline
+0x01 & Nein & Ja\\
+\hline
+0x10 & Ja & Nein \\
+\hline
+0x11 & Ja & Ja \\
+\end{tabular}
+\end{flushleft}
+
+
 \subsubsection{Multiplexer}
 \section{Errorcodes}
+
+\begin{flushleft}
+\begin{tabular}{c||l}
+Fehlercode & Beschreibung des Fehlers \\
+\hline
+\hline
+0x00 & Kein Fehler \\
+\hline
+0x01 & Keine gültige Package-ID \\
+\hline
+0x02 & Transportdaten des Config-Requests sind falsch \\
+\hline
+0x03 & Digitalpotentiometer ist nicht erreichbar \\
+\hline
+0x04 &  \\
+\hline
+0x05 &  \\
+\hline
+0x06 &  \\
+\hline
+0x07 &  \\
+
+\end{tabular}
+\end{flushleft}
+
+
+
 
 \end{document}
