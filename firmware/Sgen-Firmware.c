@@ -32,6 +32,9 @@
 
 #define DigiPoti 0x12
 #define ConfigSize 12
+#define EEPROM_CONFIG_OFFSET 20
+#define EEPROM_CAL_OFFSET 10
+#define EEPROM_BOOT_VALUES 5
 
 /** Buffer to hold the previously generated HID report, for comparison purposes inside the HID class driver. */
 static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
@@ -113,11 +116,12 @@ void SetupHardware(void)
 
 
 	//check wether to load data at boot and do it
-	if (load_at_boot == true)
+	if (eeprom_read_byte((uint8_t*)EEPROM_BOOT_VALUES) == 0x01 )
 	{
 		for (int i = 0; i < ConfigSize; i++)
 		{
-			DeviceConfig[i] = Boot_Data[i];
+			uint8_t eeprom_addr = EEPROM_CONFIG_OFFSET + i;
+			DeviceConfig[i] = eeprom_read_byte((uint8_t*)eeprom_addr);
 		}
 
 		Output_data();
@@ -262,7 +266,11 @@ void SetCommand()
 
 	if (DeviceConfig[12] == 0x01 || 0x10 || 0x11)
 	{
-		/*Save the data to the EEPROM*/
+		for (int i = 0; i < 12; i++)
+		{
+			uint8_t eeprom_addr = EEPROM_CONFIG_OFFSET + i;
+			eeprom_update_byte((uint8_t*)eeprom_addr, DeviceConfig[i]);
+		}
 	}
 
 	return;
@@ -285,33 +293,6 @@ void ErrorRequest()
 	
 
 	return;
-}
-
-
-
-void setrequest()
-{
-//send the data
-	Output_data();
-
-	//Decide what to do after boot and save Data
-	if ((DeviceConfig[11] & 0xF0) == 0x10)
-	{
-		load_at_boot = true;
-	}
-	else
-	{
-		load_at_boot = false;
-	}
-
-	//save the data, if neccessary
-	if ((DeviceConfig[11] & 0x0F) == 0x01)
-	{
-		for (int i = 0; i < ConfigSize; i++)
-		{
-			Boot_Data[i] = DeviceConfig[i];
-		}
-	}
 }
 
 void Output_data()
