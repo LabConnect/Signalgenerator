@@ -1,0 +1,70 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{amssymb} % needed for math
+\usepackage{amsmath} % needed for math
+\usepackage[utf8]{inputenc} % this is needed for german umlauts
+\usepackage[german]{babel} % this is needed for german umlauts
+\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
+\usepackage[margin=2.5cm]{geometry} %layout
+\usepackage{booktabs}
+
+% this is needed for forms and links within the text
+\usepackage{hyperref}
+
+% The following is needed in order to make the code compatible
+% with both latex/dvips and pdflatex.
+\ifx\pdftexversion\undefined
+\usepackage[dvips]{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\begin{document}
+\begin{center}
+\section*{Inbetriebnahme-Protokoll \\ Signalgenerator}
+
+	\begin{tabular}{|c|c|}
+		\hline
+		& \\
+		Name des Prüfers: & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \\
+		& \\
+		\hline
+		& \\
+		Prüfdatum: & \\
+		& \\
+		\hline
+		& \\
+		Seriennummer: & \\
+		& \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\section{Optische Kontrolle}
+
+\begin{flushleft}
+	\begin{tabular}{|c||l|c|c|}
+		\hline
+		Nr. & Prüfauftrag & Ja & Nein \\
+		\hline
+		1 & Sind alle Bauteile bestückt? & & \\
+		\hline
+		2 & Sind alle Bauteile ordnungsgemäß befestigt? & & \\
+		\hline
+		3 & Sind IC-Beine miteinander verbunden, & & \\
+		& die nicht miteinander verbunden sein dürfen? & & \\
+		\hline
+		4 & der Fädeldraht zum aktivieren der USB-Schnittstelle & & \\
+		& des Mikrocontrollers ist eingelötet & & \\
+		\hline
+		5 & Der Lötjumper zum aktivieren des LT1615 ist gesetzt & & \\
+		\hline
+	\end{tabular}
+\end{flushleft}
+
+
+\section{Elektrische Kontrolle}
+
+\section{Funktionskontrolle}
+
+\end{document}
