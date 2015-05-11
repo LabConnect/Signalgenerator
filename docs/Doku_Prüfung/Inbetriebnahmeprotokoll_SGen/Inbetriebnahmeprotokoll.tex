@@ -1,17 +1,13 @@
 \documentclass[a4paper,12pt]{article}
-\usepackage{amssymb} % needed for math
-\usepackage{amsmath} % needed for math
-\usepackage[utf8]{inputenc} % this is needed for german umlauts
-\usepackage[german]{babel} % this is needed for german umlauts
-\usepackage[T1]{fontenc}    % this is needed for correct output of umlauts in pdf
-\usepackage[margin=2.5cm]{geometry} %layout
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
 \usepackage{booktabs}
-
-% this is needed for forms and links within the text
 \usepackage{hyperref}
 
-% The following is needed in order to make the code compatible
-% with both latex/dvips and pdflatex.
 \ifx\pdftexversion\undefined
 \usepackage[dvips]{graphicx}
 \else
@@ -23,10 +19,10 @@
 \begin{center}
 \section*{Inbetriebnahme-Protokoll \\ Signalgenerator}
 
-	\begin{tabular}{|c|c|}
+	\begin{tabular}{|c|p{10cm}|}
 		\hline
 		& \\
-		Name des Prüfers: & \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \\
+		Name des Prüfers: &  \\
 		& \\
 		\hline
 		& \\
@@ -43,7 +39,7 @@
 \section{Optische Kontrolle}
 
 \begin{flushleft}
-	\begin{tabular}{|c||l|c|c|}
+	\begin{tabular}{|c||p{10cm}|c|c|}
 		\hline
 		Nr. & Prüfauftrag & Ja & Nein \\
 		\hline
@@ -51,11 +47,9 @@
 		\hline
 		2 & Sind alle Bauteile ordnungsgemäß befestigt? & & \\
 		\hline
-		3 & Sind IC-Beine miteinander verbunden, & & \\
-		& die nicht miteinander verbunden sein dürfen? & & \\
+		3 & Sind IC-Beine miteinander verbunden, die nicht miteinander verbunden sein dürfen? & & \\
 		\hline
-		4 & der Fädeldraht zum aktivieren der USB-Schnittstelle & & \\
-		& des Mikrocontrollers ist eingelötet & & \\
+		4 & der Fädeldraht zum aktivieren der USB-Schnittstelle des Mikrocontrollers ist eingelötet & & \\
 		\hline
 		5 & Der Lötjumper zum aktivieren des LT1615 ist gesetzt & & \\
 		\hline
@@ -64,7 +58,78 @@
 
 
 \section{Elektrische Kontrolle}
+Die folgenden Messungen sind mit einem Digitalmultimeter durchzuführen. Sollte einer der Widerstände \underline{nicht} den Anforderungen entsprechen, so darf die Platine unter keinen Umständen einer Funktionskontrolle unterzogen werden.
+\begin{flushleft}
+	\begin{tabular}{|c||p{10cm}|c|c|p{2cm}|}
+		\hline
+		Nr. & Prüfauftrag & Ja & Nein & Wert\\
+		\hline
+		1 & Messen des Widerstandes zwischen $V_{cc}$ und GND. Ist der Wert größer als 900$\Omega$? & & &\\
+		\hline
+		2 & Messen des Widerstandes zwischen $USB_{D+}$ und GND. Ist der Wert größer als 500k$\Omega$? & & & \\
+		\hline
+		3 & Messen des Widerstandes zwischen $USB_{D-}$ und GND. Ist der Wert größer als 500k$\Omega$? & & & \\			\hline
+		4 & Messen des Widerstandes zwischen +12V und GND. Ist der Wert größer als 50k$\Omega$? & & & \\
+		\hline
+		5 & Messen des Widerstandes zwischen -12V und GND. Ist der Wert größer als 10k$\Omega$? &&& \\
+		\hline
+		6 & Messen des Widerstandes zwischen +3.3V und GND. Ist der Wert größer als 2k$\Omega$? &&& \\
+		\hline
+		7 & Messen des Widerstandes zwischen -3.3V und GND. Ist der Wert größer als 2k$\Omega$? &&& \\
+		\hline
+	\end{tabular}
+\end{flushleft}
 
 \section{Funktionskontrolle}
+Sollte einer der Widerstände in der elektrischen Kontrolle \underline{nicht} den Anforderungen entsprechen, so darf die Platine unter keinen Umständen einer Funktionskontrolle unterzogen werden.\\
+Starten Sie das Testprogramm am Computer und stecken Sie den Signalgenerator an.
+\begin{flushleft}
+	\begin{tabular}{|c||p{10cm}|c|c|}
+		\hline
+		Nr. & Prüfauftrag & Ja & Nein\\
+		\hline
+		1 & Wird der Signalgenerator vom Computer erkannt? & & \\
+		\hline
+		2 & Starten sie den Software-Test. Ist der Test erfolgreich verlaufen? & & \\
+		\hline
+		3 & Messen sie den Master-Clock (MCLK) an Pin 5 des AD9833. Ist der Wert im 5\% Rahmen von 25MHz? & & \\
+		\hline
+	\end{tabular}
+\end{flushleft}
+Tragen Sie die Frequenz des Master-Clock in das entsprechende Feld für Kalibrierungswerte ein.
+\medskip		
+Starten Sie die Messung Nr.1 bis Nr.4 und folgen Sie den Anweisungen in der Software. Die enthalten auch die Einstellungen für das Oszilloskop. Vergleichen Sie das Bild auf dem Oszilloskop dem Bild der Beispielmessung. Sind die Bilder annähernd identisch? Toleranzen im Bereich von $\pm$5\% sind akzeptabel.
+
+\begin{flushleft}
+	\begin{tabular}{|c||p{10cm}|c|c|}
+		\hline
+		Nr. & Prüfauftrag & Ja & Nein\\
+		\hline
+		4 & Messung Nr. 1 & & \\
+		\hline
+		5 & Messung Nr. 2 & & \\
+		\hline
+		6 & Messung Nr. 3 & & \\
+		\hline
+		7 & Messung Nr. 4 & & \\
+		\hline
+		8 & Messen sie die Ausgangsspannung an Pin 10 des AD9833. Liegt ihr Wert bei 700mV $\pm$100mV? & & \\
+		\hline
+	\end{tabular}
+\end{flushleft}
+Tragen Sie die Ausgangsspannung in das entsprechende Feld für Kalibrierungswerte ein.\\
+\begin{flushleft}
+	\begin{tabular}{|c||p{10cm}|c|c|}
+		\hline
+		Nr. & Prüfauftrag & Ja & Nein\\
+		\hline
+		9 & Führen Sie den Speichertest durch. War der Test erfolgreich? & & \\
+		\hline
+		10 & Führen Sie den Lesetest durch. War der Test erfolgreich? & & \\
+		\hline
+	\end{tabular}
+\end{flushleft}
+Wenn alle Tests erfolgreich waren tragen Sie die Seriennummer des Gerätes in das entsprechende Feld ein und schreiben Sie die Kalibrierungswerte auf den Signalgenerator.\\
+Trennen Sie den Signalgenerator Ordnungsgemäß von der Software und vom Computer.
 
 \end{document}
