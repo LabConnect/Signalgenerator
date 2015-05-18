@@ -1,0 +1,77 @@
+\documentclass[a4paper,12pt]{book}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{eurosym}
+
+\ifx\pdftexversion\undefined
+\usepackage[dvips]{graphicx}
+\else
+\usepackage[pdftex]{graphicx}
+\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\usepackage{color}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\usepackage{listings}
+\lstdefinestyle{C}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,
+	frame=single,                  
+	tabsize=4
+}
+
+\newcommand{\VID}{0x1209}
+\newcommand{\PID}{0x2222}
+
+\title{Signalgenerator}
+\author{Hendrik Lüth}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\chapter{Lastenheft Signalgenerator}
+\include{./LastenheftSignalgenerator/Lastenheft}
+
+\chapter{Lastenheft Gehäuse}
+\include{./LastenheftGehaeuse/Lastenheft}
+
+\chapter{Kostenübersicht}
+\include{./Kostenuebersicht/Kostenuebersicht}
+
+
+\chapter{Inbetriebnahmeprotokoll}
+\include{./InbetriebnahmeprotokollSGen/Inbetriebnahmeprotokoll}
+
+
+\chapter{Arbeitsablaufplan}
+\include{./Arbeitsablaufplan/Arbeitsablaufplan}
+
+
+\chapter{com-protokoll}
+\include{./com-protokoll/Uebertragungsprotokoll}
+
+\end{document}
