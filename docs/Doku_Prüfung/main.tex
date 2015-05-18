@@ -8,13 +8,9 @@
 \usepackage{booktabs}
 \usepackage{hyperref}
 \usepackage{eurosym}
+\usepackage{rotating}
 
-\ifx\pdftexversion\undefined
-\usepackage[dvips]{graphicx}
-\else
-\usepackage[pdftex]{graphicx}
-\DeclareGraphicsRule{*}{mps}{*}{}
-\fi
+
 
 \usepackage{color}
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -50,20 +46,21 @@
 \author{Hendrik Lüth}
 
 \begin{document}
+
 \maketitle
 \tableofcontents
 
-\chapter{Lastenheft Signalgenerator}
+\chapter{Lastenheft für die Herstellung des Signalgenerators}
 \include{./LastenheftSignalgenerator/Lastenheft}
 
-\chapter{Lastenheft Gehäuse}
+\chapter{Lastenheft für die Herstellung des Gehäuses}
 \include{./LastenheftGehaeuse/Lastenheft}
 
-\chapter{Kostenübersicht}
+\chapter{Kostenübersicht über das Projekt und die einzelnen Teilprojekte}
 \include{./Kostenuebersicht/Kostenuebersicht}
 
 
-\chapter{Inbetriebnahmeprotokoll}
+\chapter{Inbetriebnahmeprotokoll für den Signalgenerator}
 \include{./InbetriebnahmeprotokollSGen/Inbetriebnahmeprotokoll}
 
 
@@ -71,7 +68,7 @@
 \include{./Arbeitsablaufplan/Arbeitsablaufplan}
 
 
-\chapter{com-protokoll}
+\chapter{Anhang: \\ Übertragungsprotokoll für die Kommunikation zwischen PC und Signalgenerator}
 \include{./com-protokoll/Uebertragungsprotokoll}
 
 \end{document}
