@@ -1,5 +1,5 @@
 \begin{center}
-\section*{Inbetriebnahme-Protokoll \\ Signalgenerator}
+\section{Inbetriebnahme-Protokoll für den Signalgenerator}
 
 	\begin{tabular}{|c|p{10cm}|}
 		\hline
@@ -18,7 +18,7 @@
 	\end{tabular}
 \end{center}
 
-\section{Optische Kontrolle}
+\subsection{Optische Kontrolle}
 
 \begin{flushleft}
 	\begin{tabular}{|c||p{10cm}|c|c|}
@@ -27,7 +27,7 @@
 		\hline
 		1 & Sind alle Bauteile bestückt? & & \\
 		\hline
-		2 & Sind alle Bauteile ordnungsgemäß befestigt? & & \\
+		2 & Sind alle Bauteile fachgerecht gelötet? & & \\
 		\hline
 		3 & Sind IC-Beine miteinander verbunden, die nicht miteinander verbunden sein dürfen? & & \\
 		\hline
@@ -39,7 +39,7 @@
 \end{flushleft}
 
 
-\section{Elektrische Kontrolle}
+\subsection{Elektrische Kontrolle}
 Die folgenden Messungen sind mit einem Digitalmultimeter durchzuführen. Sollte einer der Widerstände \underline{nicht} den Anforderungen entsprechen, so darf die Platine unter keinen Umständen einer Funktionskontrolle unterzogen werden.
 \begin{flushleft}
 	\begin{tabular}{|c||p{10cm}|c|c|p{2cm}|}
@@ -50,7 +50,8 @@ Die folgenden Messungen sind mit einem Digitalmultimeter durchzuführen. Sollte 
 		\hline
 		2 & Messen des Widerstandes zwischen $USB_{D+}$ und GND. Ist der Wert größer als 500k$\Omega$? & & & \\
 		\hline
-		3 & Messen des Widerstandes zwischen $USB_{D-}$ und GND. Ist der Wert größer als 500k$\Omega$? & & & \\			\hline
+		3 & Messen des Widerstandes zwischen $USB_{D-}$ und GND. Ist der Wert größer als 500k$\Omega$? & & & \\
+		\hline
 		4 & Messen des Widerstandes zwischen +12V und GND. Ist der Wert größer als 50k$\Omega$? & & & \\
 		\hline
 		5 & Messen des Widerstandes zwischen -12V und GND. Ist der Wert größer als 10k$\Omega$? &&& \\
@@ -59,10 +60,12 @@ Die folgenden Messungen sind mit einem Digitalmultimeter durchzuführen. Sollte 
 		\hline
 		7 & Messen des Widerstandes zwischen -3.3V und GND. Ist der Wert größer als 2k$\Omega$? &&& \\
 		\hline
+		8 & Messen Sie die Stromaufnahme des Signalgenerators. Ist der Strom kleiner gleich 100mA? &&& \\
+		\hline
 	\end{tabular}
 \end{flushleft}
 
-\section{Funktionskontrolle}
+\subsection{Funktionskontrolle}
 Sollte einer der Widerstände in der elektrischen Kontrolle \underline{nicht} den Anforderungen entsprechen, so darf die Platine unter keinen Umständen einer Funktionskontrolle unterzogen werden.\\
 Starten Sie das Testprogramm am Computer und stecken Sie den Signalgenerator an.
 \begin{flushleft}

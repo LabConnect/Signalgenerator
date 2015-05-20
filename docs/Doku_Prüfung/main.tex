@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{book}
+\documentclass[a4paper,12pt]{article}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage[utf8]{inputenc}
@@ -9,6 +9,8 @@
 \usepackage{hyperref}
 \usepackage{eurosym}
 \usepackage{rotating}
+\usepackage{fancyhdr}
+\usepackage{pdflscape}
 
 
 
@@ -47,28 +49,40 @@
 
 \begin{document}
 
-\maketitle
-\tableofcontents
+\include{./Frontseite/Frontseite}
 
-\chapter{Lastenheft für die Herstellung des Signalgenerators}
+\pagebreak
+\tableofcontents
+\pagebreak
+\pagestyle{fancy}
+\lhead{Hendrik Lüth}
+\chead{Signalgenerator}
+\rhead{\today}
+\lfoot{ABW Flensburg}
+\cfoot{\thepage}
+\rfoot{Betrieblicher Auftrag}
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\include{./Arbeitsablaufplan/Arbeitsablaufplan}
+
+\include{./Gesamtauftrag/Lastenheft}
+\include{./Gesamtauftrag/Pflichtenheft}
+
+\include{./Datenblatt/Datenblatt}
+
 \include{./LastenheftSignalgenerator/Lastenheft}
 
-\chapter{Lastenheft für die Herstellung des Gehäuses}
 \include{./LastenheftGehaeuse/Lastenheft}
 
-\chapter{Kostenübersicht über das Projekt und die einzelnen Teilprojekte}
 \include{./Kostenuebersicht/Kostenuebersicht}
 
 
-\chapter{Inbetriebnahmeprotokoll für den Signalgenerator}
 \include{./InbetriebnahmeprotokollSGen/Inbetriebnahmeprotokoll}
 
+\include{./Gesamtauftrag/Uebergabeprotokoll}
 
-\chapter{Arbeitsablaufplan}
-\include{./Arbeitsablaufplan/Arbeitsablaufplan}
-
-
-\chapter{Anhang: \\ Übertragungsprotokoll für die Kommunikation zwischen PC und Signalgenerator}
+\section{Anhang}
 \include{./com-protokoll/Uebertragungsprotokoll}
 
 \end{document}

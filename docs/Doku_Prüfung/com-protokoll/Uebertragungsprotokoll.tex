@@ -1,8 +1,8 @@
-\section{Allgemeines}
+\subsection{Allgemeines}
 In diesem Dokument wird die Datenübertragung zwischen dem Mikrocontroller des Signalgenerators und eines Computers definiert. Die Daten werden über den USB-Bus übertragen. Die USB-Spezifikationen\footnote{http://www.usb.org/developers/docs/usb20\_docs/usb\_20\_031815.zip} enthalten alle nötigen Informationen, welche für Kommunikationen über den Bus nötig sind.\\
 Der Signalgenerator wird als HID (Human Interface Device) am Computer angemeldet, wodurch keine Installation von zusätzlichen Treibern nötig ist. Die Übertragung der Daten erfolgt über HID-Reports. Zum aktuellen Zeitpunk benutzt LabConnect für den Signalgenerator die VID \VID\ und die PID \PID, welche unter Linux als GenericHID-Gerät von InterBiometrics zu finden ist. Da es sich bei der VID um eine VID handelt, welche für OpenSource Projekte gedacht ist, ist es fraglich ob der Signalgenerator je richig angezeigt wird. Von dem Kauf einer eigenen VID für LabConnect wird derzeit abgesehen.
 
-\section{Aufbau einer Kommunikationseinheit}
+\subsection{Aufbau einer Kommunikationseinheit}
 Eine Kommunikationseinheit, im folgenden als "Paket" bezeichnet, besteht aus 13 Byte. Jedes Paket hat einen 1 Byte großen Header an seinem Anfang und einen 1 Byte großen Tail an seinem Ende. Der Header enthält die Paket-ID, an welcher sich Flussrichtung der Daten und Art der Daten erkennen lassen. Ist das 5. Bit des Headers gleich 0, so ist die Flussrichtung der Daten vom Computer zum Mikrocontroller, ist es gleich 1 vom Mikrocontroller zum Computer. An den unteren 4 Bit lässt sich der Typ des Paketes erkennen.\\
 In der folgenden Tabelle sind alle Befehle nach Paket-ID sortiert aufgelistet:\\
 
@@ -25,13 +25,13 @@ Paket-ID & Flussrichtung & Bezeichnung & Größe der Daten \\
 0x13 & $\mu$C $\rightarrow$PC & Error/Status-Response & 5 Byte \\ 
 \end{tabular}
 
-\section{Aufbau einzelner Befehle}
+\subsection{Aufbau einzelner Befehle}
 In diesem Abschnitt wird der Aufbau einzelner Befehle erläutert. Ob ein Befehl vom Computer zum Signalgenerator geht ist an der Paket-ID zu erkennen. Dies ist im Abschnitt \glqq Aufbau einer Kommunikationseinheit\grqq beschrieben.
 
 \pagebreak
-\subsection{Computer $\rightarrow$ Signalgenerator}
+\subsubsection[Computer $\rightarrow$ Signalgenerator]{Datenübertragung vom Computer zum Signalgenerator}
 
-\subsubsection{Config-Request}
+\subsubsection*{Config-Request}
 Der Config-Request steht am Anfang jeglicher Kommunikation zwischen Signalgenerator und Computer nach dem anstecken des Signalgenerators. Der Config-Request fragt beim Signalgenerator diverse Kalibrierungsdaten wie die Frequenz des Refferenztaktes oder die Boot-Daten an.
 
 \begin{flushleft}
@@ -46,7 +46,7 @@ Byte & Wert & Beschreibung \\
 \end{tabular}
 \end{flushleft}
 
-\subsubsection{Set-Command}
+\subsubsection*{Set-Command}
 Mit dem Set-Command werden alle nötigen Informationen wie Frequenz, Registerwerte für die digitalen Potentiometer und Bootdaten übergeben. Die Folgende Tabelle zeigt den Aufbau:
 \linebreak
 
@@ -78,7 +78,7 @@ Byte & Wert & Beschreibung \\
 \end{tabular}
 \end{flushleft}
 
-\subsubsection{Data-Request}
+\subsubsection*{Data-Request}
 Nach einem Config-Request werden die Daten ausgewertet. Sollten die Bootdaten anzeigen, dass bereits beim einschalten des Signalgenerators die gespeicherte Konfiguration geladen wurde, so wird ein Data-Request gesendet, um herauszufinden wie die Konfiguration ist um sie später in der graphischen Oberfläche anzuzeigen. Dieses Paket hat keine Nutzdaten.
 \begin{flushleft}
 \begin{tabular}{c||c|l}
@@ -91,7 +91,7 @@ Byte & Wert & Beschreibung \\
 \end{flushleft}
 
 \pagebreak
-\subsubsection{Error/Status-Request}
+\subsubsection*{Error/Status-Request}
 Ein Error/Status-Request kann zu jedem Zeitpunk, z.B. nach einer Datenübertragung gestellt werden um den Status des Systems zu prüfen. Dieses Paket enthält keine Nutzdaten.
 
 \begin{flushleft}
@@ -105,9 +105,9 @@ Byte & Wert & Beschreibung \\
 \end{flushleft}
 
 
-\subsection{Signalgenerator $\rightarrow$ Computer}
+\subsubsection[Signalgenerator $\rightarrow$ Computer]{Datenübertragung vom Signalgenerator zum Computer}
 
-\subsubsection{Config-Response}
+\subsubsection*{Config-Response}
 
 \begin{tabular}{c||c|l}
 Byte & Wert & Beschreibung \\
@@ -130,7 +130,7 @@ Byte & Wert & Beschreibung \\
 9 & * & Wert der Ausgangsspannung in $mV_{ss}$ \\
 10 & * & \\
 \end{tabular}
-\subsubsection{Data-Response}
+\subsubsection*{Data-Response}
 Dieses Paket ist die Antwort auf einen Data-Request. Es enthält die selben Daten wie ein Set-Command. Die Daten müssen vom Host dann in Frequenzen und Spannungen umgerechnet werden.
 \begin{flushleft}
 \begin{tabular}{c||c|l}
@@ -159,7 +159,7 @@ Byte & Wert & Beschreibung \\
 \end{tabular}
 \end{flushleft}
 
-\subsubsection{Error/Status-Response}
+\subsubsection*{Error/Status-Response}
 Der Error/Status-Response enthält alle Error/Status-Meldungen die angefallen sind.
 
 \begin{flushleft}
@@ -177,9 +177,9 @@ Byte & Wert & Beschreibung \\
 \end{tabular}
 \end{flushleft}
 
-\section{Berechnung der Registerwerte}
+\subsection{Berechnung der Registerwerte}
 In dieser Sektion ist aufgelistet, wie die Registerwerte für den Signalgenerator berechnet werde. Es ist sich zwingend an die Formeln zu halten, da der Signalgenerator sonst nicht die gewünschten Ausgangssignale liefert.
-\subsection{Frequenz}
+\subsubsection{Frequenz}
 Die Frequenzregister sind die Register, welche die Frequenz des Ausgangssignals kontrollieren. Mit einer Formel muss in Abhängigkeit vom Referenztakt und der gewünschten Frequenz des Ausgangssignals der Wert für dieses Register errechnet werden. Hier die allgemeine Formel:\\
 
 \begin{center}
@@ -205,7 +205,7 @@ Dies ist ein Beispielcode in C++, in dem die entsprechenden Register berechnet w
 \lstset{style=C}
 \lstinputlisting[language=C, firstline=1, lastline=15]{./img/exp-code.c}
 
-\subsection{Signalform}
+\subsubsection{Signalform}
 Für das Register der Signalform gibt es nicht viel zu berechnen, da es nur drei Signalformen gibt. Die 2 Byte, mit denen die Signalform gesteuert wird können folgende Werte annehmen:
 \begin{center}
 \begin{tabular}{c||l}
@@ -221,7 +221,7 @@ Wert & Signalform \\
 \end{center}
 Es ist hierbei darauf zu achten, dass auch der Zustand des Multiplexers angepasst wird, da es ansonsten zu unerwünschten Ausgangsspannungen kommen kann.
 
-\subsection{Spitzenspannung}
+\subsubsection{Spitzenspannung}
 Die Amplitude des Ausgangsignals lässt sich über den Multiplexer und das Digitalpotentiometer einstellen. Hierzu wird die Ausgangsspannung des DDS-IC als Berechnungsgrundlage hinzu gezogen. Mit dem Multiplexer kann man auswählen, ob das Signal direkt auf den Verstärker gegeben wird oder ob eine Teilung von 5:1 bzw eine Verstärkung von ungefähr 3 stattfinden soll, bevor das Signal auf den Verstärker gegeben wird. Welchen Wert das entsprechende Byte annehmen muss ist unter "Sonstige Register" im Unterabschnitt "Multiplexer" nachzulesen. Die Registerwerte des Digitalpotentiometers werden wie folgt berechnet:\\
 
 \begin{center}
@@ -242,9 +242,9 @@ Der Folgende Beispielcode ist in C\# geschrieben und berechnet den Gesamtwert be
 
 \lstset{style=C}
 \lstinputlisting[language=C, firstline=17, lastline=36]{./img/exp-code.c}
-\subsection{Offsetspannung}
-\subsection{Sonstige Register}
-\subsubsection{Bootdaten}
+\subsubsection{Offsetspannung}
+\subsubsection{Sonstige Register}
+\subsubsection*{Bootdaten}
 
 \begin{flushleft}
 \begin{tabular}{c||c|c}
@@ -262,8 +262,8 @@ Bootdaten & Beim Boot laden & Werte Speichern\\
 \end{flushleft}
 
 
-\subsubsection{Multiplexer}
-\section{Errorcodes}
+\subsubsection*{Multiplexer}
+\subsection{Errorcodes}
 
 \begin{flushleft}
 \begin{tabular}{c||l}
