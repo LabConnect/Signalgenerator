@@ -262,6 +262,10 @@ void SetCommand()
 	{
 		eeprom_update_byte((uint8_t*)EEPROM_BOOT_VALUES, 0x10);
 	}
+	else
+	{
+		eeprom_update_byte((uint8_t*)EEPROM_BOOT_VALUES, 0x00);
+	}
 
 	return;
 }
