@@ -18,53 +18,6 @@
 	\end{tabular}
 \end{center}
 
-\subsection{Optische Kontrolle}
-
-\begin{flushleft}
-	\begin{tabular}{|c||p{10cm}|c|c|}
-		\hline
-		Nr. & Prüfauftrag & Ja & Nein \\
-		\hline
-		1 & Sind alle Bauteile bestückt? & & \\
-		\hline
-		2 & Sind alle Bauteile fachgerecht gelötet? & & \\
-		\hline
-		3 & Sind IC-Beine miteinander verbunden, die nicht miteinander verbunden sein dürfen? & & \\
-		\hline
-		4 & der Fädeldraht zum aktivieren der USB-Schnittstelle des Mikrocontrollers ist eingelötet & & \\
-		\hline
-		5 & Der Lötjumper zum aktivieren des LT1615 ist gesetzt & & \\
-		\hline
-	\end{tabular}
-\end{flushleft}
-
-
-\subsection{Elektrische Kontrolle}
-Die folgenden Messungen sind mit einem Digitalmultimeter durchzuführen. Sollte einer der Widerstände \underline{nicht} den Anforderungen entsprechen, so darf die Platine unter keinen Umständen einer Funktionskontrolle unterzogen werden.
-\begin{flushleft}
-	\begin{tabular}{|c||p{10cm}|c|c|p{2cm}|}
-		\hline
-		Nr. & Prüfauftrag & Ja & Nein & Wert\\
-		\hline
-		1 & Messen des Widerstandes zwischen $V_{cc}$ und GND. Ist der Wert größer als 900$\Omega$? & & &\\
-		\hline
-		2 & Messen des Widerstandes zwischen $USB_{D+}$ und GND. Ist der Wert größer als 500k$\Omega$? & & & \\
-		\hline
-		3 & Messen des Widerstandes zwischen $USB_{D-}$ und GND. Ist der Wert größer als 500k$\Omega$? & & & \\
-		\hline
-		4 & Messen des Widerstandes zwischen +12V und GND. Ist der Wert größer als 50k$\Omega$? & & & \\
-		\hline
-		5 & Messen des Widerstandes zwischen -12V und GND. Ist der Wert größer als 10k$\Omega$? &&& \\
-		\hline
-		6 & Messen des Widerstandes zwischen +3.3V und GND. Ist der Wert größer als 2k$\Omega$? &&& \\
-		\hline
-		7 & Messen des Widerstandes zwischen -3.3V und GND. Ist der Wert größer als 2k$\Omega$? &&& \\
-		\hline
-		8 & Messen Sie die Stromaufnahme des Signalgenerators. Ist der Strom kleiner gleich 100mA? &&& \\
-		\hline
-	\end{tabular}
-\end{flushleft}
-
 \subsection{Funktionskontrolle}
 Sollte einer der Widerstände in der elektrischen Kontrolle \underline{nicht} den Anforderungen entsprechen, so darf die Platine unter keinen Umständen einer Funktionskontrolle unterzogen werden.\\
 Starten Sie das Testprogramm am Computer und stecken Sie den Signalgenerator an.

@@ -42,7 +42,7 @@ static uint8_t PrevHIDReportBuffer[GENERIC_REPORT_SIZE];
 //contains the Deviceconfiguration Data
 uint8_t DeviceConfig[ConfigSize] = {0x20, 0x00, 0x40, 0x00, 0x69, 0xf1, 0x00, 0x00, 0x00, 0x00, 0x18, 0x11};
 
-uint8_t Response_Data[15] = {};
+uint8_t Response_Data[ConfigSize] = {};
 uint8_t Error_Data[6] = {};
 
 uint8_t input_data[14] = {};
@@ -71,10 +71,6 @@ USB_ClassInfo_HID_Device_t Generic_HID_Interface =
 			},
 	};
 
-
-/** Main program entry point. This routine contains the overall program flow, including initial
- *  setup of all components and the main program loop.
- */
 int main(void)
 {
 	SetupHardware();
@@ -89,7 +85,6 @@ int main(void)
 	
 }
 
-/** Configures the board hardware and chip peripherals for the demo's functionality. */
 void SetupHardware(void)
 {
 
@@ -106,7 +101,7 @@ void SetupHardware(void)
 	// http://avrbeginners.net/architecture/spi/spi.html
 	SPI_Init(SPI_SPEED_FCPU_DIV_32 | SPI_SCK_LEAD_FALLING | SPI_SAMPLE_LEADING | SPI_ORDER_MSB_FIRST | SPI_MODE_MASTER);
 	
-	//initialize I²C-Bus
+	//initialize TWI-Bus
 	TWI_Init(TWI_BIT_PRESCALE_1, TWI_BITLENGTH_FROM_FREQ(1, 200000));
 
 
@@ -177,10 +172,6 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 {
 	uint8_t* Data        = (uint8_t*)ReportData;
 
-	for (int i = 0; i <12; i++)
-	{
-		Data[i] = Response_Data[i];
-	}
 
 	*ReportSize = GENERIC_REPORT_SIZE;
 
@@ -235,7 +226,7 @@ void ConfigRequest()
 
 	Response_Data[0] = 0x10;
 
-	for (int i = 0; i < 13; i++)
+	for (int i = 0; i < 10; i++)
 	{
 		Response_Data[i+1] = Config_Data[i];
 	}
