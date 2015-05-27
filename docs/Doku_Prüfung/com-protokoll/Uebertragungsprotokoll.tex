@@ -1,9 +1,9 @@
 \subsection{Allgemeines}
-In diesem Dokument wird die Datenübertragung zwischen dem Mikrocontroller des Signalgenerators und eines Computers definiert. Die Daten werden über den USB-Bus übertragen. Die USB-Spezifikationen\footnote{http://www.usb.org/developers/docs/usb20\_docs/usb\_20\_031815.zip} enthalten alle nötigen Informationen, welche für Kommunikationen über den Bus nötig sind.\\
-Der Signalgenerator wird als HID (Human Interface Device) am Computer angemeldet, wodurch keine Installation von zusätzlichen Treibern nötig ist. Die Übertragung der Daten erfolgt über HID-Reports. Zum aktuellen Zeitpunk benutzt LabConnect für den Signalgenerator die VID \VID\ und die PID \PID, welche unter Linux als GenericHID-Gerät von InterBiometrics zu finden ist. Da es sich bei der VID um eine VID handelt, welche für OpenSource Projekte gedacht ist, ist es fraglich ob der Signalgenerator je richig angezeigt wird. Von dem Kauf einer eigenen VID für LabConnect wird derzeit abgesehen.
+In diesem Dokument wird die Datenübertragung zwischen dem Mikrocontroller des Signalgenerators und eines Computers definiert. Die Daten werden über den USB übertragen. Die USB-Spezifikationen\footnote{http://www.usb.org/developers/docs/usb20\_docs/usb\_20\_031815.zip} enthalten alle nötigen Informationen, welche für Kommunikationen über den Bus nötig sind.\\
+Der Signalgenerator wird als HID (Human Interface Device) am Computer angemeldet, wodurch keine Installation von zusätzlichen Treibern nötig ist. Die Übertragung der Daten erfolgt über HID-Reports. Zum aktuellen Zeitpunkt benutzt LabConnect für den Signalgenerator die VID \VID\ und die PID \PID, welche unter Linux als GenericHID-Gerät von InterBiometrics zu finden ist. Da es sich bei der VID um eine VID handelt, welche für Open-Source-Projekte gedacht ist, ist es fraglich ob der Signalgenerator je richtig angezeigt wird. Von dem Kauf einer eigenen VID für LabConnect wird derzeit abgesehen.
 
 \subsection{Aufbau einer Kommunikationseinheit}
-Eine Kommunikationseinheit, im folgenden als \glqq Paket\grqq\ bezeichnet, besteht aus 13 Byte. Jedes Paket hat einen 1 Byte großen Header an seinem Anfang und einen 1 Byte großen Tail an seinem Ende. Der Header enthält die Paket-ID, an welcher sich Flussrichtung der Daten und Art der Daten erkennen lassen. Ist das 5. Bit des Headers gleich 0, so ist die Flussrichtung der Daten vom Computer zum Mikrocontroller, ist es gleich 1 vom Mikrocontroller zum Computer. An den unteren 4 Bit lässt sich der Typ des Paketes erkennen.\\
+Eine Kommunikationseinheit, im Folgenden als \glqq Paket\grqq\ bezeichnet, besteht aus 13 Byte. Jedes Paket hat einen 1 Byte großen Header an seinem Anfang und einen 1 Byte großen Tail an seinem Ende. Der Header enthält die Paket-ID, an welcher sich Flussrichtung der Daten und Art der Daten erkennen lassen. Ist das fünfte Bit des Headers gleich 0, so ist die Flussrichtung der Daten vom Computer zum Mikrocontroller, ist es gleich Eins, vom Mikrocontroller zum Computer. An den unteren vier Bit lässt sich der Typ des Paketes erkennen.\\
 In der folgenden Tabelle sind alle Befehle nach Paket-ID sortiert aufgelistet:\\
 
 \begin{tabular}{c||c|l|c}
@@ -32,7 +32,7 @@ In diesem Abschnitt wird der Aufbau einzelner Befehle erläutert. Ob ein Befehl 
 \subsubsection[Computer $\rightarrow$ Signalgenerator]{Datenübertragung vom Computer zum Signalgenerator}
 
 \subsubsection*{Config-Request}
-Der Config-Request steht am Anfang jeglicher Kommunikation zwischen Signalgenerator und Computer nach dem anstecken des Signalgenerators. Der Config-Request fragt beim Signalgenerator diverse Kalibrierungsdaten wie die Frequenz des Refferenztaktes oder die Boot-Daten an.
+Der Config-Request steht am Anfang jeglicher Kommunikation zwischen Signalgenerator und Computer nach dem Anstecken des Signalgenerators. Der Config-Request fragt beim Signalgenerator diverse Kalibrierungsdaten wie die Frequenz des Referenztaktes oder die Boot-Daten an.
 
 \begin{flushleft}
 \begin{tabular}{c||c|l}
@@ -47,7 +47,7 @@ Byte & Wert & Beschreibung \\
 \end{flushleft}
 
 \subsubsection*{Set-Command}
-Mit dem Set-Command werden alle nötigen Informationen wie Frequenz, Registerwerte für die digitalen Potentiometer und Bootdaten übergeben. Die Folgende Tabelle zeigt den Aufbau:
+Mit dem Set-Command werden alle nötigen Informationen wie Frequenz, Registerwerte für die digitalen Potentiometer und Boot-Daten übergeben. Die folgende Tabelle zeigt den Aufbau:
 \linebreak
 
 \begin{flushleft}
@@ -73,13 +73,13 @@ Byte & Wert & Beschreibung \\
 \hline
 11 & * & Multiplexer\\
 \hline
-12 & * & Bootdaten\\
+12 & * & Boot-Daten\\
 
 \end{tabular}
 \end{flushleft}
 
 \subsubsection*{Data-Request}
-Nach einem Config-Request werden die Daten ausgewertet. Sollten die Bootdaten anzeigen, dass bereits beim einschalten des Signalgenerators die gespeicherte Konfiguration geladen wurde, so wird ein Data-Request gesendet, um herauszufinden wie die Konfiguration ist um sie später in der graphischen Oberfläche anzuzeigen. Dieses Paket hat keine Nutzdaten.
+Nach einem Config-Request werden die Daten ausgewertet. Sollten die Boot-Daten anzeigen, dass bereits beim Einschalten des Signalgenerators die gespeicherte Konfiguration geladen wurde, so wird ein Data-Request gesendet, um herauszufinden wie die Konfiguration ist um sie später in der graphischen Oberfläche anzuzeigen. Dieses Paket hat keine Nutzdaten.
 \begin{flushleft}
 \begin{tabular}{c||c|l}
 Byte & Wert & Beschreibung \\
@@ -92,7 +92,7 @@ Byte & Wert & Beschreibung \\
 
 \pagebreak
 \subsubsection*{Error/Status-Request}
-Ein Error/Status-Request kann zu jedem Zeitpunk, z.B. nach einer Datenübertragung gestellt werden um den Status des Systems zu prüfen. Dieses Paket enthält keine Nutzdaten.
+Ein Error/Status-Request kann zu jedem Zeitpunkt, z.B. nach einer Datenübertragung gestellt werden um den Status des Systems zu prüfen. Dieses Paket enthält keine Nutzdaten.
 
 \begin{flushleft}
 \begin{tabular}{c||c|l}
@@ -117,14 +117,14 @@ Byte & Wert & Beschreibung \\
 \hline
 1 & * & Seriennummer \\
 \hline
-2 & * & Bootdaten \\
+2 & * & Boot-Daten \\
 \hline
-3 & * & Kalibrierungs-Daten des DDS-IC \\
+3 & * & Kalibrierungsdaten des DDS-IC \\
 4 & * & Frequenz des MCLK in Hz \\
 5 & * &  \\
 6 & * &  \\
 \hline
-7 & * & Kalibrierungs-Daten für das Digi-Poti \\
+7 & * & Kalibrierungsdaten für das Digi-Poti \\
 8 & * & Multiplikatoren für Berechnung \\
 \hline
 9 & * & Wert der Ausgangsspannung in $mV_{ss}$ \\
@@ -155,7 +155,7 @@ Byte & Wert & Beschreibung \\
 \hline
 11 & * & Multiplexer\\
 \hline
-12 & * & Bootdaten\\
+12 & * & Boot-Daten\\
 \end{tabular}
 \end{flushleft}
 
@@ -171,14 +171,14 @@ Byte & Wert & Beschreibung \\
 \hline
 1 & * &  \\
 2 & * &  \\
-3 & * & Error-Codes, bis zu 5 Stück. \\
+3 & * & Error-Codes, bis zu fünf Stück. \\
 4 & * &  \\
 5 & * &  \\
 \end{tabular}
 \end{flushleft}
 
 \subsection{Berechnung der Registerwerte}
-In dieser Sektion ist aufgelistet, wie die Registerwerte für den Signalgenerator berechnet werde. Es ist sich zwingend an die Formeln zu halten, da der Signalgenerator sonst nicht die gewünschten Ausgangssignale liefert.
+In dieser Sektion ist aufgelistet, wie die Registerwerte für den Signalgenerator berechnet werden. Es ist sich zwingend an die Formeln zu halten, da der Signalgenerator sonst nicht die gewünschten Ausgangssignale liefert.
 \subsubsection{Frequenz}
 Die Frequenzregister sind die Register, welche die Frequenz des Ausgangssignals kontrollieren. Mit einer Formel muss in Abhängigkeit vom Referenztakt und der gewünschten Frequenz des Ausgangssignals der Wert für dieses Register errechnet werden. Hier die allgemeine Formel:\\
 
@@ -195,7 +195,8 @@ In diesem Fall ist es möglich zu runden, da ein Bit nur c.a. 0,093Hz entspreche
 \begin{center}
 Dec"78651589"$ = $Bin"100 1011 0000 0010 0000 1100 0101"\\
 \end{center}
-Um den Wert in das Frequenzregister zu schreiben wird der binäre Wert in LSBs und MSBs aufgeteilt und hängen die Adressierung des Registers "01" und die fehlenden Nullen, um auf 28Bit zu kommen, davor:
+% Formulierung.
+Um den Wert in das Frequenzregister zu schreiben wird der binäre Wert in LSBs und MSBs aufgeteilt und es wird die Adressierung des Registers "01" und die fehlenden Nullen, um auf 28 Bit zu kommen, davor angehängt:
 \begin{center}
 MSBs: 0101 0010 1100 0000\\
 LSBs: 0110 0000 1100 0101\\
@@ -206,7 +207,7 @@ Dies ist ein Beispielcode in C++, in dem die entsprechenden Register berechnet w
 \lstinputlisting[language=C, firstline=1, lastline=15]{./img/exp-code.c}
 
 \subsubsection{Signalform}
-Für das Register der Signalform gibt es nicht viel zu berechnen, da es nur drei Signalformen gibt. Die 2 Byte, mit denen die Signalform gesteuert wird können folgende Werte annehmen:
+Für das Register der Signalform gibt es nicht viel zu berechnen, da es nur drei Signalformen gibt. Die zwei Byte, mit denen die Signalform gesteuert wird können folgende Werte annehmen:
 \begin{center}
 \begin{tabular}{c||l}
 Wert & Signalform \\
@@ -220,9 +221,9 @@ Wert & Signalform \\
 \end{tabular}
 \end{center}
 Es ist hierbei darauf zu achten, dass auch der Zustand des Multiplexers angepasst wird, da es ansonsten zu unerwünschten Ausgangsspannungen kommen kann.
-
+% Formulierung ("kann man"), "Teilung von 5:1", etc.
 \subsubsection{Spitzenspannung}
-Die Amplitude des Ausgangsignals lässt sich über den Multiplexer und das Digitalpotentiometer einstellen. Hierzu wird die Ausgangsspannung des DDS-IC als Berechnungsgrundlage hinzu gezogen. Mit dem Multiplexer kann man auswählen, ob das Signal direkt auf den Verstärker gegeben wird oder ob eine Teilung von 5:1 bzw eine Verstärkung von ungefähr 3 stattfinden soll, bevor das Signal auf den Verstärker gegeben wird. Welchen Wert das entsprechende Byte annehmen muss ist unter "Sonstige Register" im Unterabschnitt "Multiplexer" nachzulesen. Die Registerwerte des Digitalpotentiometers werden wie folgt berechnet:\\
+Die Amplitude des Ausgangsignals lässt sich über den Multiplexer und das Digitalpotentiometer einstellen. Hierzu wird die Ausgangsspannung des DDS-IC als Berechnungsgrundlage hinzugezogen. Mit dem Multiplexer kann man auswählen, ob das Signal direkt auf den Verstärker gegeben wird oder ob eine Teilung von 5:1 bzw. eine Verstärkung von ungefähr 3 stattfinden soll, bevor das Signal auf den Verstärker gegeben wird. Welchen Wert das entsprechende Byte annehmen muss ist unter "Sonstige Register" im Unterabschnitt "Multiplexer" nachzulesen. Die Registerwerte des Digitalpotentiometers werden wie folgt berechnet:\\
 
 \begin{center}
 $Registerwert_{gesamt} = (\dfrac{100k\Omega}{\dfrac{U_{Ausgang}}{U_{Eingang}}-1}-2,2k\Omega)\div \dfrac{200k\Omega}{512}$
@@ -237,18 +238,18 @@ $Registerwert_{gesamt} \approx 13184,61\div 390,625$ \\
 \medskip
 $Registerwert_{gesamt} \approx 34$
 \end{center}
-Da der Registerwert für zwei in Reihe geschaltete Widerstände gilt muss dieser Wert noch auf beide Register aufgeteilt werden. Sollte das Ergebnis eine ungerade Bit-Zahl annehmen so erhält eines der Register einfach ein Bit mehr. Daraus ergibt sich, dass beide Register den dezimalen Werte "17" haben bzw 0x11 in Hexadezimal.\\
-Der Folgende Beispielcode ist in C\# geschrieben und berechnet den Gesamtwert beider Register.
+Da der Registerwert für zwei in Reihe geschaltete Widerstände gilt, muss dieser Wert noch auf beide Register aufgeteilt werden. Sollte das Ergebnis eine ungerade Anzahl Bits annehmen so erhält eines der Register einfach ein Bit mehr. Daraus ergibt sich, dass beide Register den dezimalen Wert "17" haben bzw 0x11 in Hexadezimal.\\
+Der folgende Beispielcode ist in C\# geschrieben und berechnet den Gesamtwert beider Register.
 
 \lstset{style=C}
 \lstinputlisting[language=C, firstline=17, lastline=36]{./img/exp-code.c}
 \subsubsection{Offsetspannung}
 \subsubsection{Sonstige Register}
-\subsubsection*{Bootdaten}
+\subsubsection*{Boot-Daten}
 
 \begin{flushleft}
 \begin{tabular}{c||c|c}
-Bootdaten & Beim Boot laden & Werte Speichern\\
+Boot-Daten & Beim Boot laden & Werte speichern\\
 \hline
 \hline
 0x00 & Nein & Nein \\
@@ -263,7 +264,7 @@ Bootdaten & Beim Boot laden & Werte Speichern\\
 
 
 \subsubsection*{Multiplexer}
-\subsection{Errorcodes}
+\subsection{Fehlercodes}
 
 \begin{flushleft}
 \begin{tabular}{c||l}

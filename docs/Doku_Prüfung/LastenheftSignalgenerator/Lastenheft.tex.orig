@@ -1,25 +1,25 @@
 \section{Lastenheft zur Herstellung des Signalgenerators}
 \subsection{Zielbestimmung}
-Es soll ein Signalgenerator angefertigt werden. Hierbei ist sich an den Schaltplan und die dort verzeichneten Werte zu halten.
+Es soll ein Signalgenerator angefertigt werden. Hierbei ist sich an den Schalplan und die dort verzeichneten Werte zu halten.
 Die verwendeten Bauteile sollen, soweit möglich, SMD-Bauteile sein.\\
 Der Umfang des Auftrages umfasst:
 \begin{itemize}
-\item{das Entwerfen und Herstellen der Platine}
-\item{die Beschaffung der Bauteile}
+\item{das Layouten und Herstellen der Platine}
+\item{Beschaffung der Bauteile}
 \item{das Bestücken der Platine}
-\item{das Programmieren einer Software für den Mikrocontroller des Signalgenerators}
-\item{das Erstellen einer Stückliste}
-\item{die mechanische und optische Prüfung der Platine}
+\item{das programmieren einer Software für den Mikrocontroller des Signalgenerators}
+\item{Erstellen einer Stückliste}
+\item{Mechanische und Optische Prüfung der Platine}
 \end{itemize}
 
 \subsection{Funktionale Anforderungen}
 
 \subsubsection{Platine \& Layout}
 
-Da ein bestimmtes Gehäuse verwendet werden soll, darf die Platine des Signalgenerators nicht größer als
-die Innenbemaßung des Gehäuses sein. Eine technische Zeichnung des Gehäuses ist dem Lastenheft beigefügt.\\
-Des Weiteren sollte das Layout so angefertigt werden, dass die Mikro-USB Buchse und die SMA-R Buchse gegenüber
-an den kurzen Seiten der Platine platziert werden.
+Da ein bestimmtes Gehäuse verwendet werden soll darf die Platine des Signalgenerators nicht größer als
+die Innenbemaßung des Gehäuses sein. Eine Technische Zeichnung des Gehäuses ist dem Lastenheft beigefügt.\\
+Des weiteren sollte das Layout so angefertigt werden, dass die Mikro-USB Buchse und die SMA-R Buchse gegenüber
+von einander an den kurzen Seite der Platine platziert werden.
 Die Platine soll Doublelayer sein und eine Dicke von 1,6mm haben.
 
 \subsubsection{Beschaffen der Bauteile}

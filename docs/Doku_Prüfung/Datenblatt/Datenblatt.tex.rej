@@ -1,0 +1,25 @@
+--- docs/Doku_Prüfung/Datenblatt/Datenblatt.tex
++++ docs/Doku_Prüfung/Datenblatt/Datenblatt.tex
+@@ -5,7 +5,7 @@
+ \begin{minipage}{0.4\textwidth}
+ \begin{flushleft}
+ \subsection{Features}
+-Der Signalgenerator basiert auf dem Prinzip der Direkten Digitalen Synthese (DDS) und ist in der Lage Ausgangs ein breites Spektrum an Frequenzen, Signalformen und Ausgangsspannungen zu erzeugen. Die Steuerung des Gerätes erfolgt ausschließlich über den Computer, ein autarker Betrieb ist möglich. Im Gerät können Hardware-spezifische Kalibrierungswerte gespeichert werden.
++Der Signalgenerator basiert auf dem Prinzip der Direkten Digitalen Synthese (DDS) und ist in der Lage, Ausgangs ein breites Spektrum an Frequenzen, Signalformen und Ausgangsspannungen zu erzeugen. Die Steuerung des Gerätes erfolgt ausschließlich über den Computer, ein autarker Betrieb ist möglich. Im Gerät können hardwarespezifische Kalibrierungswerte gespeichert werden.
+ \end{flushleft}
+ \end{minipage}
+ \hfill
+@@ -27,7 +27,7 @@ Leistungsaufnahme P & 0,14 & 0,25 & 0,55 & W & \\
+ \end{tabular}
+ \end{center}
+ 
+-\subsection{Absolut Maximum Ratings}
++\subsection{Absolute Maximum Ratings}
+ \begin{center}
+ \begin{tabular}{l|c|c}
+ \hline
+@@ -39,4 +39,4 @@ Spannung an D- $U_{D-}$ & 3,6 & Volt \\
+ \hline
+ Ausgangsstrom $I_{a}$ & 95 & mA \\
+ \end{tabular}
+-\end{center}+\end{center}

@@ -46,7 +46,7 @@ uint8_t Response_Data[15] = {};
 uint8_t Error_Data[6] = {};
 
 uint8_t input_data[14] = {};
-uint8_t Config_Data[10] = {0x01, 0x01, 0x01, 0x7d, 0x78, 0x40, 0x00, 0x00, 0x02, 0xee};
+uint8_t Config_Data[10] = {0x02, 0x00, 0x01, 0x7d, 0x77, 0x9e, 0x00, 0x00, 0x02, 0xee};
 
 //Indicates weather the digipoti is respondig for error feedback to the computer
 bool StatusDigiPoti = false;
@@ -120,6 +120,7 @@ void SetupHardware(void)
 		}
 
 		Output_data();
+		Config_Data[1] = 0x10;
 	}
 
 }

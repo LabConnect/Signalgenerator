@@ -1,7 +1,7 @@
 \section[Lastenheft betriebl. Auftrag]{Lastenheft des betrieblichen Auftrages}
 
 \subsection{Zielbestimmungen}
-Der Auszubildende soll für den Ausbildungsbetrieb einen DDS-basierten Signalgenerator herstellen, welcher über eine PC-Software unter Linux und Windows gesteuert werden kann. Die Software für Linux-Systeme ist in C++ geschrieben, die Software für Windows-Systeme in C\#. Hierzu soll der Azubi anhand des vorgegebenen Schaltplanes den Signalgenerator herstellen und in ein Gehäuse montieren. Des weiteren soll der Azubi die Firmware für den verbauten Mikrocontroller schreiben.\\
+Der Auszubildende soll für den Ausbildungsbetrieb einen DDS-basierten Signalgenerator herstellen, welcher über eine PC-Software unter Linux und Windows gesteuert werden kann. Die Software für Linux-Systeme ist in C++ geschrieben, die Software für Windows-Systeme in C\#. Hierzu soll der Azubi anhand des vorgegebenen Schaltplanes den Signalgenerator herstellen und in ein Gehäuse montieren. Des Weiteren soll der Azubi die Firmware für den verbauten Mikrocontroller schreiben.\\
 Elektronische Eigenschaften des Signalgenerators:
 \begin{itemize}
 \item Signalform: Sinus, Dreieck, Rechteck
@@ -12,10 +12,10 @@ Elektronische Eigenschaften des Signalgenerators:
 \item Signalausgang: SMA-Reverse
 \end{itemize}
 
-\subsection{funktionale Anforderungen}
+\subsection{Funktionale Anforderungen}
 \subsubsection{Gehäuse}
-Für den Signalgenerator soll ein möglichst kleines Gehäuse gewählt werden, nach Möglichkeit im \glqq Hosentaschen-Format\grqq . Das Material des Gehäuses soll schwarzer Kunststoff sein.
+Für den Signalgenerator soll ein möglichst kleines Gehäuse gewählt werden, nach Möglichkeit im \glqq Hosentaschen-Format\grqq. Das Material des Gehäuses soll schwarzer Kunststoff sein.
 \subsubsection{Platine \& Layout}
-Die Platine ist den Innenmaßen des Gehäuses anzupassen. Die USB-Buchse und die SMA-Reverse-Buchse sollen in der Mitte der kürzeren Seite der Platine positioniert werden. Die Platine ist zu Bestücken, die Funktion und Einhaltung der Elektronischen Eigenschaften und Anforderungen ist zu überprüfen und zu dokumentieren.
+Die Platine ist den Innenmaßen des Gehäuses anzupassen. Die USB-Buchse und die SMA-Reverse-Buchse sollen in der Mitte der kürzeren Seite der Platine positioniert werden. Die Platine ist zu bestücken, die Funktion und Einhaltung der elektronischen Eigenschaften und Anforderungen ist zu überprüfen und zu dokumentieren.
 \subsubsection{Firmware}
-Für den Mikrocontroller ist eine Firmware zu schreiben, welche es dem Signalgenerator ermöglicht über USB mit dem Computer zu kommunizieren. Hierzu soll das LUFA-Framework\footnote{http://www.fourwalledcubicle.com/files/LUFA/Doc/120730/html/index.html} verwendet werden. Der Quellcode hierzu ist auf Github\footnote{https://github.com/abcminiuser/lufa} einsehbar und kann auch von dort heruntergeladen werden. Die Kommunikation des Signalgenerators mit dem Computer ist im Kommunikationsprotokoll dokumentiert, welches im Anhang zu finden ist.
+Für den Mikrocontroller ist eine Firmware zu schreiben, welche es dem Signalgenerator ermöglicht über USB mit dem Computer zu kommunizieren. Hierzu soll das LUFA-Framework\footnote{http://www.fourwalledcubicle.com/files/LUFA/Doc/120730/html/index.html} verwendet werden. Der Quellcode hierzu ist auf GitHub\footnote{https://github.com/abcminiuser/lufa} einsehbar und kann auch von dort heruntergeladen werden. Die Kommunikation des Signalgenerators mit dem Computer ist im Kommunikationsprotokoll dokumentiert, welches im Anhang zu finden ist.

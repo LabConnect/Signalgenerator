@@ -1,0 +1,57 @@
+--- docs/Doku_Prüfung/InbetriebnahmeprotokollSGen/Inbetriebnahmeprotokoll.tex
++++ docs/Doku_Prüfung/InbetriebnahmeprotokollSGen/Inbetriebnahmeprotokoll.tex
+@@ -31,9 +31,9 @@
+ 		\hline
+ 		3 & Sind IC-Beine miteinander verbunden, die nicht miteinander verbunden sein dürfen? & & \\
+ 		\hline
+-		4 & der Fädeldraht zum aktivieren der USB-Schnittstelle des Mikrocontrollers ist eingelötet & & \\
++		4 & Der Fädeldraht zum Aktivieren der USB-Schnittstelle des Mikrocontrollers ist eingelötet & & \\
+ 		\hline
+-		5 & Der Lötjumper zum aktivieren des LT1615 ist gesetzt & & \\
++		5 & Der Lötjumper zum Aktivieren des LT1615 ist gesetzt & & \\
+ 		\hline
+ 	\end{tabular}
+ \end{flushleft}
+@@ -60,7 +60,7 @@ Die folgenden Messungen sind mit einem Digitalmultimeter durchzuführen. Sollte
+ 		\hline
+ 		7 & Messen des Widerstandes zwischen -3.3V und GND. Ist der Wert größer als 2k$\Omega$? &&& \\
+ 		\hline
+-		8 & Messen Sie die Stromaufnahme des Signalgenerators. Ist der Strom kleiner gleich 100mA? &&& \\
++		8 & Messen der Stromaufnahme des Signalgenerators. Ist der Strom kleiner gleich 100mA? &&& \\
+ 		\hline
+ 	\end{tabular}
+ \end{flushleft}
+@@ -75,15 +75,15 @@ Starten Sie das Testprogramm am Computer und stecken Sie den Signalgenerator an.
+ 		\hline
+ 		1 & Wird der Signalgenerator vom Computer erkannt? & & \\
+ 		\hline
+-		2 & Starten sie den Software-Test. Ist der Test erfolgreich verlaufen? & & \\
++		2 & Starten Sie den Software-Test. Ist der Test erfolgreich verlaufen? & & \\
+ 		\hline
+-		3 & Messen sie den Master-Clock (MCLK) an Pin 5 des AD9833. Ist der Wert im 5\% Rahmen von 25MHz? & & \\
++		3 & Messen Sie den Master-Clock (MCLK) an Pin 5 des AD9833. Ist der Wert im 5\% Rahmen von 25MHz? & & \\
+ 		\hline
+ 	\end{tabular}
+ \end{flushleft}
+ Tragen Sie die Frequenz des Master-Clock in das entsprechende Feld für Kalibrierungswerte ein.
+ \medskip		
+-Starten Sie die Messung Nr.1 bis Nr.4 und folgen Sie den Anweisungen in der Software. Die enthalten auch die Einstellungen für das Oszilloskop. Vergleichen Sie das Bild auf dem Oszilloskop dem Bild der Beispielmessung. Sind die Bilder annähernd identisch? Toleranzen im Bereich von $\pm$5\% sind akzeptabel.
++Starten Sie die Messung Nr.1 bis Nr.4 und folgen Sie den Anweisungen in der Software. Diese enthalten auch die Einstellungen für das Oszilloskop. Vergleichen Sie das Bild auf dem Oszilloskop mit dem Bild der Beispielmessung. Sind die Bilder annähernd identisch? Toleranzen im Bereich von $\pm$5\% sind akzeptabel.
+ 
+ \begin{flushleft}
+ 	\begin{tabular}{|c||p{10cm}|c|c|}
+@@ -98,7 +98,7 @@ Starten Sie die Messung Nr.1 bis Nr.4 und folgen Sie den Anweisungen in der Soft
+ 		\hline
+ 		7 & Messung Nr. 4 & & \\
+ 		\hline
+-		8 & Messen sie die Ausgangsspannung an Pin 10 des AD9833. Liegt ihr Wert bei 700mV $\pm$100mV? & & \\
++		8 & Messen Sie die Ausgangsspannung an Pin 10 des AD9833. Liegt ihr Wert bei 700mV $\pm$100mV? & & \\
+ 		\hline
+ 	\end{tabular}
+ \end{flushleft}
+@@ -115,4 +115,4 @@ Tragen Sie die Ausgangsspannung in das entsprechende Feld für Kalibrierungswert
+ 	\end{tabular}
+ \end{flushleft}
+ Wenn alle Tests erfolgreich waren tragen Sie die Seriennummer des Gerätes in das entsprechende Feld ein und schreiben Sie die Kalibrierungswerte auf den Signalgenerator.\\
+-Trennen Sie den Signalgenerator Ordnungsgemäß von der Software und vom Computer.
++Trennen Sie den Signalgenerator ordnungsgemäß von der Software und vom Computer.
