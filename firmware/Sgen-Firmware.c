@@ -310,8 +310,8 @@ void Output_data()
 	
 	//Send the frequency and formdata to the AD9833
 	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]);
-	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
 	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
+	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
 
 	//Send the TWI-Data, but only if device is responding.
 	if (TWI_StartTransmission(DigiPoti, 1) == 0)
