@@ -245,6 +245,19 @@ Der folgende Beispielcode ist in C\# geschrieben und berechnet den Gesamtwert be
 \lstset{style=C}
 \lstinputlisting[language=C, firstline=17, lastline=36]{./img/exp-code.c}
 \subsubsection*{Offsetspannung}
+Der Registerwert für die Offsetspannung berechnet sich aus der Gesamtspannung (12V) und den möglichen Schritten beider Digitalpotentiometer (512 Schritte). Die Formel hierzu lautet wie folgt:\\
+\begin{center}
+$Registerwert_{gesamt} = \dfrac{U_{offset}+\dfrac{U_{max}}{2}}{U_{max}\div Bits}$\\
+\end{center}
+Oder mit eingesetzten Werten:
+\begin{center}
+$Registerwert_{gesamt} = \dfrac{-3,3V+\dfrac{12V}{2}}{12V\div 512}$\\
+$Registerwert_{gesamt} = 115$\\
+\end{center}
+Dieser Wert muss nun nur noch gleichmäßig auf die beiden Register verteilt werden.\\
+Der folgende Beispielcode hierzu ist in C++ geschrieben:\\
+\lstset{style=C}
+\lstinputlisting[language=C, firstline=37, lastline=58]{./img/exp-code.c}
 \subsubsection*{Sonstige Register}
 \subsubsection*{Boot-Daten}
 
@@ -265,6 +278,24 @@ Boot-Daten & Beim Boot laden & Werte speichern\\
 
 
 \subsubsection*{Multiplexer}
+Die folgenden Werte müssen an Port D des mikrocontrollers angelegt werden. Welcher Kondensator für welche Frequenz gewählt wird ist in der PC-Software festgelegt.
+\begin{flushleft}
+\begin{tabular}{c||c}
+Wert & Ausgangssignal\\
+\hline
+\hline
+0x00 & Kein Durchgang\\
+\hline
+0x80 & C11\\
+\hline
+0x90 & C12\\
+\hline
+0xc0 & C13\\
+\hline
+0xd0 & direkte Verbindung\\
+\end{tabular}
+\end{flushleft}
+
 \subsubsection{Fehlercodes}
 
 \begin{flushleft}

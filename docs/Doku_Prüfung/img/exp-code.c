@@ -33,3 +33,26 @@ else
   register1 = 255-((ergebnis / 2) + 1);
   register2 = 255 - ergebnis / 2;
 }
+
+float uges = 12, bits = 512;
+int register1, register2;
+int ergebnis = ((u_offset + 6) / (uges / bits));
+
+if (510 < ergebnis)
+{
+  ergebnis = 510;
+}
+
+if (ergebnis%2==0)
+{
+    register1 = ergebnis / 2;
+    register2 = ergebnis / 2;
+}
+else
+{
+    ergebnis = ergebnis- 1;
+    register1 = (ergebnis / 2) + 1;
+    register2 = ergebnis / 2;
+}
+output_data[8] = register1;
+output_data[9] = register2;

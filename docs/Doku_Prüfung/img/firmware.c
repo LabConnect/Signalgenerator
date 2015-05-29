@@ -119,19 +119,22 @@ void SetupHardware(void)
 
 }
 
-/** Event handler for the library USB Connection event. */
+/** Event handler for the library USB Connection event. 
+	Not used in this Code */
 void EVENT_USB_Device_Connect(void)
 {
 	
 }
 
-/** Event handler for the library USB Disconnection event. */
+/** Event handler for the library USB Disconnection event.
+	Not used in this Code  */
 void EVENT_USB_Device_Disconnect(void)
 {
 	
 }
 
-/** Event handler for the library USB Configuration Changed event. */
+/** Event handler for the library USB Configuration Changed event.
+	If connected, configure the endpoints */
 void EVENT_USB_Device_ConfigurationChanged(void)
 {
 	bool ConfigSuccess = true;
@@ -154,16 +157,7 @@ void EVENT_USB_Device_StartOfFrame(void)
 	HID_Device_MillisecondElapsed(&Generic_HID_Interface);
 }
 
-/** HID class driver callback function for the creation of HID reports to the host.
- *
- *  \param[in]     HIDInterfaceInfo  Pointer to the HID class interface configuration structure being referenced
- *  \param[in,out] ReportID    Report ID requested by the host if non-zero, otherwise callback should set to the generated report ID
- *  \param[in]     ReportType  Type of the report to create, either HID_REPORT_ITEM_In or HID_REPORT_ITEM_Feature
- *  \param[out]    ReportData  Pointer to a buffer where the created report should be stored
- *  \param[out]    ReportSize  Number of bytes written in the report (or zero if no report is to be sent)
- *
- *  \return Boolean \c true to force the sending of the report, \c false to let the library determine if it needs to be sent
- */
+/** HID class driver callback function for the creation of HID reports to the host. */
 bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo,
                                          uint8_t* const ReportID,
                                          const uint8_t ReportType,
@@ -172,20 +166,17 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 {
 	uint8_t* Data        = (uint8_t*)ReportData;
 
+	for (int i = 0; i <12; i++)
+	{
+		Data[i] = Response_Data[i];
+	}
 
 	*ReportSize = GENERIC_REPORT_SIZE;
 
 	return false;
 }
 
-/** HID class driver callback function for the processing of HID reports from the host.
- *
- *  \param[in] HIDInterfaceInfo  Pointer to the HID class interface configuration structure being referenced
- *  \param[in] ReportID    Report ID of the received report from the host
- *  \param[in] ReportType  The type of report that the host has sent, either HID_REPORT_ITEM_Out or HID_REPORT_ITEM_Feature
- *  \param[in] ReportData  Pointer to a buffer where the received report has been stored
- *  \param[in] ReportSize  Size in bytes of the received HID report
- */
+/** HID class driver callback function for the processing of HID reports from the host. */
 void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDInterfaceInfo,
                                           const uint8_t ReportID,
                                           const uint8_t ReportType,
@@ -194,11 +185,13 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 {
 	uint8_t* Data       = (uint8_t*)ReportData;
 	
+	//get the data out of the function for later use
 	for (int i=0; i<ConfigSize; i++)
 	{
 		input_data[i] = Data[i];
 	}
 	
+	//Determine which function to call based on the package-id
 	switch(input_data[0])
 	{
 		case 0x00: ConfigRequest(); break;
@@ -207,8 +200,6 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 		case 0x03: ErrorRequest(); break;
 		default: ReturnError(0x01); break;
 	}
-
-
 	return;
 }
 
@@ -218,15 +209,17 @@ here starts the sections for the functions called by the usb code
 
 void ConfigRequest()
 {
+	//validate the checksum
 	if (input_data[1] != 0x55)
 	{
 		ReturnError(0x02);
 		return;
 	}
-
+	//set the package-ID
 	Response_Data[0] = 0x10;
 
-	for (int i = 0; i < 10; i++)
+	//Copy the config-data to the output buffer
+	for (int i = 0; i < 13; i++)
 	{
 		Response_Data[i+1] = Config_Data[i];
 	}
@@ -236,14 +229,15 @@ void ConfigRequest()
 
 void SetCommand()
 {
-	
+	//copy the data
 	for (int i = 0; i < 13; i++)
 	{
 		DeviceConfig[i] = input_data[i+1];
 	}
-
+	//send the data to the peripherie
 	Output_data();
 
+	//save the data to the eeprom, if wanted
 	if ((DeviceConfig[12] & 0x01) == 0x01)
 	{
 		for (int i = 0; i < 12; i++)
@@ -252,7 +246,7 @@ void SetCommand()
 			eeprom_update_byte((uint8_t*)eeprom_addr, DeviceConfig[i]);
 		}
 	}
-
+	//enable or disable load_at_boot
 	if ((DeviceConfig[12] & 0x10) == 0x10)
 	{
 		eeprom_update_byte((uint8_t*)EEPROM_BOOT_VALUES, 0x10);
@@ -267,8 +261,9 @@ void SetCommand()
 
 void DataRequest()
 {
-	Response_Data[0] = 0x12; //send dataresponse
-
+	//Set the package-ID
+	Response_Data[0] = 0x12; 
+	//Copy the config to the output buffer
 	for (int i = 0; i < 10; i++)
 	{
 		Response_Data[i+1] = DeviceConfig[i];
@@ -279,6 +274,7 @@ void DataRequest()
 
 void ErrorRequest()
 {
+	//copy the error-Data to the output buffer
 	for (int i = 0; i < 6; i++)
 	{
 		Response_Data[i] = Error_Data[i];
@@ -299,9 +295,9 @@ void Output_data()
 	PORTD = DeviceConfig[10];
 	
 	//Send the frequency and formdata to the AD9833
-	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]);
-	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
-	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
+	SPI_Send2Byte(DeviceConfig[0], DeviceConfig[1]); //Controllregister
+	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]); //Freg, LSB
+	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]); //Freg, MSB
 
 	//Send the TWI-Data, but only if device is responding.
 	if (TWI_StartTransmission(DigiPoti, 1) == 0)
@@ -327,6 +323,7 @@ void Output_data()
 
 void ReturnError(uint8_t ErrorType)
 {
+	//write an error to the errordata
 	Error_Data[0] = 0x13;
 	for (int i = 1; i < 6; i++)
 	{
