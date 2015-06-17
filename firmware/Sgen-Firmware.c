@@ -96,6 +96,7 @@ void SetupHardware(void)
 	/* Disable watchdog if enabled by bootloader/fuses */
 	MCUSR &= ~(1 << WDRF);
 	wdt_disable();
+	DDRD = 0xF0;
 
 	/* Disable clock division */
 	clock_prescale_set(clock_div_1);
@@ -178,7 +179,7 @@ bool CALLBACK_HID_Device_CreateHIDReport(USB_ClassInfo_HID_Device_t* const HIDIn
 {
 	uint8_t* Data        = (uint8_t*)ReportData;
 
-	for (int i = 0; i <12; i++)
+	for (int i = 0; i < 12; i++)
 	{
 		Data[i] = Response_Data[i];
 	}
@@ -208,6 +209,8 @@ void CALLBACK_HID_Device_ProcessHIDReport(USB_ClassInfo_HID_Device_t* const HIDI
 	{
 		input_data[i] = Data[i];
 	}
+	
+	//PORTD = (input_data[0] << 4);
 	
 	switch(input_data[0])
 	{
@@ -293,6 +296,7 @@ void ErrorRequest()
 	{
 		Response_Data[i] = Error_Data[i];
 		Error_Data[i] = 0x00;
+		PORTD = 0x00;
 	}
 
 	return;
@@ -313,7 +317,7 @@ void Output_data()
 	SPI_Send2Byte(DeviceConfig[4], DeviceConfig[5]);
 	SPI_Send2Byte(DeviceConfig[2], DeviceConfig[3]);
 
-	//Send the TWI-Data, but only if device is responding.
+	/*//Send the TWI-Data, but only if device is responding.
 	if (TWI_StartTransmission(DigiPoti, 1) == 0)
 	{
 		for (int i = 0; i < 4; i++)
@@ -332,11 +336,13 @@ void Output_data()
 	{
 		ReturnError(0x03);
 	}
+	*/
 	return;
 }
 
 void ReturnError(uint8_t ErrorType)
 {
+	PORTD = (ErrorType << 4);
 	Error_Data[0] = 0x13;
 	for (int i = 1; i < 6; i++)
 	{

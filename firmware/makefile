@@ -11,9 +11,9 @@
 
 # Run "make help" for target help.
 
-MCU          = atmega32u4
+MCU          = at90usb1287
 ARCH         = AVR8
-F_CPU        = 16000000
+F_CPU        = 8000000
 F_USB        = $(F_CPU)
 OPTIMIZATION = s
 TARGET       = Sgen-Firmware
